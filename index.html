@@ -3,43 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="monetag" content="675001f2c98d861dfb53bee0e4831300">
 <title>FREE INCOME - অনলাইন ইনকাম</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
-body{background:linear-gradient(135deg,#FFD700,#FFA500);color:#333;padding:20px;}
-.container{max-width:650px;margin:30px auto;background:white;border-radius:20px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
-h1{color:#FFCC00;text-align:center;margin-bottom:10px;}
-p{text-align:center;color:#666;margin-bottom:20px;}
-.btn{display:block;background:#25a3e3;color:white;padding:16px;border-radius:12px;text-decoration:none;font-size:18px;text-align:center;margin:12px 0;font-weight:bold;}
-.btn-green{background:#22c55e;}
-.btn-yellow{background:#f59e0b;}
-.ad-box{background:#fff1f1;border:2px dashed #ccc;border-radius:12px;padding:25px;margin:25px 0;text-align:center;}
+body {
+  font-family: sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+.container {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+h1 { color: #0088cc; margin-bottom: 10px; }
+p { color: #555; font-size: 16px; }
+.btn {
+  display: block;
+  background: #0088cc;
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.btn:hover { background: #0077b3; }
+.small { font-size: 13px; color: #888; margin-top: 15px; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>💸 FREE INCOME 💸</h1>
-<p>প্রতিদিন কিছু টাস্ক কমপ্লিট করে এখান থেকে ইনকাম করুন</p>
-
-<a class="btn" href="https://t.me/freeincomers100bot?start=web" target="_blank">🤖 বট স্টার্ট করুন</a>
-<a class="btn btn-green" href="https://t.me/Free_Income_Group100" target="_blank">📢 টেলিগ্রাম চ্যানেলে জয়েন করুন</a>
-<a class="btn btn-yellow" href="https://t.me/freeincomers100bot?start=12345" target="_blank">👥 রেফার করে 10 টাকা বোনাস</a>
-
-<div class="ad-box">
-<p>📺 এখানে বিজ্ঞাপন দেখাবে</p>
-<!-- তোমার Monetag / AdsTerra কোড এখানে পেস্ট করবে -->
-<p style="font-size:13px;color:#999;margin-top:10px;">Ads Loading...</p>
-</div>
-
-<p style="font-size:14px;">আপনার রেফার লিংক অটোমেটিক বটে তৈরি হবে। বট থেকে Balance, Withdraw সব করতে পারবেন।</p>
+  <h1>FREE INCOME</h1>
+  <p>প্রতিদিন ৫০০-১০০০ টাকা ইনকাম করুন<br>টেলিগ্রাম বট থেকে</p>
+  
+  <a id="mainLink" class="btn" href="https://t.me/earning_kori_incomebot?start=7643930781" target="_blank">💰 এখনই ইনকাম শুরু করুন</a>
+  
+  <p class="small">লিংকে ক্লিক করে Start বাটনে চাপ দিন</p>
 </div>
 
 <script>
-// যদি কেউ রেফার লিংক দিয়ে ওয়েবসাইটে আসে তাহলে সেটা বটে নিয়ে যাবে
+// যদি কেউ তোমার লিংক শেয়ার করে তার রেফারেল যোগ হবে
 const urlParams = new URLSearchParams(window.location.search);
-const ref = urlParams.get('start');
+const ref = urlParams.get('ref');
 if(ref){
-  document.querySelector('.btn-yellow').href = `https://t.me/freeincomers100bot?start=${ref}`;
+  const mainLink = document.getElementById('mainLink');
+  mainLink.href = `https://t.me/earning_kori_incomebot?start=${ref}`;
 }
 </script>
 </body>
