@@ -1,64 +1,22 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="monetag" content="675001f2c98d861dfb53bee0e4831300">
-<title>FREE INCOME - অনলাইন ইনকাম</title>
+<title>Free Income - Daily Earning</title>
 <style>
-body {
-  font-family: sans-serif;
-  background: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-}
-.container {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-}
-h1 { color: #0088cc; margin-bottom: 10px; }
-p { color: #555; font-size: 16px; }
-.btn {
-  display: block;
-  background: #0088cc;
-  color: white;
-  padding: 14px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 20px;
-}
-.btn:hover { background: #0077b3; }
-.small { font-size: 13px; color: #888; margin-top: 15px; }
+body{font-family:Arial;background:#f0f2f5;text-align:center;padding:30px}
+.box{background:white;padding:25px;border-radius:15px;max-width:400px;margin:auto;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
+.btn{background:#007bff;color:white;padding:15px 30px;border:none;border-radius:8px;font-size:18px;width:100%;margin-top:15px;cursor:pointer}
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>FREE INCOME</h1>
-  <p>প্রতিদিন ৫০০-১০০০ টাকা ইনকাম করুন<br>টেলিগ্রাম বট থেকে</p>
-  
-  <a id="mainLink" class="btn" href="https://t.me/earning_kori_incomebot?start=7643930781" target="_blank">💰 এখনই ইনকাম শুরু করুন</a>
-  
-  <p class="small">লিংকে ক্লিক করে Start বাটনে চাপ দিন</p>
+<div class="box">
+<h2>💰 FREE INCOME BD 💰</h2>
+<p>প্রতিদিন ৩০০-৫০০ টাকা ইনকাম করুন</p>
+<button class="btn" onclick="alert('টাস্ক লোড হচ্ছে...')">এখনই কাজ শুরু করুন</button>
+<p style="margin-top:15px;font-size:14px;color:gray">100% Free - No Investment</p>
 </div>
-
-<script>
-// যদি কেউ তোমার লিংক শেয়ার করে তার রেফারেল যোগ হবে
-const urlParams = new URLSearchParams(window.location.search);
-const ref = urlParams.get('ref');
-if(ref){
-  const mainLink = document.getElementById('mainLink');
-  mainLink.href = `https://t.me/earning_kori_incomebot?start=${ref}`;
-}
-</script>
 </body>
 </html>
