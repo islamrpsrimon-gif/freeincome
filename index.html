@@ -1,22 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="monetag" content="675001f2c98d861dfb53bee0e4831300">
-<title>Free Income - Daily Earning</title>
+<title>FREE INCOME BD - FINAL FIX</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <style>
-body{font-family:Arial;background:#f0f2f5;text-align:center;padding:30px}
-.box{background:white;padding:25px;border-radius:15px;max-width:400px;margin:auto;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
-.btn{background:#007bff;color:white;padding:15px 30px;border:none;border-radius:8px;font-size:18px;width:100%;margin-top:15px;cursor:pointer}
+body{background:#0f1115;color:#fff;font-family:sans-serif;margin:0;padding-bottom:95px}
+.card{background:#1c1f29;border:1px solid #2a2e3d;border-radius:12px;padding:16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.page{display:none}.page.active{display:block}
+.b-item{flex:1;text-align:center;padding:10px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#11131a;border-top:1px solid #2a2e3d;display:flex;z-index:100}
+.top-item{padding:12px;border-bottom:1px solid #2a2e3d;display:flex;justify-content:space-between}
+.me{background:#29303f}
+.btn{background:#fff;color:#000;padding:10px 14px;border-radius:8px;font-weight:700;border:none}
 </style>
 </head>
 <body>
-<div class="box">
-<h2>💰 FREE INCOME BD 💰</h2>
-<p>প্রতিদিন ৩০০-৫০০ টাকা ইনকাম করুন</p>
-<button class="btn" onclick="alert('টাস্ক লোড হচ্ছে...')">এখনই কাজ শুরু করুন</button>
-<p style="margin-top:15px;font-size:14px;color:gray">100% Free - No Investment</p>
+
+<div id="joinPopup" style="position:fixed;inset:0;background:#0f1115;z-index:1000;display:flex;align-items:center;justify-content:center;text-align:center">
+<div>
+<h2>Join to Continue</h2>
+<p>First Join our Channel & Group</p>
+<button class="btn" onclick="joinChannel()">Join Channel</button>
+<button class="btn" onclick="checkJoin()">✅ I Joined</button>
 </div>
+</div>
+
+<div style="padding:16px">
+<div id="home" class="page active">
+<div class="card"><div><span id="userName">User</span><br><b id="pts">0 PTS</b> - <span id="tk">0 TK</span></div><div>Total Members: <span id="totalMembers">0</span> | 2500 PTS = 20 TK</div></div>
+<div class="card">Refer & Earn 70 PTS<br><input id="refLink" readonly style="width:70%"><button onclick="copyRef()">COPY</button></div>
+<button class="btn" onclick="watchAd()">WATCH AD +7 PTS</button>
+</div>
+
+<div id="top" class="page">
+<h3>Top Earners - <span id="totalMembersTop">0</span> Members</h3>
+<div id="topList"></div>
+</div>
+
+<div id="payout" class="page"><h3>Withdraw</h3><div id="pts2"></div><button onclick="getWithdraw()">Request Withdraw</button><div id="withdrawHistory"></div></div>
+<div id="profile" class="page"><h3>Profile</h3><div id="profileBox"></div></div>
+</div>
+
+<div class="bottom">
+<div class="b-item" onclick="showTab('home')">HOME</div>
+<div class="b-item" onclick="showTab('top')">TOP</div>
+<div class="b-item" onclick="showTab('payout')">PAYOUT</div>
+<div class="b-item" onclick="showTab('profile')">PROFILE</div>
+</div>
+
+<script>
+const ADMIN_ID="5468979650";
+const BOT_TOKEN="8684890686:AAEG_FRY-8kyJTpuVndCMVEqPwm3_nyapc";
+const CHANNEL_LINK="https://t.me/Free_Income_Group100";
+const SUPPORT_LINK="https://t.me/boost?c=362978446";
+
+// --- FIREBASE CONFIG - এটা Global করার জন্য ---
+const firebaseConfig = {
+  databaseURL: "https://free-income-bd-default-rtdb.firebaseio.com"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// --- NO FAKE MEMBERS ---
+let oldMembers = [];
+
+let tg=window.Telegram.WebApp; tg.expand();
+let userId=tg.initDataUnsafe?.user?.id||Math.floor(Math.random()*1000000)+1000000;
+let displayName=tg.initDataUnsafe?.user?.first_name||"User";
+let pts=parseInt(localStorage.getItem('pts')||'25');
+let all_users_db=[];
+
+function joinChannel(){ window.open(CHANNEL_LINK,'_blank'); }
+function checkJoin(){ localStorage.setItem('joined','yes'); document.getElementById('joinPopup').style.display='none'; initUser(); }
+function isJoined(){ return localStorage.getItem('joined')==='yes'; }
+
+function initUser(){
+ if(!isJoined()){ document.getElementById('joinPopup').style.display='flex'; return; }
+ db.ref('all_users_db/'+userId).once('value', snap=>{
+   if(!snap.exists()){
+     let newUser={id:String(userId),name:displayName,pts:pts,referrer:null};
+     let urlParams=new URLSearchParams(window.location.search);
+     let startParam=urlParams.get('start');
+     if(startParam){ newUser.referrer=startParam; }
+     db.ref('all_users_db/'+userId).set(newUser);
+     if(startParam){
+       db.ref('all_users_db/'+startParam+'/pts').transaction(p=> (p||0)+70);
+     }
+   }
+ });
+ update();
+ renderTop();
+}
+
+function update(){
+ document.getElementById('pts').innerText=pts;
+ document.getElementById('pts2').innerText=pts+' PTS';
+ document.getElementById('userName').innerText=displayName;
+ document.getElementById('tk').innerText=(pts/125).toFixed(2);
+ localStorage.setItem('pts',pts);
+ db.ref('all_users_db/'+userId+'/pts').set(pts);
+}
+
+function watchAd(){ pts+=7; update(); alert('+7 PTS Added'); }
+function copyRef(){ 
+ let link=`https://t.me/freeincomebd1bot?start=${userId}`;
+ document.getElementById('refLink').value=link;
+ navigator.clipboard.writeText(link); alert('Copied!');
+}
+function showTab(id){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+
+// --- FIXED GLOBAL TOP LIST ---
+function renderTop(){
+ db.ref('all_users_db').on('value', snap=>{
+   let data=snap.val();
+   if(!data) return;
+   let unique=Object.values(data);
+   unique.sort((a,b)=>b.pts-a.pts);
+   let total=unique.length;
+   document.getElementById('totalMembers').innerText=total;
+   document.getElementById('totalMembersTop').innerText=total;
+   document.getElementById('topList').innerHTML=unique.slice(0,10).map((u,i)=>{
+     let isMe=String(u.id)===String(userId);
+     return `<div class="top-item ${isMe?'me':''}"><div>#${i+1} ${u.name} ${isMe?'(You)':''}</div><div>${u.pts} PTS</div></div>`;
+   }).join('');
+ });
+}
+
+function getWithdraw(){ alert('Withdraw Request Sent'); }
+initUser();
+</script>
 </body>
 </html>
