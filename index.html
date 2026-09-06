@@ -17,7 +17,7 @@ let tg=null;try{tg=window.Telegram.WebApp;tg.expand()}catch(e){}
 let user=tg?.initDataUnsafe?.user;let userId=String(user?.id||Math.floor(Math.random()*1000000)+1000000);let displayName=user?.first_name||"User";let ini=displayName.charAt(0).toUpperCase();
 document.getElementById('initial').innerText=ini;document.getElementById('bigInitial').innerText=ini;document.getElementById('userName').innerText=displayName;document.getElementById('userNameBig').innerText=displayName;document.getElementById('userHandle').innerText=user?.username?"@"+user.username:"ID: "+userId;
 if(user?.photo_url){let s=document.getElementById('userPicSmall');s.src=user.photo_url;s.style.display='block';document.getElementById('initial').style.display='none';let b=document.getElementById('userPicBig');b.src=user.photo_url;b.style.display='block';document.getElementById('bigInitial').style.display='none';}
-let oldMembers=[{name:"Rahim Khan",pts:24500,id:"101"},{name:"Sakib Ahmed",pts:18200,id:"102"},{name:"Al Amin",pts:15000,id:"103"},{name:"Jahid Hasan",pts:12100,id:"104"},{name:"Fahim",pts:10500,id:"105"},{name:"Nusrat",pts:9800,id:"106"},{name:"Mehedi",pts:8500,id:"107"}];
+let oldMembers=[];
 let all_users_db=JSON.parse(localStorage.getItem('all_users_db')||'[]');
 let urlParams=new URLSearchParams(window.location.search);
 let startParam=urlParams.get('start')||urlParams.get('startapp')||tg?.initDataUnsafe?.start_param;
@@ -48,7 +48,7 @@ function update(){
  checkWd();renderTop();renderWithdrawHistory();
 }
 function renderTop(){
- let newMembers=JSON.parse(localStorage.getItem('all_users_db')||'[]');let all=[...oldMembers,...newMembers];
+ let newMembers=JSON.parse(localStorage.getItem('all_users_db')||'[]');let all=[...newMembers];
  let map=new Map();all.forEach(u=>{let k=String(u.id);if(!map.has(k)||map.get(k).pts<u.pts)map.set(k,u);});
  let unique=Array.from(map.values());unique.sort((a,b)=>b.pts-a.pts);
  let total=unique.length;
