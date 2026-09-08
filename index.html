@@ -62,10 +62,10 @@ function setMethod(m){payMethod=m;document.querySelectorAll('.m-btn').forEach(b=
 function showTab(t){if(!isJoined()&&t!=='home'){document.getElementById('joinPopup').style.display='flex';return;}document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(t).classList.add('active');document.querySelectorAll('.b-item').forEach(b=>b.classList.remove('active'));let el=document.getElementById('b-'+t);if(el)el.classList.add('active');if(t==='payout')renderWithdrawHistory();}
 function copyRef(){navigator.clipboard.writeText(refLink);alert('Copied!');}
 let selectedPts=3500,selectedTk=20,payMethod='Recharge';
-let AdController=null;try{AdController=window.Adsgram.init({blockId:"46674"})}catch(e){}
+let AdController=null;try{AdController=window.Adsgram.init({blockId:"46685"})}catch(e){}
 function watchAd(){
 if(!requireJoin())return;
-if(typeof show_46674=='function'){try{show_46636();}catch(e){}}
+if(typeof show_46685=='function'){try{show_46685();}catch(e){}}
 if(AdController){AdController.show().then((r)=>{done(r);pts+=7;update();}).catch(()=>{pts+=7;update();});}
 }
 function daily(){if(!requireJoin())return;let last=localStorage.getItem('daily');if(last&&Date.now()-last<86400000){alert('Already claimed');return}pts+=15;localStorage.setItem('daily',Date.now());update();}
