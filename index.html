@@ -7,9 +7,23 @@
 <div id="payout" class="page"><h3>💰 Withdraw</h3><div class="pbox" style="margin-top:12px"><h2><span id="pts2">25</span> PTS</h2><p>৳ <span id="total">0.15</span></p><div class="bar"><div class="fill" id="fill2"></div></div></div><div class="pbox"><div class="wd-card active" id="wd0" onclick="selectWd(3500,20,'Recharge')"><div><b>3500 Points</b><br><small>= 20 TK Recharge</small></div><i class="fas fa-check-circle" style="color:#22d3ee" id="c0"></i></div><div class="wd-card" id="wd1" onclick="selectWd(5000,30,'bKash')"><div><b>5000 Points</b><br><small>= 30 TK bKash/Nagad</small></div><i class="fas fa-check-circle" style="display:none;color:#22d3ee" id="c1"></i></div></div><div class="pbox"><div style="display:flex;gap:8px;margin-bottom:12px"><button class="m-btn active" id="mRecharge" onclick="setMethod('Recharge')">Recharge</button><button class="m-btn" id="mBkash" onclick="setMethod('bKash')">bKash</button><button class="m-btn" id="mNagad" onclick="setMethod('Nagad')">Nagad</button></div><input id="payNumber" class="input" placeholder="01XXXXXXXXX"></div><button class="btn btn1" onclick="withdraw()">Request Withdraw - ৳ <span id="wdAmount">20</span></button><div style="margin-top:20px"><h4>📜 My History</h4><div id="withdrawHistory" style="margin-top:10px"></div></div><div id="adminPanel" style="display:none;margin-top:20px;border-top:1px solid #2a2e3d;padding-top:15px"><h3>👑 Admin Panel - All Withdraws</h3><div id="adminWithdrawList" style="margin-top:10px"></div></div></div>
 <div id="profile" class="page"><h3>👤 Profile</h3><div class="pbox" style="text-align:center;margin-top:12px"><div class="profile-wrap" id="profileWrap"><span id="bigInitial">U</span><img id="userPicBig"></div><h3 id="userNameBig">User</h3><p id="userHandle" style="color:#9ca3af;font-size:13px">ID: 0</p></div><div class="pbox"><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2a2e3d"><span>Balance</span><b><span id="pts3">25</span> PTS</b></div><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2a2e3d"><span>Referrals</span><b id="refCount">0</b></div><div id="profileTotalRow" style="display:none;justify-content:space-between;padding:8px 0"><span>Total Members</span><b id="totalMembers2">0</b></div></div><div class="pbox"><h4>My Refer Link</h4><div style="display:flex;gap:6px;margin-top:8px"><input id="refLink2" class="input" style="margin:0" readonly><button onclick="copyRef()" style="padding:10px 14px;border-radius:8px;border:none;background:#22d3ee">COPY</button></div></div></div>
 <div class="bottom"><div class="b-item active" id="b-home" onclick="showTab('home')"><i class="fas fa-home"></i>HOME</div><div class="b-item" id="b-tasks" onclick="showTab('tasks')"><i class="fas fa-list-check"></i>TASKS</div><div class="b-item" id="b-top" onclick="showTab('top')"><i class="fas fa-trophy"></i>TOP</div><div class="b-item" id="b-payout" onclick="showTab('payout')"><i class="fas fa-wallet"></i>PAYOUT</div><div class="b-item" id="b-support" onclick="openSupport()"><i class="fas fa-headset"></i>SUPPORT</div><div class="b-item" id="b-profile" onclick="showTab('profile')"><i class="fas fa-user"></i>YOU</div></div>
-<script>
-const ADMIN_ID="5468979650";const BOT_TOKEN="8684890686:AAG_FRY-8kyJTpuVndCMVFEgPivm3_nyapc";const CHANNEL_LINK="https://t.me/Free_Income_Group100";const SUPPORT_LINK="https://t.me/boost?c=3629878446";const BOT_LINK="https://t.me/freeincomebd14bot?start=";
-function joinChannel(){try{if(window.Telegram&&Telegram.WebApp)Telegram.WebApp.openLink(CHANNEL_LINK);else window.open(CHANNEL_LINK,"_blank")}catch(e){window.open(CHANNEL_LINK,"_blank")}}
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAo4-YPFeNvhKxyLxtA1yw8PRnAze3vbI0",
+  authDomain: "freeincome-5a9bb.firebaseapp.com",
+  projectId: "freeincome-5a9bb",
+  storageBucket: "freeincome-5a9bb.firebasestorage.app",
+  messagingSenderId: "1009061909707",
+  appId: "1:1009061909707:web:40a4d33acf0d5dc5e0374e"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const ADMIN_ID="5698970680"; const BOT_TOKEN="8684800686:AA6_FRY-8kyJTpuVndCJWFEp2vm2_nyapc"; const CHANNEL_LINK="https://t.me/freeincomebd14";
+
+ functionjoinChannel(){try{if(window.Telegram&&Telegram.WebApp)Telegram.WebApp.openLink(CHANNEL_LINK);else window.open(CHANNEL_LINK,"_blank")}catch(e){window.open(CHANNEL_LINK,"_blank")}}
 function openSupport(){try{if(window.Telegram&&Telegram.WebApp)Telegram.WebApp.openLink(SUPPORT_LINK);else window.open(SUPPORT_LINK,"_blank")}catch(e){window.open(SUPPORT_LINK,"_blank")}}
 function checkJoin(){localStorage.setItem('joined','yes');document.getElementById('joinPopup').style.display='none';document.getElementById('noticePopup').style.display='flex';}
 function closeNotice(){document.getElementById('noticePopup').style.display='none';}
@@ -28,10 +42,10 @@ if(!all_users_db.find(u=>String(u.id)===userId)){
   newUser.pts+=70;
   localStorage.setItem('pts',''+newUser.pts);
   localStorage.setItem('referred_once',referredBy);
- }
  all_users_db.push(newUser);
- localStorage.setItem('all_users_db',JSON.stringify(all_users_db));
-}
+localStorage.setItem('all_users_db',JSON.stringify(all_users_db));
+setDoc(doc(db,"users", String(userId)), newUser);
+ }
 let pts=parseInt(localStorage.getItem('pts')||'25');
 let refLink=BOT_LINK+userId;
 document.getElementById('refLink').value=refLink;document.getElementById('refLink2').value=refLink;
@@ -42,19 +56,25 @@ function update(){
  let tk=(pts*30/5000).toFixed(2);document.getElementById('tk').innerText=tk;document.getElementById('total').innerText=tk;
  let p=Math.min(pts/100,100)+'%';document.getElementById('fill').style.width=p;document.getElementById('fill2').style.width=p;
  localStorage.setItem('pts',pts);
- let db=JSON.parse(localStorage.getItem('all_users_db')||'[]');let me=db.find(u=>String(u.id)===userId);if(me){me.pts=pts;localStorage.setItem('all_users_db',JSON.stringify(db));}
- let all=JSON.parse(localStorage.getItem('all_users_db')||'[]');let myRefs=all.filter(u=>String(u.referrer)===String(userId)).length;
- document.getElementById('refCount').innerText=myRefs;
+  let myRefs = all_users_db.filter(u=>u.refBy===String(userId)).length;
+let all=JSON.parse(localStorage.getItem('all_users_db')||'[]');
+ document.getElementletById('refCount').innerText=myRefs;
  checkWd();renderTop();renderWithdrawHistory();
 }
 function renderTop(){
- let newMembers=JSON.parse(localStorage.getItem('all_users_db')||'[]');let all=[...newMembers];
- let map=new Map();all.forEach(u=>{let k=String(u.id);if(!map.has(k)||map.get(k).pts<u.pts)map.set(k,u);});
- let unique=Array.from(map.values());unique.sort((a,b)=>b.pts-a.pts);
- let total=unique.length;
- document.getElementById('totalMembers').innerText=total;document.getElementById('totalMembersTop').innerText=total;document.getElementById('totalMembers2').innerText=total;
- if(String(userId)===ADMIN_ID){document.getElementById('adminMemberInfo').style.display='block';document.getElementById('adminTopInfo').style.display='block';document.getElementById('profileTotalRow').style.display='flex';document.getElementById('adminPanel').style.display='block';}
- let h="";unique.slice(0,15).forEach((u,i)=>{let isMe=String(u.id)===userId;h+=`<div class="top-item ${isMe?'me':''}"><div style="display:flex;gap:10px"><b>#${i+1}</b><span>${u.name}${isMe?' (You)':''}</span></div><b>${u.pts} PTS</b></div>`});document.getElementById('topList').innerHTML=h;
+  const q = query(collection(db, "users"), orderBy("pts", "desc"), limit(50));
+  onSnapshot(q, (snap)=>{
+    let users=[];
+    snap.forEach(d=> users.push(d.data()));
+    document.getElementById('totalMembers').innerText = snap.size;
+    document.getElementById('totalMembersTop').innerText = snap.size;
+    let h="";
+    users.forEach((u,i)=>{
+      let isMe = String(u.id)===String(userId);
+      h+=`<div class="top-item ${isMe?'me':''}"><span>#${i+1} ${u.name}</span><span>${u.pts} PTS</span></div>`;
+    });
+    document.getElementById('topList').innerHTML = h || "No users";
+  });
 }
 function checkWd(){document.querySelectorAll('.wd-card').forEach(c=>{let need=c.id=='wd0'?3500:5000;if(pts<need)c.classList.add('disabled');else c.classList.remove('disabled')})}
 function selectWd(p,t,m){if(!requireJoin())return;selectedPts=p;selectedTk=t;document.querySelectorAll('.wd-card').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.wd-card i').forEach(i=>i.style.display='none');let id=p==3500?'wd0':'wd1';document.getElementById(id).classList.add('active');document.getElementById('c'+id.slice(2)).style.display='block';document.getElementById('wdAmount').innerText=t;setMethod(m);}
