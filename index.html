@@ -1,76 +1,52 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FREE INCOME BD</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#0a0a0a;color:#fff;padding-bottom:85px}
-.top-bar{background:#121212;padding:12px 16px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:10}
-.card{background:#1e1e2f;margin:10px 16px;padding:14px;border-radius:16px;display:flex;justify-content:space-between;align-items:center}
-.rank{color:#888;margin-right:8px}
-.me{border:2px solid #00d4ff;box-shadow:0 0 10px #00d4ff33}
-.badge{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:bold}
-.pending{background:#ff980033;color:#ff9800;border:1px solid #ff9800}
-.paid{background:#00e67633;color:#00e676;border:1px solid #00e676}
-.nav{position:fixed;bottom:0;width:100%;background:#121212;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #222;z-index:20}
-.nav div{color:#777;font-size:10px;text-align:center;cursor:pointer}
+body{margin:0;background:#0a0a0a;color:#fff;font-family:sans-serif;padding-bottom:90px}
+.top-bar{padding:14px;background:#121212;position:sticky;top:0;display:flex;justify-content:space-between}
+.card{background:#1e1e2f;margin:10px 16px;padding:14px;border-radius:14px;display:flex;justify-content:space-between;align-items:center}
+.rank{color:#888}
+.me{border:1.5px solid #00d4ff}
+.badge{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:bold}
+.pending{color:#ff9800;background:#ff980033;border:1px solid #ff9800}
+.paid{color:#00e676;background:#00e67633;border:1px solid #00e676}
+.btn{width:100%;padding:12px;background:#00d4ff;border:none;border-radius:10px;font-weight:bold;margin-top:10px}
+input{width:100%;padding:12px;margin-top:10px;background:#1e1e2f;border:1px solid #333;border-radius:10px;color:#fff}
+.nav{position:fixed;bottom:0;width:100%;background:#121212;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #222}
+.nav div{font-size:10px;text-align:center;color:#777}
 .nav div.active{color:#00d4ff}
-.btn{background:#00d4ff;color:#000;border:none;padding:12px;border-radius:10px;font-weight:bold;width:100%;margin-top:10px;cursor:pointer}
-input{width:100%;padding:12px;background:#1e1e2f;border:1px solid #333;border-radius:10px;color:#fff;margin-top:10px}
 .hidden{display:none}
-.section{padding-top:10px}
 </style>
 </head>
 <body>
-<div class="top-bar"><b id="title">🏆 Top Earners</b><span style="font-size:11px;color:#666">LIVE</span></div>
+<div class="top-bar"><b>🏆 Top Earners</b><span style="color:#00e676">● LIVE</span></div>
+<div id="topList"></div>
 
-<div id="topSec" class="section">
-<div id="topList" style="margin-top:10px">Loading real users...</div>
-</div>
+<div id="payoutSec" style="margin:16px">
+<h3>Withdraw</h3>
+<p>Balance: <span id="bal">0</span> PTS</p>
+<input id="num" placeholder="bKash / Nagad">
+<input id="amt" type="number" placeholder="Min 500">
+<button class="btn" onclick="reqW()">Withdraw</button>
+<div id="myList" style="margin-top:20px"></div>
 
-<div id="payoutSec" class="section hidden">
-<div style="margin:16px">
-<h3>💰 My Payout</h3>
-<p style="color:#aaa;font-size:14px;margin:8px 0">Balance: <b id="myBal">0</b> PTS</p>
-<input id="bNum" placeholder="bKash / Nagad Number">
-<input id="bAmt" type="number" placeholder="Amount (Min 500)">
-<button class="btn" onclick="doWithdraw()">Withdraw Request</button>
-<h4 style="margin-top:25px">History</h4>
-<div id="myWithdraws"></div>
-</div>
-</div>
-
-<div id="youSec" class="section hidden">
-<div style="margin:16px">
-<h3>👤 YOU</h3>
-<p style="margin-top:10px">ID: <span id="uid"></span></p>
-<p>Points: <span id="pts2"></span></p>
-<div id="adminPanel" class="hidden">
-<hr style="margin:20px 0;border-color:#333">
-<h3 style="color:#ff5252">👑 Admin Panel</h3>
-<p>Total Members: <b id="totalM">0</b></p>
-<h4 style="margin-top:15px">Pending Withdrawals</h4>
+<div id="adminBox" style="margin-top:30px;border-top:1px solid #333;padding-top:15px">
+<h3 style="color:#ff5252">Admin - Pending</h3>
 <div id="adminW"></div>
-<h4 style="margin-top:20px">🚨 উল্টাপাল্টা Alert (SMS)</h4>
-<div id="adminAlerts"></div>
-</div>
+<h3 style="color:#ff9800;margin-top:20px">🚨 উল্টো করলে Alert (SMS)</h3>
+<div id="alerts"></div>
 </div>
 </div>
 
 <div class="nav">
-<div onclick="show('home')">🏠<br>HOME</div>
-<div>📋<br>TASKS</div>
-<div id="tTab" class="active" onclick="show('top')">🏆<br>TOP</div>
-<div onclick="show('payout')">💳<br>PAYOUT</div>
-<div onclick="show('you')">👤<br>YOU</div>
+<div>🏠<br>HOME</div><div>📋<br>TASKS</div><div class="active">🏆<br>TOP</div><div>💳<br>PAYOUT</div><div>👤<br>YOU</div>
 </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, query, orderBy, limit, getDocs, doc, getDoc, setDoc, addDoc, where, onSnapshot, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {getFirestore,collection,query,orderBy,limit,getDocs,doc,getDoc,setDoc,addDoc,where,onSnapshot,updateDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAo4-YPFeNvhKxyLxtA1yw8PRnAze3vbI0",
@@ -80,105 +56,64 @@ const firebaseConfig = {
   messagingSenderId: "1009061909707",
   appId: "1:1009061909707:web:40a4d33acf0d5dc5e0374e"
 };
+const ADMIN_ID="5468979650";
+const db=getFirestore(initializeApp(firebaseConfig));
+let userId=localStorage.getItem("uid")||ADMIN_ID;
+let userName="User";
+localStorage.setItem("uid",userId);
 
-const ADMIN_ID = "5468979650";
-const db = getFirestore(initializeApp(firebaseConfig));
-
-let tg = window.Telegram?.WebApp;
-let userId = tg?.initDataUnsafe?.user?.id?.toString() || localStorage.getItem("uid") || ADMIN_ID;
-let userName = tg?.initDataUnsafe?.user?.first_name || "User"+userId.slice(-3);
-localStorage.setItem("uid", userId);
-document.getElementById("uid").innerText = userId;
-
-async function alertAdmin(msg){
-  await addDoc(collection(db,"admin_alerts"),{message:msg,time:serverTimestamp(),uid:userId});
-}
-
-async function init(){
-  let ref = doc(db,"users",userId);
-  let snap = await getDoc(ref);
-  if(!snap.exists()){
-    await setDoc(ref,{id:userId,name:userName,points:39,joined:serverTimestamp()});
-  }
-  let data = (await getDoc(ref)).data();
-  document.getElementById("myBal").innerText = data.points;
-  document.getElementById("pts2").innerText = data.points;
-  document.getElementById("totalM").innerText = (await getDocs(collection(db,"users"))).size;
-}
-init();
-
-async function loadTopReal(){
-  let q = query(collection(db,"users"),orderBy("points","desc"),limit(10));
-  let snap = await getDocs(q);
-  let html=""; let i=1;
+// 1. REAL TOP 10 - নকল বাদ
+async function loadTop(){
+  let q=query(collection(db,"users"),orderBy("points","desc"),limit(10));
+  let snap=await getDocs(q);
+  let h="";let i=1;
   snap.forEach(d=>{
     let u=d.data();
-    html+=`<div class="card ${d.id==userId?'me':''}"><span><span class="rank">#${i}</span>${u.name}</span><b>${u.points} PTS</b></div>`;
-    i++;
+    h+=`<div class="card ${d.id==userId?'me':''}"><span><span class="rank">#${i}</span> ${u.name||'User'}</span><b>${u.points} PTS</b></div>`;i++;
   });
-  document.getElementById("topList").innerHTML = html || "<div class='card'>No users yet - wait for join</div>";
+  document.getElementById("topList").innerHTML=h||"<div class='card'>কেউ জয়েন করেনি এখনো</div>";
 }
-loadTopReal();
+loadTop();
 
-window.doWithdraw = async()=>{
-  let num=document.getElementById("bNum").value;
-  let amt=parseInt(document.getElementById("bAmt").value);
+// Balance load
+let uref=doc(db,"users",userId);
+let us=(await getDoc(uref)).data();
+if(us) document.getElementById("bal").innerText=us.points;
+
+// 2. Withdraw + Pending/Paid + SMS Alert
+window.reqW=async()=>{
+  let num=document.getElementById("num").value;
+  let amt=parseInt(document.getElementById("amt").value);
   if(!num||!amt) return alert("Number & Amount দাও");
-  if(amt<500) return alert("Min 500");
-  let uref=doc(db,"users",userId);
-  let u = (await getDoc(uref)).data();
-  if(amt > u.points){
-    await alertAdmin(`🚨 CHEAT: ${userName} (${userId}) tried ${amt} PTS but has ${u.points} | ${num}`);
-    return alert("Balance কম আছে!");
+  let u=(await getDoc(uref)).data();
+  if(amt>u.points){
+    // উল্টো করলে SMS Alert
+    await addDoc(collection(db,"admin_alerts"),{message:`🚨 উল্টো: ${userId} ${amt} তুলতে চায়, আছে ${u.points} | Num:${num}`,time:serverTimestamp()});
+    return alert("Balance কম!");
   }
-  await addDoc(collection(db,"withdrawals"),{userId,userName,number:num,amount:amt,status:"pending",time:serverTimestamp()});
-  await alertAdmin(`💸 NEW PENDING: ${userName} ${amt} PTS to ${num}`);
-  alert("Request Pending এ গেছে");
+  await addDoc(collection(db,"withdrawals"),{userId,number:num,amount:amt,status:"pending",time:serverTimestamp()});
+  await addDoc(collection(db,"admin_alerts"),{message:`💸 নতুন Pending: ${userId} - ${amt} PTS - ${num}`,time:serverTimestamp()});
+  alert("Pending এ গেছে, Admin দেখবে");
 }
 
-function loadMyW(){
-  let q=query(collection(db,"withdrawals"),where("userId","==",userId),orderBy("time","desc"));
-  onSnapshot(q,snap=>{
-    let h="";
-    snap.forEach(d=>{
-      let w=d.data();
-      h+=`<div class="card"><span>${w.amount} PTS - ${w.number}</span><span class="badge ${w.status}">${w.status.toUpperCase()}</span></div>`;
-    });
-    document.getElementById("myWithdraws").innerHTML=h;
-  });
-}
-loadMyW();
+// My history Pending/Paid
+onSnapshot(query(collection(db,"withdrawals"),where("userId","==",userId),orderBy("time","desc")),s=>{
+  let h="";s.forEach(d=>{let w=d.data();h+=`<div class="card"><span>${w.amount} PTS - ${w.number}</span><span class="badge ${w.status}">${w.status.toUpperCase()}</span></div>`});
+  document.getElementById("myList").innerHTML=h;
+});
 
+// Admin দেখবে Pending + Paid করতে পারবে + Alert দেখবে
 if(userId==ADMIN_ID){
-  document.getElementById("adminPanel").classList.remove("hidden");
-  let q=query(collection(db,"withdrawals"),where("status","==","pending"),orderBy("time","desc"));
-  onSnapshot(q,snap=>{
-    let h="";
-    snap.forEach(d=>{
-      let w=d.data();
-      h+=`<div class="card"><div><b>${w.userName}</b> ${w.amount} PTS<br><small>${w.number}</small></div><button class="btn" style="width:auto;padding:8px 12px" onclick="makePaid('${d.id}')">PAID করো</button></div>`;
-    });
+  onSnapshot(query(collection(db,"withdrawals"),where("status","==","pending"),orderBy("time","desc")),s=>{
+    let h="";s.forEach(d=>{let w=d.data();h+=`<div class="card"><div>${w.userId}<br>${w.amount} PTS - ${w.number}</div><button onclick="paid('${d.id}')" style="padding:6px 10px;background:#00e676;border:none;border-radius:8px">PAID</button></div>`});
     document.getElementById("adminW").innerHTML=h;
   });
-  onSnapshot(query(collection(db,"admin_alerts"),orderBy("time","desc"),limit(20)),snap=>{
-    let h="";
-    snap.forEach(d=>{ h+=`<div class="card" style="font-size:13px">${d.data().message}</div>` });
-    document.getElementById("adminAlerts").innerHTML=h;
+  onSnapshot(query(collection(db,"admin_alerts"),orderBy("time","desc"),limit(20)),s=>{
+    let h="";s.forEach(d=>{h+=`<div class="card" style="font-size:12px">${d.data().message}</div>`});
+    document.getElementById("alerts").innerHTML=h;
   });
 }
-window.makePaid = async(id)=>{
-  await updateDoc(doc(db,"withdrawals",id),{status:"paid"});
-  await alertAdmin(`✅ PAID DONE: ${id}`);
-}
-window.show = (t)=>{
-  document.getElementById("topSec").classList.add("hidden");
-  document.getElementById("payoutSec").classList.add("hidden");
-  document.getElementById("youSec").classList.add("hidden");
-  if(t=='top'){document.getElementById("topSec").classList.remove("hidden"); loadTopReal();}
-  if(t=='payout'){document.getElementById("payoutSec").classList.remove("hidden");}
-  if(t=='you'){document.getElementById("youSec").classList.remove("hidden");}
-  if(t=='home'){document.getElementById("topSec").classList.remove("hidden");}
-}
+window.paid=async(id)=>{await updateDoc(doc(db,"withdrawals",id),{status:"paid"});}
 </script>
 </body>
 </html>
