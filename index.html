@@ -1,52 +1,8 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FREE INCOME BD</title>
-<style>
-body{margin:0;background:#0a0a0a;color:#fff;font-family:sans-serif;padding-bottom:90px}
-.top-bar{padding:14px;background:#121212;position:sticky;top:0;display:flex;justify-content:space-between}
-.card{background:#1e1e2f;margin:10px 16px;padding:14px;border-radius:14px;display:flex;justify-content:space-between;align-items:center}
-.rank{color:#888}
-.me{border:1.5px solid #00d4ff}
-.badge{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:bold}
-.pending{color:#ff9800;background:#ff980033;border:1px solid #ff9800}
-.paid{color:#00e676;background:#00e67633;border:1px solid #00e676}
-.btn{width:100%;padding:12px;background:#00d4ff;border:none;border-radius:10px;font-weight:bold;margin-top:10px}
-input{width:100%;padding:12px;margin-top:10px;background:#1e1e2f;border:1px solid #333;border-radius:10px;color:#fff}
-.nav{position:fixed;bottom:0;width:100%;background:#121212;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #222}
-.nav div{font-size:10px;text-align:center;color:#777}
-.nav div.active{color:#00d4ff}
-.hidden{display:none}
-</style>
-</head>
-<body>
-<div class="top-bar"><b>🏆 Top Earners</b><span style="color:#00e676">● LIVE</span></div>
-<div id="topList"></div>
-
-<div id="payoutSec" style="margin:16px">
-<h3>Withdraw</h3>
-<p>Balance: <span id="bal">0</span> PTS</p>
-<input id="num" placeholder="bKash / Nagad">
-<input id="amt" type="number" placeholder="Min 500">
-<button class="btn" onclick="reqW()">Withdraw</button>
-<div id="myList" style="margin-top:20px"></div>
-
-<div id="adminBox" style="margin-top:30px;border-top:1px solid #333;padding-top:15px">
-<h3 style="color:#ff5252">Admin - Pending</h3>
-<div id="adminW"></div>
-<h3 style="color:#ff9800;margin-top:20px">🚨 উল্টো করলে Alert (SMS)</h3>
-<div id="alerts"></div>
-</div>
-</div>
-
-<div class="nav">
-<div>🏠<br>HOME</div><div>📋<br>TASKS</div><div class="active">🏆<br>TOP</div><div>💳<br>PAYOUT</div><div>👤<br>YOU</div>
-</div>
+<!DOCTYPE html> <html lang="bn"> <head> <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>FREE INCOME BD</title> <script src="https://telegram.org/js/telegram-web-app.js"></script> <script src="https://sad.adsgram.ai/js/sad.min.js"></script> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> <style> *{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif} body{background:#0f1115;color:#fff;padding-bottom:95px} .page{display:none;padding:16px}.page.active{display:block} .card{background:#1c1f29;border:1px solid #2a2e3d;border-radius:20px;padding:16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;cursor:pointer} .badge{width:42px;height:42px;background:linear-gradient(135deg,#3b82f6,#06b6d4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;overflow:hidden} .badge img{width:100%;height:100%;object-fit:cover;display:none} .pbox{background:#1c1f29;border:1px solid #2a2e3d;border-radius:16px;padding:14px;margin-bottom:12px} .bar{height:8px;background:#2a2e3d;border-radius:10px;overflow:hidden;margin-top:8px} .fill{height:100%;background:linear-gradient(90deg,#22c55e,#06b6d4);transition:0.5s} .btn{padding:14px;border-radius:12px;border:none;font-weight:700;width:100%;cursor:pointer;margin-top:10px} .btn1{background:linear-gradient(90deg,#0ea5e9,#22d3ee);color:#000} .btn2{background:#1c1f29;color:#fff;border:1px solid #2a2e3d} .bottom{position:fixed;bottom:0;left:0;right:0;background:#151821;border-top:1px solid #2a2e3d;display:flex;justify-content:space-around;padding:8px 0;z-index:100} .b-item{color:#6b7280;font-size:9px;text-align:center;cursor:pointer;flex:1} .b-item.active{color:#22d3ee} .b-item i{font-size:17px;display:block;margin-bottom:3px} .wd-card{background:#1c1f29;border:1px solid #2a2e3d;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center} .wd-card.active{border-color:#22d3ee;background:#1e293b} .wd-card.disabled{opacity:.4;pointer-events:none} .input{width:100%;background:#0f1115;border:1px solid #2a2e3d;border-radius:10px;padding:12px;color:#fff;margin-top:8px;outline:none} .m-btn{flex:1;padding:10px;border-radius:10px;border:1px solid #2a2e3d;background:#1c1f29;color:#fff;cursor:pointer;font-weight:600;font-size:12px} .m-btn.active{background:#22d3ee;color:#000} .ref-box{background:linear-gradient(135deg,#0ea5e9,#22d3ee);border-radius:16px;padding:16px;color:#000;margin-bottom:12px} .top-item{background:#1c1f29;border:1px solid #2a2e3d;border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px} .top-item.me{border-color:#22d3ee;background:#1e293b} .profile-wrap{width:90px;height:90px;border-radius:50%;border:3px solid #22d3ee;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:#1c1f29;font-size:36px;font-weight:900;color:#22d3ee;overflow:hidden;position:relative} .profile-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:none} .status{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800} .pending{background:#ff980033;color:#ff9800;border:1px solid #ff9800} .paid{background:#00e67633;color:#00e676;border:1px solid #00e676} </style> </head> <body> <div id="joinPopup" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#0f1115;z-index:10002;display:flex;align-items:center;justify-content:center;padding:20px"><div style="background:#1c1f29;border:1px solid #2a2e3d;border-radius:20px;padding:24px;text-align:center;max-width:330px;width:100%"><h3>🔔 Join First!</h3><p style="color:#9ca3af;font-size:13px;margin:12px 0">আর্নিং শুরু করতে গ্রুপে জয়েন করুন</p><button onclick="joinChannel()" style="background:#229ED9;color:#fff;border:none;padding:12px;width:100%;border-radius:12px;font-weight:700;margin-top:12px"><i class="fab fa-telegram"></i> Join Group</button><button onclick="checkJoin()" style="background:linear-gradient(90deg,#0ea5e9,#22d3ee);color:#000;border:none;padding:12px;width:100%;border-radius:12px;font-weight:700;margin-top:10px">✅ I Joined</button></div></div> <div id="noticePopup" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:10001;display:none;align-items:center;justify-content:center;padding:16px"><div style="background:#ffffff;border-radius:16px;padding:22px;max-width:360px;width:100%"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:10px"><h2 style="color:#0f1115;font-size:22px;font-weight:800">নোটিশ</h2><span onclick="closeNotice()" style="font-size:20px;color:#000;cursor:pointer;background:#f1f1f1;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%">✕</span></div><div style="color:#111;font-size:15.5px;line-height:1.8;font-weight:500"><p>🥰আসসালামুয়ালাইকুম🥰 সবাই সঠিক নিয়মে কাজ করেন পেমেন্ট নিয়ে চিন্তা করবেন না ✅</p><br><p>প্রতি রেফার ১ টাকা</p><br><p>প্রতিদিন এ্যাড দেখে ৪০০-৬০০ টাকা</p><br><p>দুপুরের দিকে এ্যাড দেখলে বেশি ইনকাম করতে পারবেন ✅✅</p><br><p>মিনিমাম উইথড্র ৩০ টাকা</p><br><p>কেউ ফেক রেফার করবেন না ❌🚨</p><br><p>সবাই উরাধুরা কোপ 🔥💥 দেন</p></div><button onclick="closeNotice()" style="background:#0f1115;color:#fff;border:none;padding:13px;width:100%;border-radius:10px;font-weight:700;margin-top:20px">বুঝেছি</button></div></div> <div id="home" class="page active"><div class="card" onclick="showTab('profile')"><div style="display:flex;gap:12px;align-items:center"><div class="badge" id="badgeSmall"><span id="initial">U</span><img id="userPicSmall"></div><div><b id="userName">User</b><br><small style="color:#9ca3af"><span id="bal">25</span> PTS</small></div></div><i class="fas fa-chevron-right" style="color:#4b5563"></i></div><div class="pbox"><h2><span id="pts">25</span> PTS = ৳ <span id="tk">0.15</span></h2><div class="bar"><div class="fill" id="fill" style="width:2%"></div></div><small style="color:#9ca3af">3500 PTS = 20 TK Recharge / 5000 PTS = 30 TK bKash/Nagad</small><small id="adminTotal" style="display:none;background:#22d3ee;color:#000;padding:6px 10px;border-radius:20px;font-weight:700;margin-top:8px;display:inline-block">👥 Total: <span id="totalMembers">0</span> Members</small></div><div class="ref-box"><h4>Refer & Earn 70 PTS</h4><div style="display:flex;gap:6px;margin-top:8px"><input id="refLink" class="input" style="margin:0;background:#fff;color:#000;font-size:11px" readonly><button onclick="copyRef()" style="padding:10px 14px;border-radius:8px;border:none;background:#000;color:#fff">COPY</button></div></div><button class="btn btn1" onclick="watchAd()">▶ WATCH AD +7 PTS</button><button class="btn btn2" onclick="openSupport()">📞 Support Group - 24/7 সার্ভিস</button></div> <div id="tasks" class="page"><h3>📋 Tasks</h3><div class="pbox" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div><b>Watch Ad</b><br><small>+7 PTS</small></div><button onclick="watchAd()" style="padding:10px 18px;border-radius:10px;border:none;background:#22d3ee;font-weight:800">Watch</button></div><div class="pbox" style="display:flex;justify-content:space-between;align-items:center"><div><b>Daily Check-in</b><br><small>+15 PTS</small></div><button onclick="daily()" style="padding:10px 18px;border-radius:10px;border:none;background:#22d3ee;font-weight:800">Claim</button></div></div> <div id="top" class="page"><h3>🏆 Top Earners <span style="font-size:11px;color:#00e676">● LIVE REAL</span></h3><div id="topList" style="margin-top:12px">Loading real users...</div></div> <div id="payout" class="page"><h3>💰 Withdraw</h3><div class="pbox" style="margin-top:12px"><h2><span id="pts2">25</span> PTS</h2><p>৳ <span id="total">0.15</span></p><div class="bar"><div class="fill" id="fill2"></div></div></div><div class="pbox"><div class="wd-card active" id="wd0" onclick="selectWd(3500,20,'Recharge')"><div><b>3500 Points</b><br><small>= 20 TK Recharge 🔥</small></div><i class="fas fa-check-circle" style="color:#22d3ee" id="c0"></i></div><div class="wd-card" id="wd1" onclick="selectWd(5000,30,'bKash')"><div><b>5000 Points</b><br><small>= 30 TK bKash/Nagad ⭐</small></div><i class="fas fa-check-circle" style="display:none;color:#22d3ee" id="c1"></i></div></div><div class="pbox"><div style="display:flex;gap:8px;margin-bottom:12px"><button class="m-btn active" id="mRecharge" onclick="setMethod('Recharge')">Recharge</button><button class="m-btn" id="mBkash" onclick="setMethod('bKash')">bKash</button><button class="m-btn" id="mNagad" onclick="setMethod('Nagad')">Nagad</button></div><input id="payNumber" class="input" placeholder="01XXXXXXXXX"></div><button class="btn btn1" onclick="withdraw()">Request Withdraw - ৳ <span id="wdAmount">20</span></button><div class="pbox" style="margin-top:16px"><h4>My Withdraws (Pending / Paid)</h4><div id="myWithdraws" style="margin-top:10px"></div></div><div id="adminPanel" style="display:none"><div class="pbox" style="border-color:#ff5252"><h4 style="color:#ff5252">👑 Admin Panel</h4><p>Total Members: <b id="totalMembers2">0</b></p><div id="allPending" style="margin-top:12px"></div><h4 style="margin-top:16px;color:#ff9800">🚨 উল্টাপাল্টা Alert</h4><div id="adminAlerts" style="margin-top:8px"></div></div></div></div> <div id="profile" class="page"><h3>👤 Profile</h3><div class="pbox" style="text-align:center;margin-top:12px"><div class="profile-wrap" id="profileWrap"><span id="bigInitial">U</span><img id="userPicBig"></div><h3 id="userNameBig">User</h3><p id="userHandle" style="color:#9ca3af;font-size:13px">ID: 0</p></div><div class="pbox"><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2a2e3d"><span>Balance</span><b><span id="pts3">25</span> PTS</b></div><div style="display:flex;justify-content:space-between;padding:8px 0"><span>Referrals</span><b id="refCount">0</b></div></div><div class="pbox"><h4>My Refer Link</h4><div style="display:flex;gap:6px;margin-top:8px"><input id="refLink2" class="input" style="margin:0" readonly><button onclick="copyRef()" style="padding:10px 14px;border-radius:8px;border:none;background:#22d3ee">COPY</button></div></div></div> <div class="bottom"><div class="b-item active" id="b-home" onclick="showTab('home')"><i class="fas fa-home"></i>HOME</div><div class="b-item" id="b-tasks" onclick="showTab('tasks')"><i class="fas fa-list-check"></i>TASKS</div><div class="b-item" id="b-top" onclick="showTab('top')"><i class="fas fa-trophy"></i>TOP</div><div class="b-item" id="b-payout" onclick="showTab('payout')"><i class="fas fa-wallet"></i>PAYOUT</div><div class="b-item" id="b-support" onclick="openSupport()"><i class="fas fa-headset"></i>SUPPORT</div><div class="b-item" id="b-profile" onclick="showTab('profile')"><i class="fas fa-user"></i>YOU</div></div>
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {getFirestore,collection,query,orderBy,limit,getDocs,doc,getDoc,setDoc,addDoc,where,onSnapshot,updateDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, query, orderBy, limit, getDocs, doc, getDoc, setDoc, addDoc, where, onSnapshot, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAo4-YPFeNvhKxyLxtA1yw8PRnAze3vbI0",
@@ -56,64 +12,105 @@ const firebaseConfig = {
   messagingSenderId: "1009061909707",
   appId: "1:1009061909707:web:40a4d33acf0d5dc5e0374e"
 };
-const ADMIN_ID="5468979650";
-const db=getFirestore(initializeApp(firebaseConfig));
-let userId=localStorage.getItem("uid")||ADMIN_ID;
-let userName="User";
-localStorage.setItem("uid",userId);
-
-// 1. REAL TOP 10 - নকল বাদ
-async function loadTop(){
-  let q=query(collection(db,"users"),orderBy("points","desc"),limit(10));
-  let snap=await getDocs(q);
-  let h="";let i=1;
-  snap.forEach(d=>{
-    let u=d.data();
-    h+=`<div class="card ${d.id==userId?'me':''}"><span><span class="rank">#${i}</span> ${u.name||'User'}</span><b>${u.points} PTS</b></div>`;i++;
-  });
-  document.getElementById("topList").innerHTML=h||"<div class='card'>কেউ জয়েন করেনি এখনো</div>";
-}
-loadTop();
-
-// Balance load
-let uref=doc(db,"users",userId);
-let us=(await getDoc(uref)).data();
-if(us) document.getElementById("bal").innerText=us.points;
-
-// 2. Withdraw + Pending/Paid + SMS Alert
-window.reqW=async()=>{
-  let num=document.getElementById("num").value;
-  let amt=parseInt(document.getElementById("amt").value);
-  if(!num||!amt) return alert("Number & Amount দাও");
-  let u=(await getDoc(uref)).data();
-  if(amt>u.points){
-    // উল্টো করলে SMS Alert
-    await addDoc(collection(db,"admin_alerts"),{message:`🚨 উল্টো: ${userId} ${amt} তুলতে চায়, আছে ${u.points} | Num:${num}`,time:serverTimestamp()});
-    return alert("Balance কম!");
-  }
-  await addDoc(collection(db,"withdrawals"),{userId,number:num,amount:amt,status:"pending",time:serverTimestamp()});
-  await addDoc(collection(db,"admin_alerts"),{message:`💸 নতুন Pending: ${userId} - ${amt} PTS - ${num}`,time:serverTimestamp()});
-  alert("Pending এ গেছে, Admin দেখবে");
-}
-
-// My history Pending/Paid
-onSnapshot(query(collection(db,"withdrawals"),where("userId","==",userId),orderBy("time","desc")),s=>{
-  let h="";s.forEach(d=>{let w=d.data();h+=`<div class="card"><span>${w.amount} PTS - ${w.number}</span><span class="badge ${w.status}">${w.status.toUpperCase()}</span></div>`});
-  document.getElementById("myList").innerHTML=h;
-});
-
-// Admin দেখবে Pending + Paid করতে পারবে + Alert দেখবে
-if(userId==ADMIN_ID){
-  onSnapshot(query(collection(db,"withdrawals"),where("status","==","pending"),orderBy("time","desc")),s=>{
-    let h="";s.forEach(d=>{let w=d.data();h+=`<div class="card"><div>${w.userId}<br>${w.amount} PTS - ${w.number}</div><button onclick="paid('${d.id}')" style="padding:6px 10px;background:#00e676;border:none;border-radius:8px">PAID</button></div>`});
-    document.getElementById("adminW").innerHTML=h;
-  });
-  onSnapshot(query(collection(db,"admin_alerts"),orderBy("time","desc"),limit(20)),s=>{
-    let h="";s.forEach(d=>{h+=`<div class="card" style="font-size:12px">${d.data().message}</div>`});
-    document.getElementById("alerts").innerHTML=h;
-  });
-}
-window.paid=async(id)=>{await updateDoc(doc(db,"withdrawals",id),{status:"paid"});}
+const db = getFirestore(initializeApp(firebaseConfig));
 </script>
-</body>
-</html>
+
+<script>
+ const ADMIN_ID = "5468979650"; const BOT_TOKEN = "8684890686:AAG_FRY-8kyJTpuVndCMVFEgPivm3_nyapc"; const CHANNEL_LINK="https://t.me/Free_Income_Group100"; const SUPPORT_LINK="https://t.me/boost?c=3629878446"; const BOT_LINK="https://t.me/freeincomebd14bot?start=";
+ function joinChannel(){try{if(window.Telegram&&Telegram.WebApp)Telegram.WebApp.openLink(CHANNEL_LINK);else window.open(CHANNEL_LINK,"_blank")}catch(e){window.open(CHANNEL_LINK,"_blank")}} function openSupport(){try{if(window.Telegram&&Telegram.WebApp)Telegram.WebApp.openLink(SUPPORT_LINK);else window.open(SUPPORT_LINK,"_blank")}catch(e){window.open(SUPPORT_LINK,"_blank")}} function checkJoin(){localStorage.setItem('joined','yes');document.getElementById('joinPopup').style.display='none';document.getElementById('noticePopup').style.display='flex';} function closeNotice(){document.getElementById('noticePopup').style.display='none';}
+ let tg=null;try{tg=window.Telegram.WebApp;tg.expand()}catch(e){} let user=tg?.initDataUnsafe?.user; let userId=String(user?.id||localStorage.getItem("uid")||ADMIN_ID); localStorage.setItem("uid",userId); let displayName=user?.first_name||"User"; let ini=displayName.charAt(0).toUpperCase(); document.getElementById('initial').innerText=ini; document.getElementById('bigInitial').innerText=ini; document.getElementById('userName').innerText=displayName; document.getElementById('userNameBig').innerText=displayName; document.getElementById('userHandle').innerText=user?.username?"@"+user.username:"ID: "+userId;
+ if(user?.photo_url){ let s=document.getElementById('userPicSmall'); s.src=user.photo_url; s.style.display='block'; document.getElementById('initial').style.display='none'; let b=document.getElementById('userPicBig'); b.src=user.photo_url; b.style.display='block'; document.getElementById('bigInitial').style.display='none'; }
+ let pts=parseInt(localStorage.getItem('pts')||'25'); let refCount=parseInt(localStorage.getItem('refCount')||'0'); let refLink=BOT_LINK+userId; document.getElementById('refLink').value=refLink; document.getElementById('refLink2').value=refLink;
+
+ // Firebase User Save
+ async function saveUser(){ try{ const {doc,setDoc,serverTimestamp,getFirestore} = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"); const db2 = getFirestore(); await setDoc(doc(db2,"users",userId),{id:userId,name:displayName,points:pts,username:user?.username||"",lastSeen:serverTimestamp()},{merge:true}); }catch(e){} } saveUser();
+
+ function update(){document.getElementById('pts').innerText=pts;document.getElementById('pts2').innerText=pts;document.getElementById('pts3').innerText=pts;document.getElementById('bal').innerText=pts;document.getElementById('refCount').innerText=refCount;let tk=(pts*30/5000).toFixed(2);document.getElementById('tk').innerText=tk;document.getElementById('total').innerText=tk;let p=Math.min(pts/100,100)+'%';document.getElementById('fill').style.width=p;document.getElementById('fill2').style.width=p;localStorage.setItem('pts',pts);checkWd(); if(window.db) saveUserFirebase();}
+
+ // Real Top + Total Members (Admin only)
+ async function loadRealTop(){
+   try{
+     const {collection,query,orderBy,limit,getDocs,getFirestore} = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+     const db2=getFirestore();
+     const q=query(collection(db2,"users"),orderBy("points","desc"),limit(10));
+     const snap=await getDocs(q);
+     let h=""; let i=1;
+     snap.forEach(d=>{
+       let u=d.data();
+       let isMe=String(u.id)===String(userId);
+       h+=`<div class="top-item ${isMe?'me':''}"><div style="display:flex;gap:10px"><b>#${i}</b><span>${u.name}${isMe?' (You)':''}</span></div><b>${u.points||u.pts||0} PTS</b></div>`;
+       i++;
+     });
+     document.getElementById('topList').innerHTML=h||"<div class='top-item'>No users yet</div>";
+     // Total Members for Admin
+     let all=await getDocs(collection(db2,"users"));
+     document.getElementById('totalMembers').innerText=all.size;
+     document.getElementById('totalMembers2').innerText=all.size;
+     if(String(userId)===ADMIN_ID){ document.getElementById('adminTotal').style.display='inline-block'; document.getElementById('adminPanel').style.display='block'; }
+   }catch(e){ console.log(e); }
+ }
+ function renderTop(){ loadRealTop(); }
+ function checkWd(){document.querySelectorAll('.wd-card').forEach(c=>{let need=c.id=='wd0'?3500:5000;if(pts<need)c.classList.add('disabled');else c.classList.remove('disabled')})}
+ function selectWd(p,t,m){selectedPts=p;selectedTk=t;document.querySelectorAll('.wd-card').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.wd-card i').forEach(i=>i.style.display='none');let id=p==3500?'wd0':'wd1';document.getElementById(id).classList.add('active');document.getElementById('c'+id.slice(2)).style.display='block';document.getElementById('wdAmount').innerText=t;setMethod(m);} function setMethod(m){payMethod=m;document.querySelectorAll('.m-btn').forEach(b=>b.classList.remove('active'));if(m=='Recharge')document.getElementById('mRecharge').classList.add('active');if(m=='bKash')document.getElementById('mBkash').classList.add('active');if(m=='Nagad')document.getElementById('mNagad').classList.add('active');}
+ function showTab(t){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(t).classList.add('active');document.querySelectorAll('.b-item').forEach(b=>b.classList.remove('active'));let el=document.getElementById('b-'+t);if(el)el.classList.add('active'); if(t=='top') loadRealTop();}
+ function copyRef(){navigator.clipboard.writeText(refLink);alert('Copied!');}
+ let selectedPts=3500,selectedTk=20,payMethod='Recharge'; let AdController=null;try{AdController=window.Adsgram.init({blockId:"45871"})}catch(e){}
+ function watchAd(){if(!AdController){pts+=7;update();savePts();return}AdController.show().then(r=>{if(r.done){pts+=7;update();savePts()}})}
+ function savePts(){ localStorage.setItem('pts',pts); saveUser(); }
+ async function saveUserFirebase(){ try{ const {doc,setDoc,getFirestore,serverTimestamp} = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"); const db2=getFirestore(); await setDoc(doc(db2,"users",userId),{points:pts,lastSeen:serverTimestamp()},{merge:true}); }catch(e){} }
+ function daily(){let last=localStorage.getItem('daily');if(last&&Date.now()-last<86400000){alert('Already claimed');return}pts+=15;localStorage.setItem('daily',Date.now());update();savePts();}
+
+ // Withdraw with Pending/Paid + SMS Alert
+ async function withdraw(){
+  let n=document.getElementById('payNumber').value.trim();
+  if(pts<selectedPts){ alert('Need '+selectedPts+' PTS'); 
+    // উল্টো চেষ্টা - SMS
+    let msg=`🚨 CHEAT ALERT\nID:${userId}\nName:${displayName}\nTried:${selectedPts} PTS but has ${pts}\nNum:${n}`;
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_ID}&text=${encodeURIComponent(msg)}`);
+    try{ const {addDoc,collection,serverTimestamp,getFirestore}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"); const db2=getFirestore(); await addDoc(collection(db2,"admin_alerts"),{message:msg,time:serverTimestamp()}); }catch(e){}
+    return;
+  }
+  if(n.length<11){ alert('Valid Number দাও'); return; }
+  try{
+    const {addDoc,collection,serverTimestamp,getFirestore}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+    const db2=getFirestore();
+    await addDoc(collection(db2,"withdrawals"),{userId:userId,userName:displayName,username:user?.username||"",number:n,amount:selectedTk,points:selectedPts,status:"pending",time:serverTimestamp(),method:payMethod});
+    let msg = `💰 NEW WITHDRAW - PENDING\n\n👤 ${displayName}\n🆔 ${userId}\n💎 ${selectedPts} PTS\n💵 ${selectedTk} TK\n📱 ${payMethod}\n🔢 ${n}`;
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_ID}&text=${encodeURIComponent(msg)}`);
+    pts-=selectedPts; update(); savePts();
+    alert('✅ Withdraw Pending! Admin দেখবে');
+  }catch(e){ alert('Error: '+e.message); }
+ }
+
+ // My Withdraws History + Admin Panel Live
+ async function initLive(){
+   const {collection,query,where,orderBy,onSnapshot,getFirestore,doc,updateDoc} = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+   const db2=getFirestore();
+   // My history
+   onSnapshot(query(collection(db2,"withdrawals"),where("userId","==",String(userId)),orderBy("time","desc")),snap=>{
+     let h=""; snap.forEach(d=>{ let w=d.data(); h+=`<div class="wd-card" style="cursor:default"><div><b>${w.points} PTS = ${w.amount} TK</b><br><small>${w.number} - ${w.method}</small></div><span class="status ${w.status}">${w.status.toUpperCase()}</span></div>` });
+     document.getElementById('myWithdraws').innerHTML=h||"<small style='color:#777'>No withdraws yet</small>";
+   });
+   // Admin panel
+   if(String(userId)===ADMIN_ID){
+     onSnapshot(query(collection(db2,"withdrawals"),where("status","==","pending"),orderBy("time","desc")),snap=>{
+       let h=""; snap.forEach(d=>{ let w=d.data(); h+=`<div class="wd-card"><div><b>${w.userName}</b> (${w.userId})<br>${w.points} PTS - ${w.number}</div><button onclick="markPaid('${d.id}')" style="padding:8px 12px;background:#00e676;border:none;border-radius:8px;font-weight:800">PAID</button></div>` });
+       document.getElementById('allPending').innerHTML=h||"<small>No pending</small>";
+     });
+     onSnapshot(query(collection(db2,"admin_alerts"),orderBy("time","desc")),snap=>{
+       let h=""; let c=0; snap.forEach(d=>{ if(c<10){ h+=`<div class="pbox" style="font-size:12px;padding:10px">${d.data().message}</div>`; c++; } });
+       document.getElementById('adminAlerts').innerHTML=h;
+     });
+   }
+ }
+ initLive();
+ window.markPaid = async(id)=>{
+   const {doc,updateDoc,getFirestore}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+   const db2=getFirestore(); await updateDoc(doc(db2,"withdrawals",id),{status:"paid"});
+   fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_ID}&text=${encodeURIComponent("✅ PAID DONE: "+id)}`);
+   alert("Marked Paid");
+ }
+
+ if(localStorage.getItem('joined')=='yes'){document.getElementById('joinPopup').style.display='none';document.getElementById('noticePopup').style.display='flex';}
+ update(); loadRealTop();
+</script> </body> </html>
