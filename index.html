@@ -54,8 +54,23 @@ const db = getFirestore(initializeApp(firebaseConfig));
  function selectWd(p,t,m){selectedPts=p;selectedTk=t;document.querySelectorAll('.wd-card').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.wd-card i').forEach(i=>i.style.display='none');let id=p==3500?'wd0':'wd1';document.getElementById(id).classList.add('active');document.getElementById('c'+id.slice(2)).style.display='block';document.getElementById('wdAmount').innerText=t;setMethod(m);} function setMethod(m){payMethod=m;document.querySelectorAll('.m-btn').forEach(b=>b.classList.remove('active'));if(m=='Recharge')document.getElementById('mRecharge').classList.add('active');if(m=='bKash')document.getElementById('mBkash').classList.add('active');if(m=='Nagad')document.getElementById('mNagad').classList.add('active');}
  function showTab(t){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(t).classList.add('active');document.querySelectorAll('.b-item').forEach(b=>b.classList.remove('active'));let el=document.getElementById('b-'+t);if(el)el.classList.add('active'); if(t=='top') loadRealTop();}
  function copyRef(){navigator.clipboard.writeText(refLink);alert('Copied!');}
- let selectedPts=3500,selectedTk=20,payMethod='Recharge'; let AdController=null;try{AdController=window.Adsgram.init({blockId:"45871"})}catch(e){}
- function watchAd(){if(!AdController){pts+=7;update();savePts();return}AdController.show().then(r=>{if(r.done){pts+=7;update();savePts()}})}
+ let selectedPts=3500,selectedTk=20,payMethod='Recharge';
+  let AdController = null;
+function watchAd(){
+    if(!window.Adsgram){
+        alert("Ad লোড হয়নি");
+        return;
+    }
+    if(!AdController){
+        AdController = window.Adsgram.init({ blockId: "47303" });
+    }
+    AdController.show().then((r)=>{
+        if(r.done){
+            pts+=7; update(); savePts(); saveUser();
+            alert("7 Point পেয়েছো! ✨");
+        }
+    }).catch(e=>console.log(e));
+}
  function savePts(){ localStorage.setItem('pts',pts); saveUser(); }
  async function saveUserFirebase(){ try{ const {doc,setDoc,getFirestore,serverTimestamp} = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"); const db2=getFirestore(); await setDoc(doc(db2,"users",userId),{points:pts,lastSeen:serverTimestamp()},{merge:true}); }catch(e){} }
  function daily(){let last=localStorage.getItem('daily');if(last&&Date.now()-last<86400000){alert('Already claimed');return}pts+=15;localStorage.setItem('daily',Date.now());update();savePts();}
