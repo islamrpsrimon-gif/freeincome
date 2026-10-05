@@ -3,176 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Free Income BD</title>
+<title>Free Income BD - Game Hub</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="//libtl.com/sdk.js" data-zone="11772569" data-sdk="show_11772569"></script>
 <script src="https://sad.adsgram.ai/js/sad.js"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0f172a;color:#fff;font-family:system-ui, sans-serif;padding-bottom:90px}
+*{box-sizing:border-box}body{margin:0;background:#0f172a;color:#fff;font-family:system-ui,sans-serif;padding-bottom:90px}
 .header{background:linear-gradient(135deg,#6366f1 0%,#a855f7 100%);padding:22px 16px 50px;border-radius:0 0 28px 28px;text-align:center}
 .profile{background:#1e293b;border:1px solid #334155;margin:-32px 16px 0;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px}
 .profile img{width:56px;height:56px;border-radius:50%;border:2px solid #8b5cf6;object-fit:cover}
 .card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:14px;margin:12px 16px}
-.task{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #1e293b}
-.task:last-child{border:0}
 .btn{border:0;padding:9px 16px;border-radius:10px;font-weight:700;cursor:pointer;color:#fff;background:#22c55e}
-.btn-orange{background:linear-gradient(90deg,#f59e0b,#ea580c)}
-.btn-blue{background:#6366f1}
+.btn-orange{background:linear-gradient(90deg,#f59e0b,#ea580c)} .btn-blue{background:#6366f1} .btn-red{background:#ef4444}
 .points{color:#facc15;font-weight:800;font-size:20px}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:1px solid #334155;display:flex;justify-content:space-around;padding:10px 0}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:1px solid #334155;display:flex;justify-content:space-around;padding:10px 0;z-index:99}
+.nav-item{text-align:center;cursor:pointer;opacity:.4} .nav-item.active{opacity:1}
+.page{display:none} .page.active{display:block}
+input,select{width:100%;padding:11px;border-radius:10px;margin:6px 0;background:#0f172a;color:#fff;border:1px solid #334155}
+.task{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #0f172a}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h2 style="margin:0">🎮 Free Income BD</h2>
-  <p style="margin:6px 0 0;opacity:.85;font-size:13px">Play Games • Complete Tasks • Win Rewards</p>
-</div>
+<div class="header"><h2 style="margin:0">🎮 Free Income BD</h2><p style="margin:6px 0 0;opacity:.85;font-size:13px">Play • Task • Invite • Earn</p></div>
 
 <div class="profile">
   <img id="uPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-  <div style="flex:1">
-    <div id="uName" style="font-weight:700">Loading...</div>
-    <div style="font-size:12px;color:#94a3b8">Verified Player</div>
+  <div style="flex:1"><div id="uName" style="font-weight:700">Loading...</div><div style="font-size:12px;color:#94a3b8">Verified Player</div></div>
+  <div style="text-align:right"><div id="myPoints" class="points">0</div><div style="font-size:11px;color:#94a3b8">POINTS</div></div>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+  <div class="card"><b>🔥 Daily Missions</b>
+    <div class="task"><div><b>Daily Check-in</b><div style="font-size:12px;color:#94a3b8">+10 Points Daily</div></div><button class="btn" onclick="dailyCheckin()">Claim</button></div>
+    <div class="task"><div><b>🎁 Bonus Video</b><div style="font-size:12px;color:#94a3b8">Double reward</div></div><button class="btn btn-orange" onclick="showAd()">Watch</button></div>
+    <button class="btn btn-orange" style="width:100%;padding:14px;margin-top:10px" onclick="showAd()">📺 Watch Ad & Get +20 Bonus</button>
   </div>
-  <div style="text-align:right">
-    <div id="myPoints" class="points">0</div>
-    <div style="font-size:11px;color:#94a3b8">POINTS</div>
+  <div class="card"><b>🏆 Top Players</b><div id="topList" style="margin-top:8px;color:#94a3b8">Loading...</div></div>
+</div>
+
+<!-- TASKS PAGE -->
+<div id="page-tasks" class="page">
+  <div class="card"><b>🎯 All Tasks</b>
+    <div class="task"><div><b>Join Telegram Channel</b><div style="font-size:12px;color:#94a3b8">+50 Points</div></div><button class="btn btn-blue" onclick="window.open('https://t.me/freeincomebd14bot','_blank')">Join</button></div>
+    <div class="task"><div><b>Watch 5 Ads Daily</b><div style="font-size:12px;color:#94a3b8">+100 Points</div></div><button class="btn btn-orange" onclick="showAd()">Watch</button></div>
   </div>
 </div>
 
-<div class="card">
-  <b>🔥 Daily Missions</b>
-  <div class="task">
-    <div><b>Daily Check-in</b><div style="font-size:12px;color:#94a3b8">Get 10 Points Daily</div></div>
-    <button class="btn" onclick="dailyCheckin()">Claim</button>
+<!-- INVITE PAGE -->
+<div id="page-invite" class="page">
+  <div class="card" style="text-align:center"><b>👥 Invite Friends</b><p style="color:#94a3b8;font-size:13px">প্রতি Invite এ পাবেন 100 Points</p>
+    <div style="background:#0f172a;padding:12px;border-radius:10px;word-break:break-all;font-size:13px" id="inviteLink">Loading link...</div>
+    <button class="btn btn-blue" style="width:100%;margin-top:10px" onclick="copyInvite()">Copy Invite Link</button>
   </div>
-  <div class="task">
-    <div><b>🎁 Bonus Video</b><div style="font-size:12px;color:#94a3b8">Double reward with ad</div></div>
-    <button class="btn btn-orange" onclick="showAd()">Watch</button>
-  </div>
-  <div class="task">
-    <div><b>📢 Join Channel</b><div style="font-size:12px;color:#94a3b8">Join our community</div></div>
-    <button class="btn btn-blue" onclick="window.open('https://t.me/freeincomebd14bot','_blank')">Join</button>
-  </div>
-  <button class="btn btn-orange" style="width:100%;padding:14px;margin-top:10px;font-size:15px" onclick="showAd()">📺 Watch Ad & Get Bonus x2</button>
 </div>
 
-<div class="card">
-  <b>🏆 Top Players</b>
-  <div id="topList" style="margin-top:8px"><div style="color:#94a3b8">Loading leaderboard...</div></div>
+<!-- WALLET PAGE -->
+<div id="page-wallet" class="page">
+  <div class="card"><h3 style="margin:0">💼 Wallet & Withdraw</h3><p style="color:#94a3b8;font-size:13px">Min Withdraw 1000 Points = 10 Taka</p>
+    <select id="payMethod"><option>bKash</option><option>Nagad</option><option>Binance</option></select>
+    <input id="payNumber" placeholder="bKash/Nagad Number">
+    <input id="payAmount" type="number" placeholder="Points (Min 1000)">
+    <button onclick="requestWithdraw()" class="btn btn-orange" style="width:100%;padding:12px">Request Withdraw</button>
+    <div id="myWithdraws" style="margin-top:12px"></div>
+  </div>
+  <div id="adminPanel" style="display:none" class="card" style="border:2px solid #f59e0b"><b style="color:#f59e0b">👑 ADMIN PAYMENT PANEL</b><div id="adminWithdrawList" style="margin-top:10px">Loading...</div></div>
 </div>
 
 <div class="bottom-nav">
-  <div style="text-align:center">🏠<br><small>Home</small></div>
-  <div style="text-align:center;opacity:.4">🎯<br><small>Tasks</small></div>
-  <div style="text-align:center;opacity:.4">👥<br><small>Invite</small></div>
-  <div style="text-align:center;opacity:.4">💼<br><small>Wallet</small></div>
+  <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br><small>Home</small></div>
+  <div id="nav-tasks" class="nav-item" onclick="switchTab('tasks')">🎯<br><small>Tasks</small></div>
+  <div id="nav-invite" class="nav-item" onclick="switchTab('invite')">👥<br><small>Invite</small></div>
+  <div id="nav-wallet" class="nav-item" onclick="switchTab('wallet')">💼<br><small>Wallet</small></div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, query, orderBy, limit, increment, serverTimestamp, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAod-YPFImwNkxyLxT41y8PrRnZe3vb10",
-  authDomain: "freeincome-5a9bb.firebaseapp.com",
-  projectId: "freeincome-5a9bb",
-  storageBucket: "freeincome-5a9bb.firebasestorage.app",
-  messagingSenderId: "100906100907",
-  appId: "1:100906100907:web:40a433acf0d5dc5e0374e"
-};
+const firebaseConfig = { apiKey: "AIzaSyAod-YPFImwNkxyLxT41y8PrRnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb", storageBucket: "freeincome-5a9bb.firebasestorage.app", messagingSenderId: "100906100907", appId: "1:100906100907:web:40a433acf0d5dc5e0374e" };
 const appFB = initializeApp(firebaseConfig);
 const db = getFirestore(appFB);
-
+const ADMIN_ID = "5468970950";
 let userId = null;
-let tgUser = null;
+
+function switchTab(tab){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+tab).classList.add('active');
+  document.getElementById('nav-'+tab).classList.add('active');
+}
+window.switchTab = switchTab;
 
 function initTelegram(){
-  try{
-    if(window.Telegram?.WebApp){
-      Telegram.WebApp.ready(); Telegram.WebApp.expand();
-      tgUser = Telegram.WebApp.initDataUnsafe?.user;
-    }
-  }catch(e){}
-  if(tgUser){
-    userId = String(tgUser.id);
-    document.getElementById('uName').innerText = tgUser.first_name;
-    if(tgUser.photo_url) document.getElementById('uPhoto').src = tgUser.photo_url;
-  }else{
-    userId = "test_123";
-    document.getElementById('uName').innerText = "Demo Player";
-  }
+  let tgUser=null;
+  try{ if(window.Telegram?.WebApp){ Telegram.WebApp.ready(); Telegram.WebApp.expand(); tgUser=Telegram.WebApp.initDataUnsafe?.user; } }catch(e){}
+  if(tgUser){ userId=String(tgUser.id); document.getElementById('uName').innerText=tgUser.first_name; if(tgUser.photo_url) document.getElementById('uPhoto').src=tgUser.photo_url; }
+  else{ userId="test_123"; document.getElementById('uName').innerText="Demo Player"; }
+  document.getElementById('inviteLink').innerText="https://t.me/freeincomebd14bot/app?startapp="+userId;
   initUser();
 }
-
 async function initUser(){
-  if(!userId) return;
-  const ref = doc(db,"users",userId);
+  const ref=doc(db,"users",userId);
   try{
-    const snap = await getDoc(ref);
-    if(!snap.exists()){
-      await setDoc(ref,{ name: document.getElementById('uName').innerText, points: 25, createdAt: serverTimestamp() });
-      document.getElementById('myPoints').innerText = 25;
-    }else{
-      document.getElementById('myPoints').innerText = snap.data().points || 0;
-    }
-  }catch(e){ document.getElementById('myPoints').innerText = 25; }
-  loadTop();
+    const snap=await getDoc(ref);
+    if(!snap.exists()){ await setDoc(ref,{name:document.getElementById('uName').innerText,points:25,createdAt:serverTimestamp()}); document.getElementById('myPoints').innerText=25; }
+    else document.getElementById('myPoints').innerText=snap.data().points||0;
+  }catch(e){ document.getElementById('myPoints').innerText=25; }
+  loadTop(); loadMyWithdraws();
+  if(userId===ADMIN_ID){ document.getElementById('adminPanel').style.display='block'; loadAdminWithdraws(); }
 }
-
 async function loadTop(){
-  try{
-    const q = query(collection(db,"users"), orderBy("points","desc"), limit(10));
-    const snap = await getDocs(q);
-    let html=""; let rank=1;
-    snap.forEach(d=>{
-      const u=d.data();
-      html+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #0f172a"><span>#${rank} ${u.name||'Player'}</span><b style="color:#facc15">${u.points||0}</b></div>`;
-      rank++;
-    });
-    if(html) document.getElementById('topList').innerHTML = html;
-    else document.getElementById('topList').innerHTML = "No players yet";
-  }catch(e){
-    document.getElementById('topList').innerHTML = "Leaderboard will appear here";
-  }
+  try{ const q=query(collection(db,"users"),orderBy("points","desc"),limit(10)); const snap=await getDocs(q); let html="",rank=1; snap.forEach(d=>{ const u=d.data(); html+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #0f172a"><span>#${rank} ${u.name||'Player'}</span><b style="color:#facc15">${u.points||0}</b></div>`; rank++; }); if(html) document.getElementById('topList').innerHTML=html; }catch(e){ document.getElementById('topList').innerHTML="Top players will appear here"; }
 }
-
-window.dailyCheckin = async ()=>{
-  try{
-    await updateDoc(doc(db,"users",userId), { points: increment(10) });
-    const s = await getDoc(doc(db,"users",userId));
-    document.getElementById('myPoints').innerText = s.data().points;
-    alert("✅ +10 Points Added!");
-    loadTop();
-  }catch(e){ alert("Claimed! +10 points"); }
+window.dailyCheckin=async()=>{ try{ await updateDoc(doc(db,"users",userId),{points:increment(10)}); const s=await getDoc(doc(db,"users",userId)); document.getElementById('myPoints').innerText=s.data().points; alert("✅ +10 Added"); loadTop(); }catch(e){ alert("Claimed!"); } };
+window.copyInvite=()=>{ navigator.clipboard.writeText(document.getElementById('inviteLink').innerText); alert("Copied!"); };
+window.requestWithdraw=async()=>{
+  const method=document.getElementById('payMethod').value; const number=document.getElementById('payNumber').value; const amount=parseInt(document.getElementById('payAmount').value);
+  if(!number||!amount) return alert("Number & Amount দিন"); if(amount<1000) return alert("Min 1000 Points");
+  const myPts=parseInt(document.getElementById('myPoints').innerText); if(amount>myPts) return alert("Point নেই");
+  await addDoc(collection(db,"withdrawals"),{userId,userName:document.getElementById('uName').innerText,method,number,amount,status:"pending",createdAt:serverTimestamp()});
+  await updateDoc(doc(db,"users",userId),{points:increment(-amount)}); alert("✅ Request Sent!"); location.reload();
 };
-
+async function loadMyWithdraws(){
+  try{ const q=query(collection(db,"withdrawals"),where("userId","==",userId),orderBy("createdAt","desc"),limit(5)); const snap=await getDocs(q); let h=""; snap.forEach(d=>{ const w=d.data(); h+=`<div style="background:#0f172a;padding:8px;border-radius:8px;margin:4px 0;font-size:12px">${w.amount} pts - ${w.method} - <b>${w.status}</b></div>`; }); document.getElementById('myWithdraws').innerHTML=h; }catch(e){}
+}
+window.loadAdminWithdraws=async()=>{
+  try{ const q=query(collection(db,"withdrawals"),orderBy("createdAt","desc"),limit(30)); const snap=await getDocs(q); let html=""; snap.forEach(d=>{ const w=d.data(); html+=`<div style="background:#0f172a;padding:10px;border-radius:10px;margin:6px 0"><b>${w.userName}</b> - ${w.amount} pts<br><small>${w.method}:${w.number} - ${w.status}</small><br><button onclick="approveWithdraw('${d.id}')" class="btn" style="margin-top:5px">Paid</button> <button onclick="rejectWithdraw('${d.id}','${w.userId}',${w.amount})" class="btn btn-red" style="margin-top:5px">Reject & Refund</button></div>`; }); document.getElementById('adminWithdrawList').innerHTML=html||"No requests"; }catch(e){ document.getElementById('adminWithdrawList').innerHTML="Error loading"; }
+};
+window.approveWithdraw=async(id)=>{ await updateDoc(doc(db,"withdrawals",id),{status:"paid"}); alert("Marked Paid"); loadAdminWithdraws(); };
+window.rejectWithdraw=async(id,uid,amt)=>{ await updateDoc(doc(db,"withdrawals",id),{status:"rejected"}); await updateDoc(doc(db,"users",uid),{points:increment(amt)}); alert("Rejected & Refunded"); loadAdminWithdraws(); };
+window.addPointsAfterAd=async(amt)=>{ try{ await updateDoc(doc(db,"users",userId),{points:increment(amt)}); }catch(e){} };
 initTelegram();
-
-// Expose for Ad
-window.addPointsAfterAd = async (amount)=>{
-  try{
-    await updateDoc(doc(db,"users",userId), { points: increment(amount) });
-    const s = await getDoc(doc(db,"users",userId));
-    document.getElementById('myPoints').innerText = s.data().points;
-  }catch(e){}
-};
 </script>
 
 <script>
-// ADSGRAM - ঠিক করা Block ID
-const AdController = window.Adsgram.init({ blockId: "52029" });
-function showAd(){
-  AdController.show().then(res=>{
-    if(res.done){
-      if(window.addPointsAfterAd) window.addPointsAfterAd(20);
-      alert("🎉 Bonus! +20 Points");
-      location.reload();
-    }
-  }).catch(()=> alert("No ad now, try again"));
-}
+const AdController=window.Adsgram.init({blockId:"52029"});
+function showAd(){ AdController.show().then(res=>{ if(res.done){ if(window.addPointsAfterAd) window.addPointsAfterAd(20); alert("🎉 +20 Bonus!"); location.reload(); } }).catch(()=>alert("No ad now")); }
 </script>
-
 </body>
 </html>
