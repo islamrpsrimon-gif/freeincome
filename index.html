@@ -3,63 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Free Income BD</title>
+<title>Free Income BD - Premium</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="//libtl.com/sdk.js" data-zone="11772569" data-sdk="show_11772569"></script>
 <script src="https://sad.adsgram.ai/js/sad.js"></script>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0f172a;color:#fff;font-family:system-ui,sans-serif;padding-bottom:90px}
-.header{background:linear-gradient(135deg,#6366f1 0%,#a855f7 100%);padding:22px 16px 50px;border-radius:0 0 28px 28px;text-align:center}
-.profile{background:#1e293b;border:1px solid #334155;margin:-32px 16px 0;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px}
-.profile img{width:56px;height:56px;border-radius:50%;border:2px solid #8b5cf6;object-fit:cover}
-.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:14px;margin:12px 16px}
-.btn{border:0;padding:9px 16px;border-radius:10px;font-weight:700;cursor:pointer;color:#fff;background:#22c55e}
-.btn-orange{background:linear-gradient(90deg,#f59e0b,#ea580c)} .btn-blue{background:#6366f1} .btn-red{background:#ef4444}
-.points{color:#facc15;font-weight:800;font-size:20px}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:1px solid #334155;display:flex;justify-content:space-around;padding:10px 0;z-index:99}
-.nav-item{text-align:center;cursor:pointer;opacity:.4} .nav-item.active{opacity:1}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#080510;color:#fff;font-family:'Outfit',sans-serif;padding-bottom:110px;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-50px;left:-50px;width:300px;height:300px;background:radial-gradient(circle,#a855f7 0%,transparent 70%);filter:blur(60px);opacity:.5;z-index:-1}
+body::after{content:'';position:fixed;bottom:100px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,#facc15 0%,transparent 70%);filter:blur(80px);opacity:.3;z-index:-1}
+.header{margin:12px;border:1px solid #facc1580;background:linear-gradient(90deg,#1a102e,#2a1d4a);border-radius:16px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 0 15px #a855f766}
+.profile-card{margin:16px;background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(168,85,247,0.15));backdrop-filter:blur(20px);border:1px solid #a855f7aa;border-radius:20px;padding:16px;display:flex;gap:14px;align-items:center;box-shadow:0 0 25px #a855f740, inset 0 0 20px #ffffff0d;position:relative}
+.profile-card img{width:64px;height:64px;border-radius:50%;border:2px solid #facc15;box-shadow:0 0 10px #facc15}
+.level-badge{background:#2a1d4a;border:1px solid #facc15;color:#facc15;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.coins{color:#facc15;font-weight:700} .gems{color:#c084fc;font-weight:700}
+.btn-gold{background:linear-gradient(90deg,#a855f7,#facc15);border:none;padding:8px 16px;border-radius:12px;font-weight:700;color:#000;box-shadow:0 0 10px #facc15;cursor:pointer}
+.mission{margin:12px 16px;background:linear-gradient(90deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid #ffffff1a;border-radius:16px;padding:14px;display:flex;justify-content:space-between;align-items:center;box-shadow:inset 0 1px 0 #ffffff1a}
+.mission.gold-border{border-color:#facc1555;box-shadow:0 0 12px #facc1530}
+.wheel-wrap{text-align:center;margin:20px 16px}
+.wheel{width:200px;height:200px;margin:0 auto;border-radius:50%;background:conic-gradient(#facc15 0 30deg,#1a102e 30deg 60deg,#a855f7 60deg 90deg,#1a102e 90deg 120deg,#facc15 120deg 150deg,#1a102e 150deg 180deg,#a855f7 180deg 210deg,#1a102e 210deg 360deg);border:4px solid #facc15;box-shadow:0 0 30px #a855f7, inset 0 0 20px #000;display:flex;align-items:center;justify-content:center;position:relative;transition:transform 3s cubic-bezier(.17,.67,.2,1)}
+.wheel::after{content:'👑';position:absolute;font-size:30px;background:#080510;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #facc15}
+.leader-card{margin:8px 16px;background:linear-gradient(90deg,#1e1438,#251c4a);border:1px solid #ffffff15;border-radius:14px;padding:12px;display:flex;align-items:center;gap:12px}
+.bottom-nav{position:fixed;bottom:12px;left:12px;right:12px;background:linear-gradient(90deg,#1a102e,#2a1d4a);border:1px solid #a855f766;border-radius:20px;display:flex;justify-content:space-around;padding:12px 0;backdrop-filter:blur(20px);box-shadow:0 0 20px #a855f780;z-index:99}
+.nav-item{opacity:.5;text-align:center;cursor:pointer;font-size:11px} .nav-item.active{opacity:1;color:#facc15}
 .page{display:none} .page.active{display:block}
-input,select{width:100%;padding:11px;border-radius:10px;margin:6px 0;background:#0f172a;color:#fff;border:1px solid #334155}
-.task{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #0f172a}
+input,select{width:100%;padding:12px;border-radius:12px;margin:6px 0;background:#120c25;color:#fff;border:1px solid #a855f755}
 </style>
 </head>
 <body>
 
-<div class="header"><h2 style="margin:0">🎮 Free Income BD</h2><p style="margin:6px 0 0;opacity:.85;font-size:13px">Play • Task • Invite • Earn</p></div>
+<div class="header">
+  <div style="display:flex;align-items:center;gap:8px"><div style="background:#a855f7;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center">✈️</div><b style="color:#facc15">👑 Free Income BD</b></div>
+  <div>...</div>
+</div>
 
-<div class="profile">
+<div class="profile-card">
   <img id="uPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-  <div style="flex:1"><div id="uName" style="font-weight:700">Loading...</div><div style="font-size:12px;color:#94a3b8" id="uStatus">Verified Player</div></div>
-  <div style="text-align:right"><div id="myPoints" class="points">0</div><div style="font-size:11px;color:#94a3b8">POINTS</div></div>
+  <div style="flex:1">
+    <div id="uName" style="font-weight:700;font-size:18px">Loading...</div>
+    <div class="level-badge" id="uLevel">LEVEL 1 ✨</div>
+    <div style="display:flex;gap:14px;margin-top:8px;font-size:14px"><span class="coins">🪙 <span id="myPoints">0</span> <small style="color:#aaa">Coins</small></span> <span class="gems">💎 0 <small style="color:#aaa">Gems</small></span></div>
+  </div>
+  <button class="btn-gold" onclick="switchTab('wallet')">+ Wallet</button>
 </div>
 
 <div id="page-home" class="page active">
-  <div class="card"><b>🔥 Daily Missions</b>
-    <div class="task"><div><b>Daily Check-in</b><div style="font-size:12px;color:#94a3b8" id="checkinText">+10 Points Daily</div></div><button class="btn" id="checkinBtn" onclick="dailyCheckin()">Claim</button></div>
-    <button class="btn btn-orange" style="width:100%;padding:14px;margin-top:10px" onclick="showAd()">📺 Watch Ad & Get +20 Bonus</button>
+  <div style="display:flex;justify-content:space-between;margin:16px 16px 8px"><b>Daily Missions</b><small style="color:#facc15" id="missionCount">0/3 Completed</small></div>
+  <div class="mission gold-border"><div style="display:flex;gap:10px;align-items:center"><div style="width:36px;height:36px;border-radius:50%;border:2px solid #facc15;display:flex;align-items:center;justify-content:center">✓</div><div><b id="checkinTitle">Daily Check-in</b><div style="font-size:12px;color:#aaa" id="checkinDesc">Day 1/7 • +10 Coins</div></div></div><button id="checkinBtn" onclick="dailyCheckin()" class="btn-gold" style="padding:6px 12px;font-size:12px">Claim</button></div>
+  <div class="mission"><div style="display:flex;gap:10px;align-items:center"><div style="color:#a855f7;font-size:24px">🎯</div><div><b>Play 3 Games</b><div style="font-size:12px;color:#aaa">Watch ads to play</div></div></div><button onclick="showAd()" class="btn-gold" style="background:linear-gradient(90deg,#a855f7,#6d28d9);color:#fff">Claim +80✨</button></div>
+  <div class="mission"><div style="display:flex;gap:10px;align-items:center"><div style="color:#facc15;font-size:20px">↗️</div><div><b>Invite a Friend</b><div style="font-size:12px;color:#aaa">0/1 completed</div></div></div><button onclick="switchTab('invite')" class="btn-gold" style="background:transparent;border:1px solid #facc15;color:#facc15">Go →</button></div>
+
+  <div class="wheel-wrap">
+    <div style="text-align:left"><b>⭐ Bonus Wheel</b><div style="font-size:12px;color:#aaa">Daily free spin • Reset in 24h</div></div>
+    <div class="wheel" id="wheel"></div>
+    <button onclick="spinWheel()" class="btn-gold" style="width:80%;margin-top:16px;padding:14px;font-size:16px;background:linear-gradient(90deg,#a855f7,#6d28d9);color:#fff;border:1px solid #facc15;box-shadow:0 0 20px #a855f7">SPIN NOW • FREE ☆</button>
   </div>
-  <div class="card"><b>🏆 Top Players</b><div id="topList" style="margin-top:8px;color:#94a3b8">Loading...</div></div>
+
+  <div style="margin:16px"><b>🏆 Leaderboard</b><div style="font-size:12px;color:#aaa">This Week • Top 3</div></div>
+  <div id="topList"></div>
+  <div style="text-align:center;margin:16px"><small style="background:#2a1d4a;border:1px solid #a855f7;padding:6px 14px;border-radius:20px;color:#facc15">Withdraw instantly via bKash • Nagad • Rocket</small></div>
 </div>
 
-<div id="page-tasks" class="page"><div class="card"><b>🎯 All Tasks</b><div class="task"><div><b>Join Channel</b><div style="font-size:12px;color:#94a3b8">+50 Points</div></div><button class="btn btn-blue" onclick="window.open('https://t.me/freeincomebd14bot','_blank')">Join</button></div><div class="task"><div><b>Watch 5 Ads</b><div style="font-size:12px;color:#94a3b8">+100 Points</div></div><button class="btn btn-orange" onclick="showAd()">Watch</button></div></div></div>
+<div id="page-games" class="page"><div style="margin:16px"><b>🎮 Games</b></div><div class="mission"><div><b>Watch Bonus Ad</b><div style="font-size:12px;color:#aaa">Get 20 Coins per ad</div></div><button onclick="showAd()" class="btn-gold">Watch</button></div></div>
 
-<div id="page-invite" class="page"><div class="card" style="text-align:center"><b>👥 Invite Friends</b><p style="color:#94a3b8;font-size:13px">প্রতি Invite এ 100 Points</p><div style="background:#0f172a;padding:12px;border-radius:10px;word-break:break-all;font-size:13px" id="inviteLink">Loading...</div><button class="btn btn-blue" style="width:100%;margin-top:10px" onclick="copyInvite()">Copy Link</button></div></div>
+<div id="page-earn" class="page">
+  <div style="margin:16px;text-align:center" class="profile-card"><div style="width:100%"><b>👥 Invite & Earn</b><p style="color:#aaa;font-size:13px">প্রতি Invite এ 100 Coins</p><div id="inviteLink" style="background:#080510;padding:12px;border-radius:10px;font-size:12px;word-break:break-all;border:1px solid #a855f7">Loading...</div><button onclick="copyInvite()" class="btn-gold" style="width:100%;margin-top:12px">Copy Invite Link</button></div></div>
+</div>
 
 <div id="page-wallet" class="page">
-  <div class="card"><h3 style="margin:0">💼 Wallet</h3><p style="color:#94a3b8;font-size:13px">Min 1000 Points = 10 Taka</p>
+  <div class="mission" style="flex-direction:column;align-items:stretch"><h3 style="margin:0">💼 Wallet</h3><p style="color:#aaa;font-size:12px">Min 1000 Coins = 10 Taka</p>
     <select id="payMethod"><option>bKash</option><option>Nagad</option><option>Binance</option></select>
-    <input id="payNumber" placeholder="Payment Number"><input id="payAmount" type="number" placeholder="Points">
-    <button onclick="requestWithdraw()" class="btn btn-orange" style="width:100%;padding:12px">Request Withdraw</button>
-    <div id="myWithdraws" style="margin-top:12px"></div>
+    <input id="payNumber" placeholder="Number"><input id="payAmount" type="number" placeholder="Amount">
+    <button onclick="requestWithdraw()" class="btn-gold" style="width:100%;padding:12px;margin-top:6px">Request Withdraw</button><div id="myWithdraws" style="margin-top:10px"></div>
   </div>
-  <div id="adminPanel" style="display:none"><div class="card" style="border:2px solid #f59e0b"><b style="color:#f59e0b">👑 ADMIN PAYMENT PANEL (Only You)</b><div id="adminWithdrawList" style="margin-top:10px">Loading...</div></div></div>
+  <div id="adminPanel" style="display:none"><div class="mission" style="border:2px solid #facc15;flex-direction:column;align-items:stretch"><b style="color:#facc15">👑 ADMIN PANEL</b><div id="adminWithdrawList"></div></div></div>
 </div>
 
+<div id="page-profile" class="page"><div class="mission" style="justify-content:center;text-align:center"><div><img id="uPhoto2" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:80px;height:80px;border-radius:50%;border:2px solid #facc15"><div id="uName2" style="margin-top:10px;font-weight:700">Player</div><div style="color:#aaa">ID: <span id="uIdShow"></span></div></div></div></div>
+
 <div class="bottom-nav">
-  <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br><small>Home</small></div>
-  <div id="nav-tasks" class="nav-item" onclick="switchTab('tasks')">🎯<br><small>Tasks</small></div>
-  <div id="nav-invite" class="nav-item" onclick="switchTab('invite')">👥<br><small>Invite</small></div>
-  <div id="nav-wallet" class="nav-item" onclick="switchTab('wallet')">💼<br><small>Wallet</small></div>
+  <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br>Home</div>
+  <div id="nav-games" class="nav-item" onclick="switchTab('games')">🎮<br>Games</div>
+  <div id="nav-earn" class="nav-item" onclick="switchTab('earn')">🎁<br>Earn</div>
+  <div id="nav-wallet" class="nav-item" onclick="switchTab('wallet')">💼<br>Wallet</div>
+  <div id="nav-profile" class="nav-item" onclick="switchTab('profile')">👤<br>Profile</div>
 </div>
 
 <script type="module">
@@ -68,55 +95,26 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDo
 const firebaseConfig = { apiKey: "AIzaSyAod-YPFImwNkxyLxT41y8PrRnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb", storageBucket: "freeincome-5a9bb.firebasestorage.app", messagingSenderId: "100906100907", appId: "1:100906100907:web:40a433acf0d5dc5e0374e" };
 const appFB = initializeApp(firebaseConfig);
 const db = getFirestore(appFB);
-const ADMIN_ID = "5468970950";
-let userId = null;
-window.switchTab = (tab)=>{ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); document.getElementById('page-'+tab).classList.add('active'); document.getElementById('nav-'+tab).classList.add('active'); };
-
-function initTelegram(){
-  let tgUser=null;
-  try{ if(window.Telegram?.WebApp){ Telegram.WebApp.ready(); Telegram.WebApp.expand(); tgUser=Telegram.WebApp.initDataUnsafe?.user; } }catch(e){}
-  if(tgUser){ userId=String(tgUser.id); document.getElementById('uName').innerText=tgUser.first_name; if(tgUser.photo_url) document.getElementById('uPhoto').src=tgUser.photo_url; }
-  else{ userId="test_123"; document.getElementById('uName').innerText="Demo Player"; }
-  document.getElementById('inviteLink').innerText="https://t.me/freeincomebd14bot/app?startapp="+userId;
-  initUser();
-}
-async function initUser(){
-  const ref=doc(db,"users",userId);
-  try{
-    const snap=await getDoc(ref);
-    if(!snap.exists()){ await setDoc(ref,{name:document.getElementById('uName').innerText,points:25,createdAt:serverTimestamp()}); document.getElementById('myPoints').innerText=25; }
-    else{ 
-      const d=snap.data(); document.getElementById('myPoints').innerText=d.points||0;
-      if(d.lastCheckin){ const last=d.lastCheckin.toDate(); const now=new Date(); if(last.getDate()===now.getDate() && last.getMonth()===now.getMonth() && last.getFullYear()===now.getFullYear()){ document.getElementById('checkinBtn').innerText="Done ✅"; document.getElementById('checkinBtn').disabled=true; document.getElementById('checkinText').innerText="আজকের জন্য Done"; } }
-    }
-  }catch(e){ document.getElementById('myPoints').innerText=25; }
-  loadTop(); loadMyWithdraws();
-  if(userId===ADMIN_ID){ document.getElementById('adminPanel').style.display='block'; document.getElementById('uStatus').innerText="👑 Admin"; loadAdminWithdraws(); }
-}
-async function loadTop(){ try{ const q=query(collection(db,"users"),orderBy("points","desc"),limit(10)); const snap=await getDocs(q); let html="",rank=1; snap.forEach(d=>{ const u=d.data(); html+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #0f172a"><span>#${rank} ${u.name||'Player'}</span><b style="color:#facc15">${u.points||0}</b></div>`; rank++; }); if(html) document.getElementById('topList').innerHTML=html; }catch(e){} }
-window.dailyCheckin=async()=>{
-  const ref=doc(db,"users",userId);
-  try{
-    const snap=await getDoc(ref); const data=snap.data();
-    if(data.lastCheckin){ const last=data.lastCheckin.toDate(); const now=new Date(); if(last.getDate()===now.getDate() && last.getMonth()===now.getMonth() && last.getFullYear()===now.getFullYear()){ return alert("❌ আজকের Check-in হয়ে গেছে!"); } }
-    await updateDoc(ref,{points:increment(10),lastCheckin:serverTimestamp()});
-    const s=await getDoc(ref); document.getElementById('myPoints').innerText=s.data().points;
-    document.getElementById('checkinBtn').innerText="Done ✅"; document.getElementById('checkinBtn').disabled=true;
-    alert("✅ +10 Added!"); loadTop();
-  }catch(e){ alert("Claimed!"); }
-};
+const ADMIN_ID="5468970950"; let userId=null;
+window.switchTab=(tab)=>{ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); document.getElementById('page-'+tab).classList.add('active'); document.getElementById('nav-'+tab).classList.add('active'); };
+function initTelegram(){ let tgUser=null; try{ if(window.Telegram?.WebApp){ Telegram.WebApp.ready(); Telegram.WebApp.expand(); tgUser=Telegram.WebApp.initDataUnsafe?.user; } }catch(e){} if(tgUser){ userId=String(tgUser.id); document.getElementById('uName').innerText=tgUser.first_name; document.getElementById('uName2').innerText=tgUser.first_name; document.getElementById('uIdShow').innerText=userId; if(tgUser.photo_url){ document.getElementById('uPhoto').src=tgUser.photo_url; document.getElementById('uPhoto2').src=tgUser.photo_url; } } else { userId="test_123"; document.getElementById('uName').innerText="Demo Player"; document.getElementById('uName2').innerText="Demo Player"; } document.getElementById('inviteLink').innerText="https://t.me/freeincomebd14bot/app?startapp="+userId; initUser(); }
+async function initUser(){ const ref=doc(db,"users",userId); try{ const snap=await getDoc(ref); if(!snap.exists()){ await setDoc(ref,{name:document.getElementById('uName').innerText,points:25,createdAt:serverTimestamp()}); document.getElementById('myPoints').innerText=25; } else{ const d=snap.data(); document.getElementById('myPoints').innerText=d.points||0; document.getElementById('uLevel').innerText="LEVEL "+Math.floor((d.points||0)/100+1)+" ✨"; if(d.lastCheckin){ const last=d.lastCheckin.toDate(); const now=new Date(); if(last.getDate()===now.getDate()&&last.getMonth()===now.getMonth()&&last.getFullYear()===now.getFullYear()){ document.getElementById('checkinBtn').innerText="Claimed ✅"; document.getElementById('checkinBtn').disabled=true; document.getElementById('missionCount').innerText="1/3 Completed"; } } } }catch(e){ document.getElementById('myPoints').innerText=25; } loadTop(); loadMyWithdraws(); if(userId===ADMIN_ID){ document.getElementById('adminPanel').style.display='block'; loadAdminWithdraws(); } }
+async function loadTop(){ try{ const q=query(collection(db,"users"),orderBy("points","desc"),limit(3)); const snap=await getDocs(q); let html=""; let rank=1; snap.forEach(d=>{ const u=d.data(); const icons=["👑","🥈","🥉"]; html+=`<div class="leader-card"><div style="font-size:20px">${icons[rank-1]}</div><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:40px;height:40px;border-radius:50%;border:1px solid #facc15"><div style="flex:1"><b>${rank}. ${u.name||'Player'}</b><div style="font-size:12px;color:#facc15">${u.points||0} Pts</div></div><div style="background:#0a2a1a;color:#22c55e;padding:4px 8px;border-radius:8px;font-size:12px">▲ +${Math.floor((u.points||0)/10)}</div></div>`; rank++; }); document.getElementById('topList').innerHTML=html; }catch(e){} }
+window.dailyCheckin=async()=>{ const ref=doc(db,"users",userId); try{ const snap=await getDoc(ref); const data=snap.data(); if(data.lastCheckin){ const last=data.lastCheckin.toDate(); const now=new Date(); if(last.getDate()===now.getDate()&&last.getMonth()===now.getMonth()&&last.getFullYear()===now.getFullYear()) return alert("❌ আজকের জন্য হয়ে গেছে!"); } await updateDoc(ref,{points:increment(10),lastCheckin:serverTimestamp()}); const s=await getDoc(ref); document.getElementById('myPoints').innerText=s.data().points; document.getElementById('checkinBtn').innerText="Claimed ✅"; alert("✅ +10 Coins!"); loadTop(); }catch(e){ alert("Claimed"); } };
 window.copyInvite=()=>{ navigator.clipboard.writeText(document.getElementById('inviteLink').innerText); alert("Copied!"); };
 window.requestWithdraw=async()=>{ const method=document.getElementById('payMethod').value; const number=document.getElementById('payNumber').value; const amount=parseInt(document.getElementById('payAmount').value); if(!number||!amount) return alert("Number & Amount দিন"); if(amount<1000) return alert("Min 1000"); const myPts=parseInt(document.getElementById('myPoints').innerText); if(amount>myPts) return alert("Point নেই"); await addDoc(collection(db,"withdrawals"),{userId,userName:document.getElementById('uName').innerText,method,number,amount,status:"pending",createdAt:serverTimestamp()}); await updateDoc(doc(db,"users",userId),{points:increment(-amount)}); alert("✅ Request Sent!"); location.reload(); };
-async function loadMyWithdraws(){ try{ const q=query(collection(db,"withdrawals"),where("userId","==",userId),orderBy("createdAt","desc"),limit(5)); const snap=await getDocs(q); let h=""; snap.forEach(d=>{ const w=d.data(); h+=`<div style="background:#0f172a;padding:8px;border-radius:8px;margin:4px 0;font-size:12px">${w.amount} pts - ${w.method} - <b>${w.status}</b></div>`; }); document.getElementById('myWithdraws').innerHTML=h; }catch(e){} }
-window.loadAdminWithdraws=async()=>{ try{ const q=query(collection(db,"withdrawals"),orderBy("createdAt","desc"),limit(30)); const snap=await getDocs(q); let html=""; snap.forEach(d=>{ const w=d.data(); html+=`<div style="background:#0f172a;padding:10px;border-radius:10px;margin:6px 0"><b>${w.userName}</b> - ${w.amount} pts<br><small>${w.method}:${w.number} - ${w.status}</small><br><button onclick="approveWithdraw('${d.id}')" class="btn" style="margin-top:5px">Paid</button> <button onclick="rejectWithdraw('${d.id}','${w.userId}',${w.amount})" class="btn btn-red" style="margin-top:5px">Reject</button></div>`; }); document.getElementById('adminWithdrawList').innerHTML=html||"No requests"; }catch(e){} };
-window.approveWithdraw=async(id)=>{ await updateDoc(doc(db,"withdrawals",id),{status:"paid"}); alert("Paid Done"); loadAdminWithdraws(); };
-window.rejectWithdraw=async(id,uid,amt)=>{ await updateDoc(doc(db,"withdrawals",id),{status:"rejected"}); await updateDoc(doc(db,"users",uid),{points:increment(amt)}); alert("Rejected & Refunded"); loadAdminWithdraws(); };
+async function loadMyWithdraws(){ try{ const q=query(collection(db,"withdrawals"),where("userId","==",userId),orderBy("createdAt","desc"),limit(5)); const snap=await getDocs(q); let h=""; snap.forEach(d=>{ const w=d.data(); h+=`<div style="background:#080510;padding:8px;border-radius:8px;margin:4px 0;font-size:12px">${w.amount} pts - ${w.method} - <b>${w.status}</b></div>`; }); document.getElementById('myWithdraws').innerHTML=h; }catch(e){} }
+window.loadAdminWithdraws=async()=>{ try{ const q=query(collection(db,"withdrawals"),orderBy("createdAt","desc"),limit(30)); const snap=await getDocs(q); let html=""; snap.forEach(d=>{ const w=d.data(); html+=`<div style="background:#080510;padding:10px;border-radius:10px;margin:6px 0"><b>${w.userName}</b> - ${w.amount} pts<br><small>${w.method}:${w.number} - ${w.status}</small><br><button onclick="approveWithdraw('${d.id}')" class="btn-gold" style="margin-top:5px;padding:6px 10px;font-size:12px">Paid</button> <button onclick="rejectWithdraw('${d.id}','${w.userId}',${w.amount})" class="btn-gold" style="background:#ef4444;margin-top:5px;padding:6px 10px;font-size:12px">Reject</button></div>`; }); document.getElementById('adminWithdrawList').innerHTML=html||"No requests"; }catch(e){} };
+window.approveWithdraw=async(id)=>{ await updateDoc(doc(db,"withdrawals",id),{status:"paid"}); alert("Paid"); loadAdminWithdraws(); };
+window.rejectWithdraw=async(id,uid,amt)=>{ await updateDoc(doc(db,"withdrawals",id),{status:"rejected"}); await updateDoc(doc(db,"users",uid),{points:increment(amt)}); alert("Refunded"); loadAdminWithdraws(); };
 window.addPointsAfterAd=async(amt)=>{ try{ await updateDoc(doc(db,"users",userId),{points:increment(amt)}); }catch(e){} };
 initTelegram();
 </script>
+
 <script>
 const AdController=window.Adsgram.init({blockId:"52029"});
-function showAd(){ AdController.show().then(res=>{ if(res.done){ if(window.addPointsAfterAd) window.addPointsAfterAd(20); alert("🎉 +20 Bonus!"); location.reload(); } }).catch(()=>alert("No ad now")); }
+function showAd(){ AdController.show().then(res=>{ if(res.done){ if(window.addPointsAfterAd) window.addPointsAfterAd(20); alert("🎉 +20 Coins!"); location.reload(); } }).catch(()=>alert("No ad now")); }
+function spinWheel(){ const wheel=document.getElementById('wheel'); wheel.style.transform="rotate("+(360*5+Math.random()*360)+"deg)"; setTimeout(()=>{ showAd(); },3000); }
 </script>
 </body>
 </html>
