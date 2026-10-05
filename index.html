@@ -2,83 +2,77 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Income BD - Play & Win</title>
-<script src="https://sad.adsgram.ai/js/sad.js"></script>
-<script src="//libtl.com/sdk.js" data-zone="11772569" data-sdk="show_11772569"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Free Income BD</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="//libtl.com/sdk.js" data-zone="11772569" data-sdk="show_11772569"></script>
+<script src="https://sad.adsgram.ai/js/sad.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap');
-  body{font-family:'Hind+Siliguri',sans-serif;background:#0f172a;color:white;margin:0;padding:0;padding-bottom:80px}
-  .header{background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:20px;border-radius:0 0 30px 30px;text-align:center}
-  .profile-card{background:#1e293b;margin:-30px 15px 15px;padding:15px;border-radius:20px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 20px rgba(0,0,0,0.3)}
-  .profile-card img{width:60px;height:60px;border-radius:50%;border:3px solid #8b5cf6}
-  .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px}
-  .stat-box{background:#1e293b;padding:15px;border-radius:15px;text-align:center;border:1px solid #334155}
-  .stat-box h3{margin:0;color:#fbbf24;font-size:22px}
-  .task-section{margin:15px}
-  .task-card{background:#1e293b;padding:15px;border-radius:15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;border-left:4px solid #22c55e}
-  .btn{background:linear-gradient(90deg,#22c55e,#16a34a);border:none;color:white;padding:10px 20px;border-radius:10px;font-weight:bold;cursor:pointer}
-  .btn-ads{background:linear-gradient(90deg,#f59e0b,#d97706);width:100%;padding:15px;font-size:16px;margin-top:10px}
-  .nav{position:fixed;bottom:0;left:0;right:0;background:#1e293b;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid #334155}
-  .top-item{display:flex;justify-content:space-between;padding:10px;background:#0f172a;margin:5px 0;border-radius:10px}
+*{box-sizing:border-box}body{margin:0;background:#0f172a;color:#fff;font-family:system-ui, sans-serif;padding-bottom:90px}
+.header{background:linear-gradient(135deg,#6366f1 0%,#a855f7 100%);padding:22px 16px 50px;border-radius:0 0 28px 28px;text-align:center}
+.profile{background:#1e293b;border:1px solid #334155;margin:-32px 16px 0;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px}
+.profile img{width:56px;height:56px;border-radius:50%;border:2px solid #8b5cf6;object-fit:cover}
+.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:14px;margin:12px 16px}
+.task{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #1e293b}
+.task:last-child{border:0}
+.btn{border:0;padding:9px 16px;border-radius:10px;font-weight:700;cursor:pointer;color:#fff;background:#22c55e}
+.btn-orange{background:linear-gradient(90deg,#f59e0b,#ea580c)}
+.btn-blue{background:#6366f1}
+.points{color:#facc15;font-weight:800;font-size:20px}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:1px solid #334155;display:flex;justify-content:space-around;padding:10px 0}
 </style>
 </head>
 <body>
 
 <div class="header">
   <h2 style="margin:0">🎮 Free Income BD</h2>
-  <p style="margin:5px 0 30px 0;opacity:0.8">Play Games, Complete Tasks & Win Rewards</p>
+  <p style="margin:6px 0 0;opacity:.85;font-size:13px">Play Games • Complete Tasks • Win Rewards</p>
 </div>
 
-<div class="profile-card">
-  <img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-  <div>
-    <div id="userName" style="font-weight:bold;font-size:18px">Loading...</div>
-    <div style="color:#94a3b8;font-size:13px">Level 5 Gamer • BD</div>
+<div class="profile">
+  <img id="uPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+  <div style="flex:1">
+    <div id="uName" style="font-weight:700">Loading...</div>
+    <div style="font-size:12px;color:#94a3b8">Verified Player</div>
   </div>
-  <div style="margin-left:auto;text-align:right">
-    <div style="color:#fbbf24;font-weight:bold;font-size:20px" id="pts">25</div>
-    <div style="font-size:12px;color:#94a3b8">Points</div>
+  <div style="text-align:right">
+    <div id="myPoints" class="points">0</div>
+    <div style="font-size:11px;color:#94a3b8">POINTS</div>
   </div>
 </div>
 
-<div class="stats">
-  <div class="stat-box"><h3 id="pts2">25</h3><small>Your Points</small></div>
-  <div class="stat-box"><h3 id="totalMembers">1.2k</h3><small>Total Players</small></div>
+<div class="card">
+  <b>🔥 Daily Missions</b>
+  <div class="task">
+    <div><b>Daily Check-in</b><div style="font-size:12px;color:#94a3b8">Get 10 Points Daily</div></div>
+    <button class="btn" onclick="dailyCheckin()">Claim</button>
+  </div>
+  <div class="task">
+    <div><b>🎁 Bonus Video</b><div style="font-size:12px;color:#94a3b8">Double reward with ad</div></div>
+    <button class="btn btn-orange" onclick="showAd()">Watch</button>
+  </div>
+  <div class="task">
+    <div><b>📢 Join Channel</b><div style="font-size:12px;color:#94a3b8">Join our community</div></div>
+    <button class="btn btn-blue" onclick="window.open('https://t.me/freeincomebd14bot','_blank')">Join</button>
+  </div>
+  <button class="btn btn-orange" style="width:100%;padding:14px;margin-top:10px;font-size:15px" onclick="showAd()">📺 Watch Ad & Get Bonus x2</button>
 </div>
 
-<div class="task-section">
-  <h3>🔥 Daily Missions</h3>
-  <div class="task-card">
-    <div><b>Daily Check-in</b><br><small style="color:#94a3b8">Get 10 Points Daily</small></div>
-    <button class="btn" onclick="doCheckin()">Claim</button>
-  </div>
-  <div class="task-card" style="border-left-color:#f59e0b">
-    <div><b>🎁 Watch Bonus Video</b><br><small style="color:#94a3b8">Double your daily reward</small></div>
-    <button class="btn" style="background:#f59e0b" onclick="watchAdForReward()">Watch</button>
-  </div>
-  <div class="task-card" style="border-left-color:#6366f1">
-    <div><b>Join Community</b><br><small style="color:#94a3b8">Join our Telegram Channel</small></div>
-    <button class="btn" style="background:#6366f1" onclick="joinChannel()">Join</button>
-  </div>
-
-  <button class="btn btn-ads" onclick="watchAdForReward()">📺 Watch Ad & Get Bonus x2</button>
-
-  <h3 style="margin-top:20px">🏆 Top 10 Players</h3>
-  <div id="topList"><div class="top-item">Loading leaderboard...</div></div>
+<div class="card">
+  <b>🏆 Top Players</b>
+  <div id="topList" style="margin-top:8px"><div style="color:#94a3b8">Loading leaderboard...</div></div>
 </div>
 
-<div class="nav">
+<div class="bottom-nav">
   <div style="text-align:center">🏠<br><small>Home</small></div>
-  <div style="text-align:center;opacity:0.5">🎯<br><small>Tasks</small></div>
-  <div style="text-align:center;opacity:0.5">👥<br><small>Friends</small></div>
-  <div style="text-align:center;opacity:0.5">💰<br><small>Wallet</small></div>
+  <div style="text-align:center;opacity:.4">🎯<br><small>Tasks</small></div>
+  <div style="text-align:center;opacity:.4">👥<br><small>Invite</small></div>
+  <div style="text-align:center;opacity:.4">💼<br><small>Wallet</small></div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, query, orderBy, limit, getDocs, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAod-YPFImwNkxyLxT41y8PrRnZe3vb10",
@@ -88,174 +82,95 @@ const firebaseConfig = {
   messagingSenderId: "100906100907",
   appId: "1:100906100907:web:40a433acf0d5dc5e0374e"
 };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const appFB = initializeApp(firebaseConfig);
+const db = getFirestore(appFB);
 
-const ADMIN_ID = "5468970950"; const BOT_TOKEN = "8684890686:AAg_FRY-8kyJ7puNdvCMWFegPimv3_nyapc"; const CHANNEL_LINK="https://t.me/freeincomebd14bot/app";
-let userId, userName="Guest";
-function initTg(){
+let userId = null;
+let tgUser = null;
+
+function initTelegram(){
   try{
-    if(window.Telegram && Telegram.WebApp){
+    if(window.Telegram?.WebApp){
       Telegram.WebApp.ready(); Telegram.WebApp.expand();
-      const tgUser = Telegram.WebApp.initDataUnsafe?.user;
-      if(tgUser){ userId = String(tgUser.id); userName = tgUser.first_name; 
-        document.getElementById('userName').innerText = userName;
-        if(tgUser.photo_url) document.getElementById('userPhoto').src = tgUser.photo_url;
-      }
+      tgUser = Telegram.WebApp.initDataUnsafe?.user;
     }
-    if(!userId){ userId = "test_" + Math.floor(Math.random()*10000); document.getElementById('userName').innerText="Demo Player"; }
-    loadData();
-  }catch(e){ console.log(e) }
+  }catch(e){}
+  if(tgUser){
+    userId = String(tgUser.id);
+    document.getElementById('uName').innerText = tgUser.first_name;
+    if(tgUser.photo_url) document.getElementById('uPhoto').src = tgUser.photo_url;
+  }else{
+    userId = "test_123";
+    document.getElementById('uName').innerText = "Demo Player";
+  }
+  initUser();
 }
-async function loadData(){
-  const snap = await getDocs(query(collection(db,"users"), orderBy("points","desc"), limit(10)));
-  let h=""; let i=1;
-  snap.forEach((d)=>{ let u=d.data(); let isMe=String(d.id)===String(userId)?" (You)":""; h+=`<div class="top-item"><span>#${i} ${u.name||'Player'}${isMe}</span><b>${u.points||0} pts</b></div>`; i++; if(String(d.id)===String(userId)){ document.getElementById('pts').innerText=u.points||25; document.getElementById('pts2').innerText=u.points||25; }});
-  document.getElementById('topList').innerHTML = h || "<div class='top-item'>No players yet</div>";
+
+async function initUser(){
+  if(!userId) return;
+  const ref = doc(db,"users",userId);
+  try{
+    const snap = await getDoc(ref);
+    if(!snap.exists()){
+      await setDoc(ref,{ name: document.getElementById('uName').innerText, points: 25, createdAt: serverTimestamp() });
+      document.getElementById('myPoints').innerText = 25;
+    }else{
+      document.getElementById('myPoints').innerText = snap.data().points || 0;
+    }
+  }catch(e){ document.getElementById('myPoints').innerText = 25; }
+  loadTop();
 }
-window.joinChannel = ()=> window.open(CHANNEL_LINK, "_blank");
-window.doCheckin = ()=> alert("Check-in successful! +10 points");
-initTg();
-</script>
 
-<script>
-// Adsgram - NEW BLOCK ID
-const AdController = window.Adsgram.init({ blockId: "52029" });
-function watchAdForReward(){
-  AdController.show().then((result)=>{
-    if(result.done){ alert("🎉 Bonus Claimed! Ad completed."); }
-  }).catch(()=>{ alert("No ads available now, try again later"); });
+async function loadTop(){
+  try{
+    const q = query(collection(db,"users"), orderBy("points","desc"), limit(10));
+    const snap = await getDocs(q);
+    let html=""; let rank=1;
+    snap.forEach(d=>{
+      const u=d.data();
+      html+=`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #0f172a"><span>#${rank} ${u.name||'Player'}</span><b style="color:#facc15">${u.points||0}</b></div>`;
+      rank++;
+    });
+    if(html) document.getElementById('topList').innerHTML = html;
+    else document.getElementById('topList').innerHTML = "No players yet";
+  }catch(e){
+    document.getElementById('topList').innerHTML = "Leaderboard will appear here";
+  }
 }
-</script>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Income BD - Play & Win</title>
-<script src="https://sad.adsgram.ai/js/sad.js"></script>
-<script src="//libtl.com/sdk.js" data-zone="11772569" data-sdk="show_11772569"></script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap');
-  body{font-family:'Hind+Siliguri',sans-serif;background:#0f172a;color:white;margin:0;padding:0;padding-bottom:80px}
-  .header{background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:20px;border-radius:0 0 30px 30px;text-align:center}
-  .profile-card{background:#1e293b;margin:-30px 15px 15px;padding:15px;border-radius:20px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 20px rgba(0,0,0,0.3)}
-  .profile-card img{width:60px;height:60px;border-radius:50%;border:3px solid #8b5cf6}
-  .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px}
-  .stat-box{background:#1e293b;padding:15px;border-radius:15px;text-align:center;border:1px solid #334155}
-  .stat-box h3{margin:0;color:#fbbf24;font-size:22px}
-  .task-section{margin:15px}
-  .task-card{background:#1e293b;padding:15px;border-radius:15px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;border-left:4px solid #22c55e}
-  .btn{background:linear-gradient(90deg,#22c55e,#16a34a);border:none;color:white;padding:10px 20px;border-radius:10px;font-weight:bold;cursor:pointer}
-  .btn-ads{background:linear-gradient(90deg,#f59e0b,#d97706);width:100%;padding:15px;font-size:16px;margin-top:10px}
-  .nav{position:fixed;bottom:0;left:0;right:0;background:#1e293b;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid #334155}
-  .top-item{display:flex;justify-content:space-between;padding:10px;background:#0f172a;margin:5px 0;border-radius:10px}
-</style>
-</head>
-<body>
-
-<div class="header">
-  <h2 style="margin:0">🎮 Free Income BD</h2>
-  <p style="margin:5px 0 30px 0;opacity:0.8">Play Games, Complete Tasks & Win Rewards</p>
-</div>
-
-<div class="profile-card">
-  <img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-  <div>
-    <div id="userName" style="font-weight:bold;font-size:18px">Loading...</div>
-    <div style="color:#94a3b8;font-size:13px">Level 5 Gamer • BD</div>
-  </div>
-  <div style="margin-left:auto;text-align:right">
-    <div style="color:#fbbf24;font-weight:bold;font-size:20px" id="pts">25</div>
-    <div style="font-size:12px;color:#94a3b8">Points</div>
-  </div>
-</div>
-
-<div class="stats">
-  <div class="stat-box"><h3 id="pts2">25</h3><small>Your Points</small></div>
-  <div class="stat-box"><h3 id="totalMembers">1.2k</h3><small>Total Players</small></div>
-</div>
-
-<div class="task-section">
-  <h3>🔥 Daily Missions</h3>
-  <div class="task-card">
-    <div><b>Daily Check-in</b><br><small style="color:#94a3b8">Get 10 Points Daily</small></div>
-    <button class="btn" onclick="doCheckin()">Claim</button>
-  </div>
-  <div class="task-card" style="border-left-color:#f59e0b">
-    <div><b>🎁 Watch Bonus Video</b><br><small style="color:#94a3b8">Double your daily reward</small></div>
-    <button class="btn" style="background:#f59e0b" onclick="watchAdForReward()">Watch</button>
-  </div>
-  <div class="task-card" style="border-left-color:#6366f1">
-    <div><b>Join Community</b><br><small style="color:#94a3b8">Join our Telegram Channel</small></div>
-    <button class="btn" style="background:#6366f1" onclick="joinChannel()">Join</button>
-  </div>
-
-  <button class="btn btn-ads" onclick="watchAdForReward()">📺 Watch Ad & Get Bonus x2</button>
-
-  <h3 style="margin-top:20px">🏆 Top 10 Players</h3>
-  <div id="topList"><div class="top-item">Loading leaderboard...</div></div>
-</div>
-
-<div class="nav">
-  <div style="text-align:center">🏠<br><small>Home</small></div>
-  <div style="text-align:center;opacity:0.5">🎯<br><small>Tasks</small></div>
-  <div style="text-align:center;opacity:0.5">👥<br><small>Friends</small></div>
-  <div style="text-align:center;opacity:0.5">💰<br><small>Wallet</small></div>
-</div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, query, orderBy, limit, getDocs, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAod-YPFImwNkxyLxT41y8PrRnZe3vb10",
-  authDomain: "freeincome-5a9bb.firebaseapp.com",
-  projectId: "freeincome-5a9bb",
-  storageBucket: "freeincome-5a9bb.firebasestorage.app",
-  messagingSenderId: "100906100907",
-  appId: "1:100906100907:web:40a433acf0d5dc5e0374e"
+window.dailyCheckin = async ()=>{
+  try{
+    await updateDoc(doc(db,"users",userId), { points: increment(10) });
+    const s = await getDoc(doc(db,"users",userId));
+    document.getElementById('myPoints').innerText = s.data().points;
+    alert("✅ +10 Points Added!");
+    loadTop();
+  }catch(e){ alert("Claimed! +10 points"); }
 };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-const ADMIN_ID = "5468970950"; const BOT_TOKEN = "8684890686:AAg_FRY-8kyJ7puNdvCMWFegPimv3_nyapc"; const CHANNEL_LINK="https://t.me/freeincomebd14bot/app";
-let userId, userName="Guest";
-function initTg(){
+initTelegram();
+
+// Expose for Ad
+window.addPointsAfterAd = async (amount)=>{
   try{
-    if(window.Telegram && Telegram.WebApp){
-      Telegram.WebApp.ready(); Telegram.WebApp.expand();
-      const tgUser = Telegram.WebApp.initDataUnsafe?.user;
-      if(tgUser){ userId = String(tgUser.id); userName = tgUser.first_name; 
-        document.getElementById('userName').innerText = userName;
-        if(tgUser.photo_url) document.getElementById('userPhoto').src = tgUser.photo_url;
-      }
-    }
-    if(!userId){ userId = "test_" + Math.floor(Math.random()*10000); document.getElementById('userName').innerText="Demo Player"; }
-    loadData();
-  }catch(e){ console.log(e) }
-}
-async function loadData(){
-  const snap = await getDocs(query(collection(db,"users"), orderBy("points","desc"), limit(10)));
-  let h=""; let i=1;
-  snap.forEach((d)=>{ let u=d.data(); let isMe=String(d.id)===String(userId)?" (You)":""; h+=`<div class="top-item"><span>#${i} ${u.name||'Player'}${isMe}</span><b>${u.points||0} pts</b></div>`; i++; if(String(d.id)===String(userId)){ document.getElementById('pts').innerText=u.points||25; document.getElementById('pts2').innerText=u.points||25; }});
-  document.getElementById('topList').innerHTML = h || "<div class='top-item'>No players yet</div>";
-}
-window.joinChannel = ()=> window.open(CHANNEL_LINK, "_blank");
-window.doCheckin = ()=> alert("Check-in successful! +10 points");
-initTg();
+    await updateDoc(doc(db,"users",userId), { points: increment(amount) });
+    const s = await getDoc(doc(db,"users",userId));
+    document.getElementById('myPoints').innerText = s.data().points;
+  }catch(e){}
+};
 </script>
 
 <script>
-// Adsgram - NEW BLOCK ID
+// ADSGRAM - ঠিক করা Block ID
 const AdController = window.Adsgram.init({ blockId: "52029" });
-function watchAdForReward(){
-  AdController.show().then((result)=>{
-    if(result.done){ alert("🎉 Bonus Claimed! Ad completed."); }
-  }).catch(()=>{ alert("No ads available now, try again later"); });
+function showAd(){
+  AdController.show().then(res=>{
+    if(res.done){
+      if(window.addPointsAfterAd) window.addPointsAfterAd(20);
+      alert("🎉 Bonus! +20 Points");
+      location.reload();
+    }
+  }).catch(()=> alert("No ad now, try again"));
 }
 </script>
 
