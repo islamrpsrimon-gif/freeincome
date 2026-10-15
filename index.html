@@ -2,237 +2,124 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Income BD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hams Trix - Free Income BD</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
-*{box-sizing:border-box}body{margin:0;background:#0f1118;color:#fff;font-family:'Outfit',sans-serif;padding-bottom:110px}
-.header-top{display:flex;justify-content:space-between;align-items:center;padding:16px}
-.vip-badge{color:#2cf6b3;font-weight:700;font-size:12px;letter-spacing:1px}
-.total-box{border:1px solid #2a3a35;background:#151b1e;border-radius:20px;padding:8px 14px;text-align:center}
-.total-box small{color:#aaa;font-size:10px} .total-box b{color:#2cf6b3;display:block;font-size:14px}
-.card-main{margin:12px;background:linear-gradient(180deg,#1c232d,#171c23);border:1px solid #2cf6b333;border-radius:24px;padding:18px}
-.points-label{color:#8899a6;font-size:12px;font-weight:600}
-.points-val{font-size:48px;font-weight:800;margin:4px 0}
-.progress-top{display:flex;justify-content:space-between;font-size:11px;color:#8899a6;margin-top:12px}
-.progress-bar{height:6px;background:#0f1118;border-radius:10px;margin-top:6px;overflow:hidden}
-.progress-fill{height:100%;background:#2cf6b3;width:3%;border-radius:10px}
-.btn-row{display:flex;gap:12px;margin-top:18px}
-.btn-start{flex:1.3;background:linear-gradient(90deg,#2df0ff,#3a7bff);color:#000;font-weight:800;border:none;border-radius:16px;padding:14px;cursor:pointer}
-.btn-withdraw{flex:1;background:#232a32;color:#fff;border:1px solid #ffffff15;border-radius:16px;padding:14px;font-weight:600;cursor:pointer}
-.task-card{margin:12px;background:#1a1f27;border-radius:20px;padding:16px;display:flex;align-items:center;justify-content:space-between}
-.gift-icon{background:#2a2416;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px}
-.btn-claimed{border:1px solid #1a3a32;background:#16221f;color:#2a5a52;padding:8px 18px;border-radius:20px;font-weight:700;font-size:12px}
-.stats-row{display:flex;gap:12px;margin:12px}
-.stat-box{flex:1;background:#1a1f27;border-radius:20px;padding:16px}
-.bottom-nav{position:fixed;bottom:12px;left:12px;right:12px;background:#1a1f27;border-radius:24px;display:flex;justify-content:space-around;padding:8px;z-index:99}
-.nav-item{flex:1;text-align:center;padding:8px;border-radius:16px;opacity:.5;font-size:11px;cursor:pointer} .nav-item.active{opacity:1;background:#1f2d2a;color:#2cf6b3}
-.page{display:none} .page.active{display:block}
-.leader-card{margin:8px 12px;background:#1a1f27;border-radius:14px;padding:12px;display:flex;align-items:center;gap:12px}
-#joinGate{position:fixed;inset:0;background:rgba(15,17,24,0.97);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
-.join-box{background:#1a1f27;border:2px solid #2cf6b3;border-radius:20px;padding:20px;width:100%;max-width:360px;text-align:center}
-.btn-gold{background:linear-gradient(90deg,#2df0ff,#3a7bff);border:none;padding:12px;border-radius:12px;font-weight:700;color:#000;width:100%;margin-top:10px;cursor:pointer}
-input,select{width:100%;padding:12px;border-radius:12px;margin:6px 0;background:#0f1118;color:#fff;border:1px solid #ffffff15}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Outfit',sans-serif}
+body{background:#0a0e14;color:#fff;padding-bottom:110px}
+.user-top-card{background:#131a26;border:1px solid #2a3441;border-radius:20px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin:10px 16px}
+.user-left{display:flex;align-items:center;gap:10px}
+.user-avatar{width:48px;height:48px;background:linear-gradient(135deg,#f5a623,#f7d200);border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:20px}
+.bd-badge{border:1px solid #1e9a6a;color:#1e9a6a;background:rgba(30,154,106,0.15);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.balance-card{background:linear-gradient(180deg,#151d2b,#101725);border:1px solid #2a3441;border-radius:28px;padding:22px;margin:12px 16px}
+.balance-amount{font-size:48px;font-weight:800;margin:10px 0;display:flex;align-items:center;gap:10px}
+.balance-amount small{font-size:24px;background:#1f2937;padding:6px 12px;border-radius:10px;color:#f5a623}
+.progress-track{background:#1c2533;height:8px;border-radius:10px;margin:12px 0;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#f5a623,#ffb347);border-radius:10px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 16px}
+.task-card-dark{background:#131a26;border:1px solid #222e3d;border-radius:22px;padding:18px}
+.btn-gold{width:100%;background:linear-gradient(135deg,#f5a623,#e88d00);border:none;color:#000;font-weight:800;padding:14px;border-radius:14px;margin-top:14px;cursor:pointer}
+.btn-blue{width:100%;background:linear-gradient(135deg,#22d3ee,#3b82f6);border:none;color:#fff;font-weight:800;padding:14px;border-radius:14px;margin-top:14px;cursor:pointer}
+.btn-gold-large{background:linear-gradient(135deg,#f5a623,#ff8c00);border:none;color:#000;font-weight:800;padding:18px;border-radius:18px;width:calc(100% - 32px);margin:16px;font-size:16px;cursor:pointer;display:block;text-align:center}
+.card-dark{background:#131a26;border:1px solid #222e3d;border-radius:22px;padding:20px;margin:12px 16px}
+.input-field{width:100%;background:#1a2332;border:1px solid #2a3441;padding:16px;border-radius:14px;color:#fff;margin:8px 0}
+.bottom-nav{position:fixed;bottom:20px;left:16px;right:16px;background:#131a26;border:1px solid #2a3441;display:flex;justify-content:space-around;padding:10px;border-radius:28px;z-index:100}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;color:#6b7a8f;font-size:10px;font-weight:600;padding:10px 14px;border-radius:18px;cursor:pointer}
+.nav-item.active{background:linear-gradient(135deg,#f5a623,#ff8c00);color:#000}
+.page{display:none}.page.active{display:block}
+.joinGate{position:fixed;inset:0;background:rgba(10,14,20,0.95);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
+.joinBox{background:#131a26;border:1px solid #f5a623;padding:24px;border-radius:24px;width:100%;max-width:360px;text-align:center}
 </style>
 </head>
 <body>
 
-<div id="joinGate">
-  <div class="join-box">
-    <div style="font-size:40px">📢</div>
-    <h3 style="color:#2cf6b3">নোটিশ!</h3>
-    <div style="background:#0f1118;border-radius:12px;padding:12px;text-align:left;font-size:13px;color:#aaa">
-      ✅ Daily: +25 Points<br>✅ Ad: +20 Points<br>✅ <b style="color:#2cf6b3">5000 Pts = 50 Taka</b><br><br><b style="color:#ff6b6b">⚠️ Channel Join বাধ্যতামূলক</b>
-    </div>
-    <button onclick="joinChannel()" class="btn-gold" style="background:#229ED9;color:#fff">📢 Join Channel</button>
-    <button onclick="verifyJoin()" class="btn-gold">✅ Verify করেছি</button>
-  </div>
+<div id="joinGate" class="joinGate"><div class="joinBox"><div style="font-size:40px">💎</div><h3 style="color:#f5a623;margin:10px 0">Free Income BD</h3><p style="font-size:13px;color:#aaa">✅ Daily: +25 Points<br>🎥 Ad: +20 Points<br>💰 5000 Pts = 50 Taka</p><button onclick="joinChannel()" class="btn-gold">🚀 Join Channel</button><button onclick="verifyJoin()" class="btn-blue">✅ Verify</button></div></div>
+
+<div style="padding:12px 16px;font-weight:800">Hams Trix🧸</div>
+
+<div class="user-top-card">
+  <div class="user-left"><div class="user-avatar" id="uPhoto">T</div><div><div style="font-weight:700" id="uName">Loading...</div><div style="font-size:12px;color:#f5a623" id="uIdShow">UID: 0</div></div></div>
+  <div class="bd-badge">● BD</div>
 </div>
 
-<div class="header-top">
-  <div style="display:flex;align-items:center;gap:10px">
-    <img id="uPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:48px;height:48px;border-radius:50%;border:2px solid #2cf6b3">
-    <div>
-      <div class="vip-badge">EARNHUB VIP <span>BD</span></div>
-      <div id="uName" style="font-weight:700;font-size:15px;margin-top:2px">Loading...</div>
-    </div>
-  </div>
-  <div class="total-box"><small>TOTAL VALUE</small><b>৳ <span id="takaValue">0.25</span></b></div>
+<div class="balance-card">
+  <div style="color:#7a8599;font-size:12px;letter-spacing:1px">💼 AVAILABLE BALANCE</div>
+  <div class="balance-amount"><small>৳</small><span id="takaValue">0.00</span><span id="myPoints" style="display:none">0</span></div>
+  <div class="progress-track"><div class="progress-fill" id="goalFill" style="width:20%"></div></div>
+  <div style="display:flex;justify-content:space-between;color:#7a8599;font-size:12px"><span>⚡ Daily Ad Limit</span><span id="goalPercent">0 / 30</span></div>
 </div>
 
 <div id="page-home" class="page active">
-  <div class="card-main">
-    <div style="display:flex;justify-content:space-between">
-      <div class="points-label">AVAILABLE POINTS</div>
-      <div style="width:42px;height:42px;background:#1a2f2a;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#2cf6b3">⚡</div>
-    </div>
-    <div class="points-val"><span id="myPoints">25</span> <span style="font-size:16px">PTS</span></div>
-    <div class="progress-top"><span>WITHDRAWAL GOAL (5000 PTS)</span><span id="goalPercent" style="color:#2cf6b3">3%</span></div>
-    <div class="progress-bar"><div id="goalFill" class="progress-fill"></div></div>
-    <div class="btn-row">
-      <button class="btn-start" onclick="switchTab('games')">▶ START EARNING</button>
-      <button class="btn-withdraw" onclick="switchTab('wallet')">💼 WITHDRAW</button>
-    </div>
+  <div style="margin:12px 16px;background:#131a26;border:1px solid #222e3d;border-radius:18px;padding:12px;display:flex;justify-content:space-around;text-align:center">
+    <div><small style="color:#7a8599">ভিডিও প্রতি</small><br><b>৳ 0.20</b></div><div style="width:1px;background:#222e3d"></div><div><small style="color:#7a8599">বোনাস প্রতি</small><br><b>৳ 0.10</b></div><div style="width:1px;background:#222e3d"></div><div><small style="color:#7a8599">রেফার কমিশন</small><br><b>10%</b></div>
   </div>
-
-  <!-- REFERRAL LINK CARD - NEW -->
-  <div class="card-main" style="text-align:left; border:1px solid #2cf6b355">
-    <div style="display:flex; justify-content:space-between; align-items:center">
-      <b style="font-size:15px">🎁 Refer & Earn 100 PTS</b>
-      <span style="font-size:10px; background:#2cf6b320; color:#2cf6b3; padding:4px 8px; border-radius:20px">BONUS</span>
-    </div>
-    <div style="font-size:12px;color:#8899a6;margin:6px 0">প্রতি বন্ধু জয়েন করলে তুমি 100 পয়েন্ট পাবে</div>
-    <div id="inviteLinkBox" style="background:#0f1118;border:1px dashed #2cf6b3; padding:12px; border-radius:12px; font-size:12px; color:#2cf6b3; word-break:break-all; margin-top:8px">Loading link...</div>
-    <div style="display:flex; gap:8px; margin-top:12px">
-      <button onclick="copyInviteLink()" style="flex:1;background:#fff;color:#000;border:none;padding:12px;border-radius:12px;font-weight:800">Copy Link</button>
-      <button onclick="shareInviteLink()" style="flex:1;background:#222;color:#fff;border:1px solid #333;padding:12px;border-radius:12px;font-weight:800">Share</button>
-    </div>
-  </div>
-
-  <div class="task-card">
-    <div style="display:flex;align-items:center;gap:12px">
-      <div class="gift-icon">🎁</div>
-      <div><b style="font-size:14px">Daily Check-In</b><div style="font-size:12px;color:#8899a6">Claim +25 points</div></div>
-    </div>
-    <button id="checkinBtn" onclick="dailyCheckin()" class="btn-claimed" style="border-color:#2cf6b3;color:#2cf6b3">CLAIM</button>
-  </div>
-
-  <div class="stats-row">
-    <div class="stat-box"><small>✅ COMPLETED</small><b id="completedCount">1</b></div>
-    <div class="stat-box"><small>👥 REFERRALS</small><b id="refCount">0</b></div>
-  </div>
-
-  <div style="margin:16px 12px"><b>🏆 Top 3 Leaderboard</b></div>
-  <div id="topList"></div>
+  <button class="btn-gold-large" onclick="switchTab('games')">🔥 Start Earning Now →</button>
 </div>
 
-<div id="page-games" class="page">
-  <div class="task-card"><div><b>Watch Ad +20</b></div><button onclick="showAd()" class="btn-gold" style="width:auto;padding:8px 16px">Watch</button></div>
-  <div class="task-card"><div><b>Spin Wheel</b></div><button onclick="spinWheel()" class="btn-gold" style="width:auto">Spin</button></div>
-</div>
+<div id="page-games" class="page"><div class="grid-2"><div class="task-card-dark"><div style="font-size:22px">📹</div><h4>Stream Video</h4><p style="color:#f5a623">+৳ 0.20</p><button onclick="showAd()" class="btn-gold">▶ Watch Clip</button></div><div class="task-card-dark"><div style="font-size:22px">🎁</div><h4>Flash Bonus</h4><p style="color:#22d3ee">+৳ 0.10</p><button id="checkinBtn" onclick="dailyCheckIn()" class="btn-blue">✨ Claim Now</button></div></div><button class="btn-gold-large" onclick="switchTab('wallet')">💸 Withdraw Balance</button></div>
 
-<div id="page-wallet" class="page">
-  <div class="card-main"><h3>💼 Payout</h3><p style="color:#aaa;font-size:12px">Min: <b style="color:#2cf6b3">5000 = 50 Taka</b></p><select id="payMethod"><option>bKash</option><option>Nagad</option></select><input id="payNumber" placeholder="Number"><input id="payAmount" type="number" placeholder="Min 5000"><button onclick="requestWithdraw()" class="btn-gold">Request</button><div id="myWithdraws"></div></div>
-</div>
+<div id="page-tasks" class="page"><div id="topList"></div><div class="card-dark" style="display:flex;justify-content:space-between;align-items:center"><div><b>Join channel</b><br><small style="color:#f5a623">+৳ 5.00</small></div><button class="btn-gold" style="width:auto;padding:10px 24px;margin:0" onclick="joinChannel()">Start</button></div></div>
 
-<div id="page-profile" class="page">
-  <div class="card-main" style="text-align:center">
-    <img id="uPhoto2" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:80px;height:80px;border-radius:50%;border:2px solid #2cf6b3">
-    <div id="uName2" style="margin-top:10px;font-weight:700">Player</div>
-    <div style="color:#aaa;font-size:12px">ID: <span id="uIdShow"></span></div>
-    <div id="totalMembers" style="margin-top:12px;background:#0f1118;padding:10px;border-radius:12px;font-weight:700">Loading...</div>
-  </div>
-</div>
+<div id="page-refer" class="page"><div class="card-dark" style="text-align:center"><div style="font-size:36px">🔗</div><h3>Invite & Earn</h3><p style="color:#7a8599;font-size:12px">বন্ধুদের ইনভাইট করে কমিশন পান।</p><div id="inviteLinkBox" style="border:1px dashed #f5a623;padding:12px;border-radius:12px;color:#f5a623;font-size:12px;word-break:break-all;margin:12px 0"></div><div style="display:flex;gap:10px"><button onclick="copyInviteLink()" style="flex:1;background:#1f2937;border:none;color:#fff;padding:12px;border-radius:12px">📋 Copy</button><button onclick="shareInviteLink()" class="btn-gold" style="flex:1;margin:0">✈ Share</button></div></div></div>
+
+<div id="page-wallet" class="page"><div class="card-dark"><b>🏛 Cashout Terminal</b><br><small style="color:#f5a623">সর্বনিম্ন: ৳ 10</small><input class="input-field" placeholder="বিকাশ / নগদ নাম্বার" id="walletNumber"><input class="input-field" placeholder="টাকার পরিমাণ" id="amount"><button class="btn-gold-large" style="width:100%;margin:10px 0 0 0" onclick="withdraw()">✅ Confirm Cashout</button></div></div>
+
+<div id="page-profile" class="page"><div class="card-dark" style="text-align:center"><div class="user-avatar" style="margin:0 auto;width:72px;height:72px;font-size:32px" id="uPhoto2">T</div><div style="font-weight:700;margin-top:10px" id="uName2">Loading...</div><div style="color:#f5a623;font-size:12px" id="uIdShow2">UID: 0</div></div><div class="card-dark"><b>🕒 হিস্ট্রি</b><p style="color:#7a8599;margin-top:20px;text-align:center">কোনো হিস্ট্রি নেই</p></div></div>
 
 <div class="bottom-nav">
-  <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br>HOME</div>
-  <div id="nav-games" class="nav-item" onclick="switchTab('games')">☰<br>TASKS</div>
-  <div id="nav-wallet" class="nav-item" onclick="switchTab('wallet')">💼<br>PAYOUT</div>
-  <div id="nav-profile" class="nav-item" onclick="switchTab('profile')">👤<br>PROFILE</div>
+  <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br>Home</div>
+  <div id="nav-games" class="nav-item" onclick="switchTab('games')">🪙<br>Earn</div>
+  <div id="nav-tasks" class="nav-item" onclick="switchTab('tasks')">📋<br>Tasks</div>
+  <div id="nav-refer" class="nav-item" onclick="switchTab('refer')">👥<br>Refer</div>
+  <div id="nav-wallet" class="nav-item" onclick="switchTab('wallet')">💳<br>Withdraw</div>
+  <div id="nav-profile" class="nav-item" onclick="switchTab('profile')">👤<br>Profile</div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, query, orderBy, limit, increment, serverTimestamp, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-const firebaseConfig = { apiKey: "AIzaSyAod-YPFImwNkxyLxT41y8PrRnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb", storageBucket: "freeincome-5a9bb.firebasestorage.app", messagingSenderId: "100906100907", appId: "1:100906100907:web:40a433acf0d5dc5e0374e" };
-const db = getFirestore(initializeApp(firebaseConfig));
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const firebaseConfig = { apiKey: "AIzaSyAod-YPFHMwqyXLyT4I7BPrfnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb" };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const CHANNEL_LINK = "https://t.me/FreeIncomeBD_2026";
-const BOT_LINK = "https://t.me/freeincomebd14bot/app?startapp=";
+const BOT_LINK = "https://t.me/freeincomebd1bot/app?startapp=";
 let userId=null;
 window.joinChannel=()=>window.open(CHANNEL_LINK,"_blank");
-window.verifyJoin=async()=>{ localStorage.setItem('channelJoined','true'); document.getElementById('joinGate').style.display='none'; };
-window.switchTab=(t)=>{ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); document.getElementById('page-'+t).classList.add('active'); document.getElementById('nav-'+t).classList.add('active'); };
-
-window.copyInviteLink = () => {
-  const txt = document.getElementById('inviteLinkBox').innerText;
-  navigator.clipboard.writeText(txt);
-  alert("Link Copied!");
-}
-window.shareInviteLink = () => {
-  const txt = document.getElementById('inviteLinkBox').innerText;
-  if(navigator.share) navigator.share({title:'Free Income BD', text:'Join and earn', url: txt});
-  else copyInviteLink();
-}
-
+window.verifyJoin=async()=>{localStorage.setItem('channelJoined','true');document.getElementById('joinGate').style.display='none';}
+window.switchTab=(t)=>{document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-item').forEach(p=>p.classList.remove('active'));const map={home:'page-home',games:'page-games',tasks:'page-tasks',refer:'page-refer',wallet:'page-wallet',profile:'page-profile'};document.getElementById(map[t]).classList.add('active');document.getElementById('nav-'+t).classList.add('active');}
+window.copyInviteLink=()=>{navigator.clipboard.writeText(document.getElementById('inviteLinkBox').innerText);alert("Link Copied!");}
+window.shareInviteLink=()=>{copyInviteLink();}
 function initTelegram(){
   if(localStorage.getItem('channelJoined')==='true') document.getElementById('joinGate').style.display='none';
-  let u=null;
-  let startParam=null;
-  try{
-    if(window.Telegram?.WebApp){
-      Telegram.WebApp.ready(); Telegram.WebApp.expand();
-      u=Telegram.WebApp.initDataUnsafe?.user;
-      startParam=Telegram.WebApp.initDataUnsafe?.start_param;
-    }
-  }catch(e){}
-  if(u){
-    userId=String(u.id);
-    document.getElementById('uName').innerText=u.first_name;
-    document.getElementById('uName2').innerText=u.first_name;
-    document.getElementById('uIdShow').innerText=userId;
-    if(u.photo_url){ document.getElementById('uPhoto').src=u.photo_url; document.getElementById('uPhoto2').src=u.photo_url; }
-  } else {
-    userId="test_123";
-    document.getElementById('uName').innerText="RPS Rimon";
-  }
-  // Set referral link immediately
-  document.getElementById('inviteLinkBox').innerText = BOT_LINK + userId;
-  initUser(startParam);
+  let u=null; try{if(window.Telegram?.WebApp){Telegram.WebApp.ready();Telegram.WebApp.expand();u=Telegram.WebApp.initDataUnsafe?.user;}}catch(e){}
+  if(u){userId=String(u.id);document.getElementById('uName').innerText=u.first_name;document.getElementById('uName2').innerText=u.first_name;document.getElementById('uIdShow').innerText='UID: '+userId;document.getElementById('uIdShow2').innerText='UID: '+userId;}else{userId="test_123";document.getElementById('uName').innerText='RPS Rimon';document.getElementById('uName2').innerText='RPS Rimon';}
+  document.getElementById('inviteLinkBox').innerText=BOT_LINK+userId;initUser();
 }
+async function initUser(){
+  const ref=doc(db,"users",userId);const snap=await getDoc(ref);
+  if(!snap.exists()){await setDoc(ref,{name:document.getElementById('uName').innerText,points:25,balance:0,referrals:0,joined:Date.now()});}
+  const data=(await getDoc(ref)).data();document.getElementById('myPoints').innerText=data.points||0;document.getElementById('takaValue').innerText=((data.points||0)*0.1).toFixed(2);document.getElementById('goalPercent').innerText=(data.points||0)+" / 30";document.getElementById('goalFill').style.width=Math.min((data.points||0)*3,100)+"%";
+}
+window.dailyCheckIn=async()=>{const ref=doc(db,"users",userId);await updateDoc(ref,{points:increment(25)});alert("✅ +25 Points!");location.reload();}
 
-async function initUser(startParam){
-  const ref=doc(db,"users",userId);
-  const snap=await getDoc(ref);
-  if(!snap.exists()){
-    await setDoc(ref,{name:document.getElementById('uName').innerText,photo:document.getElementById('uPhoto').src,points:25,referrals:0,createdAt:serverTimestamp(),joinedChannel:localStorage.getItem('channelJoined')==='true'});
-    // Handle referral bonus
-    if(startParam && startParam !== userId){
-      try{
-        const refUserDoc = doc(db,"users",startParam);
-        const refSnap = await getDoc(refUserDoc);
-        if(refSnap.exists()){
-          await updateDoc(refUserDoc,{points:increment(100), referrals:increment(1)});
-        }
-      }catch(e){ console.log(e) }
-    }
-  }
-  const d=(await getDoc(ref)).data();
-  const pts=d.points||25;
-  document.getElementById('myPoints').innerText=pts;
-  document.getElementById('takaValue').innerText=(pts/100*0.5).toFixed(2);
-  const perc=Math.min(Math.floor(pts/5000*100),100);
-  document.getElementById('goalPercent').innerText=perc+"%";
-  document.getElementById('goalFill').style.width=perc+"%";
-  document.getElementById('refCount').innerText=d.referrals||0;
-  loadTop(); loadTotalMembers();
+// ===== AD INTEGRATION - এখানে ID বসাবে =====
+window.showAd=async()=>{
+  // Monetag Zone ID এখানে বসাবে
+  // Adsterra Key এখানে বসাবে
+  document.getElementById('goalPercent').innerText="Ad Loading...";
+  setTimeout(async()=>{
+    const ref=doc(db,"users",userId);await updateDoc(ref,{points:increment(20)});
+    alert("🎥 +20 Points Added!");location.reload();
+  },2000);
 }
-
-async function loadTop(){
-  const q=query(collection(db,"users"),orderBy("points","desc"),limit(3));
-  const snap=await getDocs(q);
-  let html=""; let r=1;
-  snap.forEach(d=>{ const u=d.data(); html+=`<div class="leader-card"><img src="${u.photo||'https://cdn-icons-png.flaticon.com/512/149/149071.png'}" style="width:36px;height:36px;border-radius:50%"><div style="flex:1">#${r} ${u.name}<div style="color:#2cf6b3;font-size:12px">${u.points} PTS</div></div></div>`; r++; });
-  document.getElementById('topList').innerHTML=html;
-}
-async function loadTotalMembers(){
-  try{ const snap=await getDocs(collection(db,"users")); document.getElementById('totalMembers').innerHTML=`👥 Total Members: ${snap.size} জন`; }catch(e){}
-}
-window.dailyCheckin=async()=>{
-  const ref=doc(db,"users",userId); const snap=await getDoc(ref);
-  if(snap.data().lastCheckin){
-    const last=snap.data().lastCheckin.toDate(); const now=new Date();
-    if(last.getDate()===now.getDate()&&last.getMonth()===now.getMonth()&&last.getFullYear()===now.getFullYear()) return alert("Already claimed!");
-  }
-  await updateDoc(ref,{points:increment(25),lastCheckin:serverTimestamp()}); alert("+25 Added!"); location.reload();
-};
-window.requestWithdraw=async()=>{
-  const amount=parseInt(document.getElementById('payAmount').value); const number=document.getElementById('payNumber').value; const method=document.getElementById('payMethod').value;
-  if(amount<5000) return alert("Min 5000"); if(!number) return alert("Number দিন");
-  await addDoc(collection(db,"withdrawals"),{userId,userName:document.getElementById('uName').innerText,method,number,amount,status:"pending",createdAt:serverTimestamp()});
-  await updateDoc(doc(db,"users",userId),{points:increment(-amount)}); alert("Request Sent!"); location.reload();
-};
+window.withdraw=async()=>{const num=document.getElementById('walletNumber').value;const amt=document.getElementById('amount').value;if(!num||!amt) return alert("সব তথ্য দিন");const ref=collection(db,"withdraws");await addDoc(ref,{userId,number:num,amount:amt,status:"pending",time:Date.now()});alert("Request Sent!");}
 initTelegram();
 </script>
+<!-- ============ AD CODES - এখানে বসাবে ============ -->
+<!-- 1. MONETAG: <script src='//libtl.com/sdk.js' data-zone='YOUR_ZONE_ID' data-sdk='show_RewardedAd'></script> -->
+<!-- 2. ADSTERRA: তোমার Popunder কোড এখানে -->
+<!-- 3. PROPELLER: তোমার কোড এখানে -->
 </body>
 </html>
