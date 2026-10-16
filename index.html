@@ -113,10 +113,14 @@ window.shareInviteLink=()=>copyInviteLink();
 window.selectPay=(m)=>selectedPay=m;
 window.showAd=async(type,btn)=>{
   const now=Date.now(); hourlyAds=hourlyAds.filter(t=>now-t<3600000);
-  if(hourlyAds.length>=CONFIG.HOURLY_LIMIT){alert("Hourly Limit 5 টা শেষ");return;}
+  if(hourlyAds.length>=CONFIG.HOURLY_LIMIT){alert("Hourly Limit শেষ");return;}
   if(dailyAds>=CONFIG.DAILY_LIMIT){alert("Daily Limit শেষ");return;}
-  let sec=CONFIG.WAIT; btn.disabled=true; const orig=btn.innerText;
-  const timer=setInterval(()=>{btn.innerText=sec+"s Wait...";sec--;if(sec<0){clearInterval(timer);finishAd(btn,orig);}},1000);
+  btn.disabled=true; const orig=btn.innerText; btn.innerText="📡 Loading Ad...";
+  let adDone=false;
+  try{if(typeof show_RewardedAd==='function'){await show_RewardedAd(); adDone=true;}}catch(e){}
+  try{if(typeof showGiga==='function' && !adDone){await showGiga(); adDone=true;}}catch(e){}
+  if(!adDone){btn.innerText=orig; btn.disabled=false; alert("❌ Ad ID বসানো নেই, তাই পয়েন্ট ব্লক করা হলো। লস থেকে বাঁচতে ID বসাও।"); return;}
+  let sec=CONFIG.WAIT; const timer=setInterval(()=>{btn.innerText=sec+"s Verifying..."; sec--; if(sec<0){clearInterval(timer); finishAd(btn,orig);}},1000);
 }
 async function finishAd(btn,orig){
   const ref=doc(db,"users",userId);
