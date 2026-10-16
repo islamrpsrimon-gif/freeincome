@@ -3,88 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dorp Cash Ultimate</title>
+<title>Dorp Cash - Final</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-:root{--green:#0e9f6e;--green-dark:#0a7a53;--light:#f2f5f7;--white:#fff}
-*{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
-body{background:var(--light);padding-bottom:110px;color:#0f172a}
-.top-user{background:#fff;border-radius:28px;padding:12px 18px;margin:12px 16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
-.t-avatar{width:52px;height:52px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:22px}
-.header-green{background:linear-gradient(180deg,var(--green),var(--green-dark));border-radius:32px;margin:12px 16px;padding:22px 16px 50px 16px;color:#fff}
-.balance-white{background:#fff;border-radius:32px;padding:28px;text-align:center;margin-top:20px;color:#000;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
-.balance-amount{font-size:48px;font-weight:800}
-.btn-green{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border:none;width:calc(100% - 32px);margin:12px 16px;padding:18px;border-radius:20px;font-weight:700;font-size:16px;cursor:pointer}
-.card-white{background:#fff;border-radius:24px;padding:18px;margin:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.05)}
-.bottom-nav{position:fixed;bottom:16px;left:16px;right:16px;background:#fff;border-radius:32px;display:flex;justify-content:space-around;padding:10px;box-shadow:0 10px 40px rgba(0,0,0,0.12);z-index:100}
-.nav-item{color:#94a3b8;font-size:11px;padding:10px 14px;border-radius:22px;cursor:pointer;text-align:center}
-.nav-item.active{background:var(--green);color:#fff}
+:root{--green:#0e9f6e;--green-dark:#0a7a53;--light:#eef2f6;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
+body{background:var(--light);padding-bottom:120px}
+.top-user{background:#fff;border-radius:24px;padding:14px 16px;margin:12px 14px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+.t-avatar{width:48px;height:48px;background:#0e9f6e;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;position:relative}
+.t-avatar::after{content:'';width:12px;height:12px;background:#22c55e;border:2px solid #fff;border-radius:50%;position:absolute;bottom:0;right:0}
+.header-green{background:linear-gradient(180deg,#0e9f6e,#0a7a53);border-radius:28px;margin:12px 14px;padding:18px 14px 32px 14px;color:#fff}
+.head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.active-pill{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.balance-white{background:#fff;border-radius:26px;padding:22px;text-align:center;color:#0f172a;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+.b-icon{width:52px;height:52px;background:#f1f5f9;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 8px auto}
+.balance-amount{font-size:42px;font-weight:800;letter-spacing:-1px}
+.live-engine{background:#e8f5ef;color:#0e9f6e;display:inline-block;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-top:10px}
+.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px}
+.stat-card{background:#fff;border-radius:20px;padding:14px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.04)}
+.stat-card b{font-size:18px;display:block}
+.stat-card small{font-size:11px;color:#64748b;font-weight:600}
+.btn-green{background:linear-gradient(135deg,#0e9f6e,#0a7a53);color:#fff;border:none;width:calc(100% - 28px);margin:10px 14px;padding:18px;border-radius:20px;font-weight:700;font-size:16px;display:flex;justify-content:center;align-items:center;gap:8px}
+.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 14px}
+.mini-card{background:#fff;border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;box-shadow:0 4px 15px rgba(0,0,0,0.04)}
+.mini-check{width:22px;height:22px;background:#0e9f6e;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.bottom-nav{position:fixed;bottom:12px;left:12px;right:12px;background:#fff;border-radius:28px;display:flex;justify-content:space-around;padding:8px;box-shadow:0 10px 40px rgba(0,0,0,0.15);z-index:100}
+.nav-item{color:#94a3b8;font-size:11px;padding:8px 12px;border-radius:20px;text-align:center}
+.nav-item.active{background:#0e9f6e;color:#fff}
 .page{display:none}.page.active{display:block}
-.input-light{width:100%;background:#f8fafc;border:1px solid #e2e8f0;padding:16px;border-radius:16px;margin:8px 0}
-.joinGate{position:fixed;inset:0;background:rgba(242,245,247,0.97);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
-.joinBox{background:#fff;padding:28px;border-radius:28px;width:100%;max-width:380px;text-align:center}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;align-items:flex-end}
-.modal.active{display:flex}
-.modal-content{background:#fff;width:100%;border-radius:32px 32px 0 0;padding:24px}
-.notice-bar{background:#fff3cd;border:1px solid #ffe69c;padding:10px 16px;border-radius:14px;margin:12px 16px;font-size:13px}
+.notice-bar{background:#fff3cd;border:1px solid #ffe69c;padding:10px 14px;border-radius:14px;margin:12px 14px;font-size:13px}
+.card-white{background:#fff;border-radius:20px;padding:16px;margin:10px 14px;box-shadow:0 4px 15px rgba(0,0,0,0.04)}
+.btn-full{width:100%}
 </style>
 </head>
 <body>
 
-<div id="joinGate" class="joinGate">
-<div class="joinBox">
-<div style="font-size:48px">💰</div>
-<h2 style="color:var(--green)">Dorp Cash Ultimate</h2>
-<p style="font-size:12px;background:#f8fafc;padding:10px;border-radius:10px;margin:10px 0;text-align:left">
-✅ Admin Panel Ready<br>
-✅ VPN & One Device Protection<br>
-✅ 15 Sec Wait + Hourly Limit<br>
-✅ Refer & Unlimited Task
-</p>
-<button onclick="joinChannel()" class="btn-green" style="width:100%">🚀 Join Channel</button>
-<button onclick="verifyJoin()" style="width:100%;padding:12px;border-radius:14px;border:1px solid #e2e8f0;background:#fff;margin-top:8px">✅ Verify</button>
-</div>
-</div>
-
 <div class="top-user">
-<div style="display:flex;align-items:center;gap:10px"><div class="t-avatar" id="uPhoto">T</div><div><div id="uName" style="font-weight:700">Loading...</div><div style="color:var(--green);font-weight:700">৳ <span id="miniBalance">0</span></div></div></div>
-<div style="background:#e8f5ef;color:var(--green);padding:6px 12px;border-radius:20px;font-weight:700">BD</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div class="t-avatar" id="uPhoto">T</div>
+<div><div style="font-weight:700;display:flex;align-items:center;gap:4px"><span id="uName">@TechBd24kz</span><span style="background:#0e9f6e;color:#fff;width:16px;height:16px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px">✓</span></div>
+<div style="display:flex;align-items:center;gap:4px;color:#0e9f6e;font-weight:700;font-size:14px">💼 ৳ <span id="miniBalance">115.00</span></div></div>
+</div>
+<div style="background:#e8f5ef;color:#0e9f6e;padding:6px 14px;border-radius:20px;font-weight:700;font-size:13px">BD</div>
 </div>
 
 <div id="noticeBar" class="notice-bar">📢 <span id="noticeText">আজকের অফার লোড হচ্ছে...</span></div>
 
 <div id="page-home" class="page active">
-<div class="header-green"><div>☀️ Good to see you!</div><div class="balance-white"><small>AVAILABLE BALANCE</small><div class="balance-amount">৳ <span id="takaValue">0</span></div><div style="background:#e8f5ef;color:var(--green);display:inline-block;padding:6px 14px;border-radius:20px;font-size:12px">GigaPub Live</div></div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 16px">
-<div class="card-white" style="margin:0;text-align:center"><b id="totalEarned">0</b><br><small>TOTAL</small></div>
-<div class="card-white" style="margin:0;text-align:center"><b><span id="completedCount">0</span>/30</b><br><small>TASKS</small><br><small id="hourlyLimit" style="color:var(--green)">Hourly 0/5</small></div>
-<div class="card-white" style="margin:0;text-align:center;background:#fef9c3"><b id="refCount">0</b><br><small>REFER</small></div>
+<div class="header-green">
+<div class="head-row"><div style="display:flex;align-items:center;gap:6px">☀️ <b>Good to see you!</b></div><div class="active-pill">● ACTIVE</div></div>
+<div class="balance-white">
+<div class="b-icon">💼</div>
+<div style="font-size:11px;color:#64748b;font-weight:700;letter-spacing:1px">AVAILABLE BALANCE</div>
+<div class="balance-amount">৳ <span id="takaValue">115.00</span></div>
+<div class="live-engine">↑ +100% GigaPub Live Engine</div>
 </div>
-<button class="btn-green" onclick="switchTab('earn')">🚀 Start Earning Now</button>
-<div class="card-white"><div style="display:flex;justify-content:space-between"><span>👥 Total Users</span><b id="totalMembers">0</b></div></div>
+</div>
+
+<div class="stats-row">
+<div class="stat-card" style="background:#f0fdf4"><div style="font-size:22px">🏆</div><b id="totalEarned">5115.00</b><small>TOTAL EARNED</small></div>
+<div class="stat-card"><div style="font-size:22px">▶️</div><b><span id="completedCount">4</span>/30</b><small>TASKS DONE</small></div>
+<div class="stat-card" style="background:#fefce8"><div style="font-size:22px">👥</div><b id="refCount">3</b><small>REFERRALS</small></div>
+</div>
+
+<button class="btn-green" onclick="switchTab('earn')">🚀 Start Earning Now →</button>
+
+<div class="mini-row">
+<div class="mini-card"><div class="mini-check">✓</div> Watch Ads & Earn</div>
+<div class="mini-card"><div class="mini-check">✓</div> Daily Rewards</div>
+</div>
+
+<div class="card-white"><div style="display:flex;justify-content:space-between;font-size:13px"><span>👥 Total Users</span><b id="totalMembers">0</b></div>
+<div style="display:flex;justify-content:space-between;font-size:13px;margin-top:8px"><span>⏰ Hourly</span><b id="hourlyLimit">0/5</b></div></div>
 </div>
 
 <div id="page-earn" class="page">
-<div class="header-green"><div>Ads Center</div><div class="balance-white"><small>BALANCE</small><div class="balance-amount">৳ <span id="takaValue2">0</span></div></div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px">
-<div class="card-white" style="margin:0;text-align:center"><div style="font-size:36px">🎬</div><b>ভিডিও অ্যাড</b><br><small>৳ 0.10</small><button onclick="showAd('video',this)" class="btn-green" style="width:100%;margin:10px 0 0 0;padding:12px">অ্যাড দেখুন</button></div>
-<div class="card-white" style="margin:0;text-align:center"><div style="font-size:36px">🎁</div><b>বোনাস</b><br><small>৳ 0.10</small><button onclick="showAd('bonus',this)" class="btn-green" style="width:100%;margin:10px 0 0 0;padding:12px;background:#0ea5e9">বোনাস নিন</button></div>
+<div class="header-green"><div class="balance-white"><div style="font-size:11px;color:#64748b">BALANCE</div><div class="balance-amount">৳ <span id="takaValue2">115.00</span></div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px">
+<div class="card-white" style="margin:0;text-align:center"><div style="font-size:32px">🎬</div><b>ভিডিও অ্যাড</b><br><small>৳ 0.10</small><button onclick="showAd('video',this)" style="width:100%;margin-top:10px;padding:12px;border-radius:14px;border:none;background:#0e9f6e;color:#fff;font-weight:700">অ্যাড দেখুন</button></div>
+<div class="card-white" style="margin:0;text-align:center"><div style="font-size:32px">🎁</div><b>বোনাস</b><br><small>৳ 0.10</small><button onclick="showAd('bonus',this)" style="width:100%;margin-top:10px;padding:12px;border-radius:14px;border:none;background:#0ea5e9;color:#fff;font-weight:700">বোনাস নিন</button></div>
 </div>
-<div class="card-white"><div style="display:flex;justify-content:space-between"><span>Daily</span><b><span id="dailyUsed">0</span>/30</b></div><div style="background:#e2e8f0;height:8px;border-radius:10px;margin:8px 0"><div id="dailyFill" style="height:100%;background:var(--green);width:0%;border-radius:10px"></div></div></div>
+<div class="card-white"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Daily</span><b><span id="dailyUsed">0</span>/30</b></div><div style="background:#e2e8f0;height:8px;border-radius:10px;margin-top:8px"><div id="dailyFill" style="height:100%;background:#0e9f6e;width:0%;border-radius:10px"></div></div></div>
 </div>
 
 <div id="page-tasks" class="page"><div style="padding:16px;font-weight:700">Tasks</div><div id="taskList"></div></div>
-
-<div id="page-refer" class="page">
-<div class="card-white" style="text-align:center"><div style="font-size:40px">🛸</div><h3>Invite করুন</h3><div id="inviteLinkBox" style="background:#f8fafc;border:1px dashed #ccc;padding:10px;border-radius:10px;font-size:11px;word-break:break-all;margin:10px 0"></div><button onclick="copyInviteLink()" style="padding:12px;width:48%;border-radius:12px;border:1px solid #ccc">📋 Copy</button> <button onclick="shareInviteLink()" class="btn-green" style="width:48%;margin:0;padding:12px">Share</button></div>
-<div class="card-white"><b>Withdraw Minimum Refer: 2</b><br>আপনার রেফার: <b id="refCount2">0</b>/2</div>
-</div>
-
-<div id="page-withdraw" class="page"><div class="card-white" style="text-align:center"><div class="balance-amount">৳ <span id="takaValue3">0</span></div></div><div class="card-white"><b>Withdraw History</b><div id="withdrawHistory"><p style="text-align:center;color:#999">কোনো হিস্ট্রি নেই</p></div></div><button class="btn-green" onclick="openWithdrawModal()">টাকা উত্তোলন করুন</button></div>
-
+<div id="page-refer" class="page"><div class="card-white" style="text-align:center"><div style="font-size:36px">🛸</div><h3>Invite করুন</h3><div id="inviteLinkBox" style="background:#f8fafc;border:1px dashed #ccc;padding:10px;border-radius:10px;font-size:11px;word-break:break-all;margin:10px 0"></div><button onclick="navigator.clipboard.writeText(document.getElementById('inviteLinkBox').innerText);alert('Copied')" style="padding:10px 18px;border-radius:10px;border:1px solid #ccc">📋 Copy</button></div></div>
+<div id="page-withdraw" class="page"><div class="card-white" style="text-align:center"><div class="balance-amount">৳ <span id="takaValue3">115.00</span></div><div id="withdrawHistory" style="margin-top:10px;font-size:12px"></div></div><button class="btn-green" onclick="document.getElementById('withdrawModal').style.display='flex'">টাকা উত্তোলন করুন</button></div>
 <div id="page-profile" class="page"><div class="card-white" style="text-align:center"><div class="t-avatar" style="margin:0 auto;width:64px;height:64px">T</div><div id="uName2" style="font-weight:700;margin-top:8px">User</div><div id="uIdShow">ID: 0</div></div></div>
 
-<div id="withdrawModal" class="modal" onclick="if(event.target==this) closeWithdrawModal()"><div class="modal-content"><h3>Withdraw</h3><p>Min: ৳100 - Nagad/Bkash/Rocket/Binance/Payeer</p><input id="walletNumber" class="input-light" placeholder="নাম্বার"><input id="amount" type="number" class="input-light" placeholder="টাকা"><div id="refWarn" style="display:none;background:#fee2e2;color:#c00;padding:8px;border-radius:8px;font-size:12px">2 জন রেফার লাগবে</div><button onclick="withdraw()" class="btn-green" style="width:100%">Confirm</button><button onclick="closeWithdrawModal()" style="width:100%;padding:12px;margin-top:8px;border-radius:12px;border:1px solid #ccc">Cancel</button></div></div>
+<div id="withdrawModal" style="position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;align-items:flex-end"><div style="background:#fff;width:100%;border-radius:28px 28px 0 0;padding:20px"><h3>Withdraw</h3><input id="walletNumber" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin:8px 0" placeholder="নাম্বার"><input id="amount" type="number" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0" placeholder="টাকা"><button onclick="withdraw()" class="btn-green" style="width:100%;margin:10px 0">Confirm</button><button onclick="document.getElementById('withdrawModal').style.display='none'" style="width:100%;padding:12px;border-radius:12px;border:1px solid #ccc">Cancel</button></div></div>
 
 <div class="bottom-nav">
 <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br>Home</div>
@@ -103,14 +110,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const CONFIG = { CHANNEL: "https://t.me/FreeIncomeBD_2026", BOT_LINK: "https://t.me/DorpCash_bot?start=ref_", MIN_WITHDRAW: 100, MIN_REFER: 2, DAILY_LIMIT: 30, HOURLY_LIMIT: 5, WAIT: 15 };
 let userId=null, hourlyAds=[], dailyAds=0, selectedPay="Nagad";
-window.joinChannel=()=>window.open(CONFIG.CHANNEL,"_blank");
-window.verifyJoin=()=>{localStorage.setItem('channelJoined','true');document.getElementById('joinGate').style.display='none';}
 window.switchTab=(t)=>{document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-item').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+t).classList.add('active');document.getElementById('nav-'+t).classList.add('active');}
-window.openWithdrawModal=()=>document.getElementById('withdrawModal').classList.add('active');
-window.closeWithdrawModal=()=>document.getElementById('withdrawModal').classList.remove('active');
-window.copyInviteLink=()=>{navigator.clipboard.writeText(document.getElementById('inviteLinkBox').innerText);alert("Copied");}
-window.shareInviteLink=()=>copyInviteLink();
-window.selectPay=(m)=>selectedPay=m;
 window.showAd=async(type,btn)=>{
   const now=Date.now(); hourlyAds=hourlyAds.filter(t=>now-t<3600000);
   if(hourlyAds.length>=CONFIG.HOURLY_LIMIT){alert("Hourly Limit শেষ");return;}
@@ -119,17 +119,15 @@ window.showAd=async(type,btn)=>{
   let adDone=false;
   try{if(typeof show_RewardedAd==='function'){await show_RewardedAd(); adDone=true;}}catch(e){}
   try{if(typeof showGiga==='function' && !adDone){await showGiga(); adDone=true;}}catch(e){}
-  if(!adDone){btn.innerText=orig; btn.disabled=false; alert("❌ Ad ID বসানো নেই, তাই পয়েন্ট ব্লক করা হলো। লস থেকে বাঁচতে ID বসাও।"); return;}
+  if(!adDone){btn.innerText=orig; btn.disabled=false; alert("❌ Ad ID বসানো নেই, তাই পয়েন্ট ব্লক করা হলো।"); return;}
   let sec=CONFIG.WAIT; const timer=setInterval(()=>{btn.innerText=sec+"s Verifying..."; sec--; if(sec<0){clearInterval(timer); finishAd(btn,orig);}},1000);
 }
 async function finishAd(btn,orig){
   const ref=doc(db,"users",userId);
   await updateDoc(ref,{balance:increment(0.10),totalAds:increment(1)});
   hourlyAds.push(Date.now()); dailyAds++;
-  localStorage.setItem('hourlyAds',JSON.stringify(hourlyAds));
-  localStorage.setItem('dailyAdsDate',new Date().toDateString());
-  localStorage.setItem('dailyAdsCount',dailyAds);
-  btn.innerText="✅ +৳0.10"; setTimeout(()=>{location.reload();},800);
+  localStorage.setItem('hourlyAds',JSON.stringify(hourlyAds)); localStorage.setItem('dailyAdsDate',new Date().toDateString()); localStorage.setItem('dailyAdsCount',dailyAds);
+  btn.innerText="✅ +৳0.10"; setTimeout(()=>location.reload(),800);
 }
 window.withdraw=async()=>{
   const num=document.getElementById('walletNumber').value; const amt=parseFloat(document.getElementById('amount').value);
@@ -139,31 +137,25 @@ window.withdraw=async()=>{
   if((data.balance||0)<amt){alert("ব্যালেন্স কম");return;}
   await addDoc(collection(db,"withdraws"),{userId,number:num,amount:amt,method:selectedPay,status:"pending",time:Date.now()});
   await updateDoc(ref,{balance:increment(-amt)});
-  alert("Request Sent!"); closeWithdrawModal(); location.reload();
+  alert("Request Sent!"); location.reload();
 }
 function initTelegram(){
-  if(localStorage.getItem('channelJoined')==='true') document.getElementById('joinGate').style.display='none';
   let u=null; try{if(window.Telegram?.WebApp){Telegram.WebApp.ready();Telegram.WebApp.expand();u=Telegram.WebApp.initDataUnsafe?.user;}}catch(e){}
-  if(u){userId=String(u.id);document.getElementById('uName').innerText=u.first_name||"User";document.getElementById('uIdShow').innerText="ID: "+u.id;if(u.photo_url) document.getElementById('uPhoto').innerHTML=`<img src="${u.photo_url}" style="width:100%;border-radius:50%">`;}else{userId="test_1268910643";document.getElementById('uName').innerText="@TechBd24kz";}
+  if(u){userId=String(u.id);document.getElementById('uName').innerText=u.first_name||"User";}else{userId="test_1268910643";document.getElementById('uName').innerText="@TechBd24kz";}
   document.getElementById('inviteLinkBox').innerText=CONFIG.BOT_LINK+userId;
   const savedDate=localStorage.getItem('dailyAdsDate'); if(savedDate!==new Date().toDateString()) dailyAds=0; else dailyAds=parseInt(localStorage.getItem('dailyAdsCount')||'0');
   try{hourlyAds=JSON.parse(localStorage.getItem('hourlyAds')||'[]');}catch(e){hourlyAds=[];}
-  initUser(); loadNotice(); loadTasks(); loadHistory(); loadTotalUsers();
+  initUser();
 }
 async function initUser(){
   const ref=doc(db,"users",userId); const snap=await getDoc(ref);
   if(!snap.exists()){await setDoc(ref,{name:document.getElementById('uName').innerText,balance:115,referrals:3,totalAds:4,totalEarned:5115,joined:Date.now()});}
   const data=(await getDoc(ref)).data(); const bal=(data.balance||0).toFixed(2);
   document.getElementById('takaValue').innerText=bal; document.getElementById('takaValue2').innerText=bal; document.getElementById('takaValue3').innerText=bal; document.getElementById('miniBalance').innerText=bal;
-  document.getElementById('completedCount').innerText=data.totalAds||0; document.getElementById('refCount').innerText=data.referrals||0; document.getElementById('refCount2').innerText=data.referrals||0;
-  document.getElementById('dailyUsed').innerText=dailyAds; document.getElementById('dailyFill').style.width=(dailyAds/30*100)+"%"; document.getElementById('hourlyLimit').innerText="Hourly: "+hourlyAds.length+"/"+CONFIG.HOURLY_LIMIT;
+  document.getElementById('completedCount').innerText=data.totalAds||0; document.getElementById('refCount').innerText=data.referrals||0;
+  document.getElementById('dailyUsed').innerText=dailyAds; document.getElementById('dailyFill').style.width=(dailyAds/30*100)+"%"; document.getElementById('hourlyLimit').innerText=hourlyAds.length+"/"+CONFIG.HOURLY_LIMIT;
 }
-async function loadNotice(){try{const ref=doc(db,"config","notice");const snap=await getDoc(ref);if(snap.exists()) document.getElementById('noticeText').innerText=snap.data().text;}catch(e){}}
-async function loadTasks(){const c=document.getElementById('taskList');let h="";try{const qs=await getDocs(collection(db,"tasks"));qs.forEach(d=>{const t=d.data();h+=`<div class="card-white"><div style="display:flex;justify-content:space-between"><div><b>${t.title||'Task'}</b><br><small style="color:var(--green)">+৳ ${t.reward||10}</small></div><span>✔</span></div></div>`;});}catch(e){} if(!h) h=`<div class="card-white"><div style="display:flex;justify-content:space-between"><div><b>TechBD24kDevelopers</b><br><small style="color:var(--green)">+৳ 10</small></div><span>✔ Done</span></div></div>`; c.innerHTML=h;}
-async function loadHistory(){try{const qs=await getDocs(collection(db,"withdraws"));let h="";qs.forEach(d=>{const w=d.data();if(w.userId==userId) h+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee"><span>${w.method} ৳${w.amount}</span><span style="color:#f59e0b">${w.status}</span></div>`;});if(h) document.getElementById('withdrawHistory').innerHTML=h;}catch(e){}}
-async function loadTotalUsers(){try{const qs=await getDocs(collection(db,"users"));document.getElementById('totalMembers').innerText=qs.size;}catch(e){}}
 initTelegram();
 </script>
-<!-- GigaPub & Monetag এখানে বসাবে -->
 </body>
 </html>
