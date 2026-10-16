@@ -3,36 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Income BD - Dorp Cash Design</title>
+<title>Free Income BD - Final Secure</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root{--green:#0e9f6e;--dark:#0a7a53}
 *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
 body{background:#eef2f6;padding-bottom:110px}
-.top-user{background:#fff;border-radius:24px;padding:14px 16px;margin:12px;display:flex;justify-content:space-between;align-items:center}
+.top-user{background:#fff;border-radius:24px;padding:14px 16px;margin:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 15px rgba(0,0,0,.06)}
 .t-avatar{width:48px;height:48px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
 .header-green{background:linear-gradient(180deg,#0e9f6e,#0a7a53);border-radius:28px;margin:12px;padding:18px 14px 30px 14px;color:#fff}
-.active-pill{background:rgba(255,255,255,0.25);padding:5px 14px;border-radius:20px;font-size:12px}
+.active-pill{background:rgba(255,255,255,.25);padding:5px 14px;border-radius:20px;font-size:12px}
 .balance-white{background:#fff;border-radius:26px;padding:22px;text-align:center;color:#0f172a;margin-top:12px}
 .balance-amount{font-size:40px;font-weight:800}
 .live-engine{background:#e8f5ef;color:var(--green);display:inline-block;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-top:8px}
 .stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px}
 .stat-card{background:#fff;border-radius:20px;padding:14px;text-align:center}
 .btn-green{background:linear-gradient(135deg,#0e9f6e,#0a7a53);color:#fff;border:none;width:calc(100% - 24px);margin:10px 12px;padding:18px;border-radius:20px;font-weight:700;font-size:16px}
-.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px}
-.mini-card{background:#fff;border-radius:16px;padding:12px;font-size:13px;font-weight:600;display:flex;gap:8px;align-items:center}
-.bottom-nav{position:fixed;bottom:12px;left:12px;right:12px;background:#fff;border-radius:28px;display:flex;justify-content:space-around;padding:8px;box-shadow:0 10px 40px rgba(0,0,0,0.15)}
-.nav-item{color:#94a3b8;font-size:11px;padding:8px 10px;border-radius:20px;text-align:center}
+.bottom-nav{position:fixed;bottom:12px;left:12px;right:12px;background:#fff;border-radius:28px;display:flex;justify-content:space-around;padding:8px;box-shadow:0 10px 40px rgba(0,0,0,.15);z-index:100}
+.nav-item{color:#94a3b8;font-size:11px;padding:8px 10px;border-radius:20px;text-align:center;cursor:pointer}
 .nav-item.active{background:var(--green);color:#fff}
 .page{display:none}.page.active{display:block}
-.card-white{background:#fff;border-radius:20px;padding:16px;margin:10px 12px}
+.card-white{background:#fff;border-radius:20px;padding:16px;margin:10px 12px;box-shadow:0 4px 15px rgba(0,0,0,.04)}
+.badge-admin{background:#ff3b30;color:#fff;padding:2px 8px;border-radius:10px;font-size:10px}
 </style>
 </head>
 <body>
 
 <div class="top-user">
 <div style="display:flex;align-items:center;gap:10px">
-<div class="t-avatar">T</div>
-<div><b>@TechBd24kz ✓</b><div style="color:#0e9f6e;font-weight:700">💼 ৳ <span id="miniBal">115.00</span></div></div>
+<div class="t-avatar" id="uPhoto">T</div>
+<div><b id="uName">@TechBd24kz ✓</b> <span id="adminBadge"></span><div style="color:#0e9f6e;font-weight:700">💼 ৳ <span id="miniBal">0.00</span></div></div>
 </div>
 <div style="background:#e8f5ef;color:#0e9f6e;padding:6px 14px;border-radius:20px;font-weight:700">BD</div>
 </div>
@@ -42,125 +42,207 @@ body{background:#eef2f6;padding-bottom:110px}
 <div style="display:flex;justify-content:space-between"><span>☀️ Good to see you!</span><span class="active-pill">● ACTIVE</span></div>
 <div class="balance-white">
 <div style="font-size:11px;color:#64748b;letter-spacing:1px">AVAILABLE BALANCE</div>
-<div class="balance-amount">৳ <span id="bal">115.00</span></div>
+<div class="balance-amount">৳ <span id="bal">0.00</span></div>
 <div class="live-engine">↑ +100% GigaPub Live Engine</div>
 </div>
 </div>
 <div class="stats-row">
-<div class="stat-card">🏆<br><b>5115.00</b><br><small>TOTAL EARNED</small></div>
-<div class="stat-card">▶️<br><b><span id="taskDone">4</span>/30</b><br><small>TASKS DONE</small></div>
-<div class="stat-card">👥<br><b>3</b><br><small>REFERRALS</small></div>
+<div class="stat-card">🏆<br><b id="totalEarn">0.00</b><br><small>TOTAL EARNED</small></div>
+<div class="stat-card">▶️<br><b><span id="taskDone">0</span>/30</b><br><small>TASKS DONE</small></div>
+<div class="stat-card">👥<br><b id="refCount">0</b><br><small>REFERRALS</small></div>
 </div>
 <button class="btn-green" onclick="switchTab('earn')">🚀 Start Earning Now →</button>
-<div class="mini-row">
-<div class="mini-card">✓ Watch Ads & Earn</div>
-<div class="mini-card">✓ Daily Rewards</div>
-</div>
 </div>
 
 <div id="page-earn" class="page">
 <div class="card-white" style="text-align:center">
 <h3>🎬 ভিডিও অ্যাড - ৳0.10</h3>
+<p style="font-size:12px;color:#64748b;margin:8px 0">Ad দেখলে টাকা পাবে, না দেখলে পাবে না</p>
 <button onclick="showAd(this)" id="adBtn" style="width:100%;margin-top:12px;padding:14px;border-radius:14px;border:none;background:#0e9f6e;color:#fff;font-weight:700">অ্যাড দেখুন</button>
-<div id="adStatus" style="margin-top:10px;font-size:12px;color:#64748b"></div>
+<div id="adStatus" style="margin-top:10px;font-size:12px;color:#64748b">Ad ID চেক হচ্ছে...</div>
 </div>
-<div class="card-white"><small>Daily: <span id="dailyUsed">0</span>/30</small><div style="background:#e2e8f0;height:8px;border-radius:10px;margin-top:6px"><div id="dailyFill" style="height:100%;background:#0e9f6e;width:0%"></div></div></div>
+<div class="card-white"><small>Daily: <span id="dailyUsed">0</span>/30 | Hourly: <span id="hourlyUsed">0</span>/5</small><div style="background:#e2e8f0;height:8px;border-radius:10px;margin-top:6px"><div id="dailyFill" style="height:100%;background:#0e9f6e;width:0%"></div></div></div>
 </div>
 
-<div id="page-tasks" class="page"><div class="card-white">Tasks Coming Soon</div></div>
-<div id="page-refer" class="page"><div class="card-white" style="text-align:center"><h3>Invite</h3><div style="background:#f8fafc;border:1px dashed #ccc;padding:10px;border-radius:10px;font-size:11px;margin:10px 0">https://t.me/DorpCash_bot?start=ref_123</div></div></div>
-<div id="page-withdraw" class="page"><div class="card-white" style="text-align:center"><div class="balance-amount">৳ <span class="bal">115.00</span></div><button style="width:100%;padding:14px;border-radius:14px;border:none;background:#0e9f6e;color:#fff;margin-top:10px">Withdraw</button></div></div>
-<div id="page-profile" class="page"><div class="card-white" style="text-align:center"><div class="t-avatar" style="margin:0 auto">T</div><b>@TechBd24kz</b></div></div>
+<div id="page-refer" class="page"><div class="card-white" style="text-align:center"><h3>Invite করুন - ৳5 বোনাস</h3><div id="inviteLinkBox" style="background:#f8fafc;border:1px dashed #ccc;padding:10px;border-radius:10px;font-size:11px;margin:10px 0;word-break:break-all"></div><button onclick="navigator.clipboard.writeText(document.getElementById('inviteLinkBox').innerText);alert('Copied')" style="padding:10px 18px;border-radius:10px;border:1px solid #ccc">📋 Copy</button></div></div>
+
+<div id="page-withdraw" class="page">
+<div class="card-white" style="text-align:center">
+<div class="balance-amount">৳ <span id="bal2">0.00</span></div>
+<div style="font-size:12px;color:#64748b;margin-top:6px">Min Withdraw ৳50 | 2 Refer লাগবে</div>
+<input id="walletNumber" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-top:12px" placeholder="Nagad/Bkash নাম্বার">
+<input id="amount" type="number" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-top:8px" placeholder="টাকার পরিমান (Min 50)">
+<button onclick="withdraw()" class="btn-green" style="width:100%">Withdraw করুন</button>
+<div id="withdrawHistory" style="margin-top:12px;text-align:left;font-size:12px"></div>
+</div>
+</div>
+
+<div id="page-admin" class="page">
+<div class="card-white"><h3>🔐 Admin Panel</h3><p style="font-size:12px;color:#64748b">শুধু Admin দেখতে পাবে</p>
+<div id="adminStats" style="margin-top:10px"></div>
+<h4 style="margin-top:14px">Withdraw Requests</h4>
+<div id="adminWithdrawList" style="margin-top:8px"></div>
+</div>
+</div>
+
+<div id="page-profile" class="page"><div class="card-white" style="text-align:center"><div class="t-avatar" style="margin:0 auto">T</div><b id="uName2">@User</b><div id="uIdShow" style="font-size:12px;color:#64748b">ID: 0</div></div></div>
 
 <div class="bottom-nav">
 <div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br>Home</div>
 <div id="nav-earn" class="nav-item" onclick="switchTab('earn')">▶️<br>Earn</div>
-<div id="nav-tasks" class="nav-item" onclick="switchTab('tasks')">✅<br>Tasks</div>
 <div id="nav-refer" class="nav-item" onclick="switchTab('refer')">👥<br>Refer</div>
 <div id="nav-withdraw" class="nav-item" onclick="switchTab('withdraw')">💳<br>Withdraw</div>
 <div id="nav-profile" class="nav-item" onclick="switchTab('profile')">👤<br>Profile</div>
+<div id="nav-admin" class="nav-item" style="display:none" onclick="switchTab('admin')">🔐<br>Admin</div>
 </div>
 
-<script>
-let hourlyAds = JSON.parse(localStorage.getItem('hourlyAds')||'[]');
-let dailyAds = parseInt(localStorage.getItem('dailyAds')||'0');
-const WAIT = 15;
-const HOURLY_LIMIT = 5;
-const DAILY_LIMIT = 30;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-function switchTab(t){
+// ===== CONFIG - এখানে সব ঠিক করা আছে =====
+const CONFIG = {
+  BOT_LINK: "https://t.me/FreeIncomeBD_bot?start=ref_",
+  MIN_WITHDRAW: 50, // তোমার চাওয়া মতো 50 টাকা
+  MIN_REFER: 2,
+  DAILY_LIMIT: 30,
+  HOURLY_LIMIT: 5,
+  WAIT: 15,
+  // ==== ADMIN ID - তোমার ID টা এখানে যোগ করা আছে ====
+  ADMIN_IDS: ["1268910643", "123456789"], // 1268910643 হলো @TechBd24kz, এখানে তোমার আরেকটা ID যোগ করতে পারবে
+  // ==== AD PLACEHOLDER - এখন Dummy, পরে Real ID বসাবে ====
+  MONETAG_ZONE: "REPLACE_WITH_YOUR_MONETAG_ZONE", // <-- পরে এখানে তোমার Monetag Zone ID বসাবে
+  GIGAPUB_ID: "REPLACE_WITH_YOUR_GIGAPUB_ID" // <-- পরে GigaPub ID বসাবে
+};
+
+const firebaseConfig = { apiKey: "AIzaSyAod-YPFHMwqyXLyT4I7BPrfnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb" };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let userId=null, hourlyAds=[], dailyAds=0;
+window.switchTab=(t)=>{
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+t).classList.add('active');
-  document.getElementById('nav-'+t).classList.add('active');
+  document.getElementById('page-'+t)?.classList.add('active');
+  document.getElementById('nav-'+t)?.classList.add('active');
 }
 
-// ===== 100% SECURE AD SYSTEM - NO FREE POINTS =====
-async function showAd(btn){
+// ===== 100% SECURE AD - DUMMY CODE, কাজ করবে না যতক্ষণ Real ID না বসাও =====
+window.showAd=async(btn)=>{
   const now=Date.now();
   hourlyAds=hourlyAds.filter(v=>now-v<3600000);
-  if(hourlyAds.length>=HOURLY_LIMIT){alert("⏰ Hourly Limit 5 টা শেষ");return;}
-  if(dailyAds>=DAILY_LIMIT){alert("📅 Daily Limit 30 টা শেষ");return;}
+  if(hourlyAds.length>=CONFIG.HOURLY_LIMIT){alert("⏰ Hourly 5 টা শেষ");return;}
+  if(dailyAds>=CONFIG.DAILY_LIMIT){alert("📅 Daily 30 টা শেষ");return;}
 
-  btn.disabled=true;
-  const orig=btn.innerText;
-  btn.innerText="📡 Loading Ad...";
-  document.getElementById('adStatus').innerText="Ad Network চেক হচ্ছে...";
+  btn.disabled=true; const orig=btn.innerText;
+  btn.innerText="📡 Checking Ad Account...";
+  const statusEl=document.getElementById('adStatus');
 
-  let adDone=false;
-
-  // GigaPub Check
-  try{ if(typeof showGiga==='function'){ await showGiga(); adDone=true; } }catch(e){}
-  // Monetag Check
-  try{ if(typeof show_RewardedAd==='function'){ await show_RewardedAd(); adDone=true; } }catch(e){}
-
-  if(!adDone){
-    // DEMO MODE - এখন টেস্টের জন্য পয়েন্ট দিচ্ছে, কিন্তু লাইভে এই অংশ ব্লক হয়ে যাবে
-    // লাইভে লস থেকে বাঁচতে নিচের 2 লাইন আনকমেন্ট করবে না, বরং Ad ID বসাবে
-    document.getElementById('adStatus').innerText="⚠️ Demo Mode: Ad ID নেই তাই Demo পয়েন্ট দেওয়া হলো (Live এ Ad ID বসালে Real Ad লাগবে)";
-    // যদি Live এ 100% ব্লক করতে চাও তাহলে নিচের 3 লাইন চালু করে দাও:
-    // btn.innerText=orig; btn.disabled=false; alert("Ad ID বসানো নেই, তাই ব্লক"); return;
+  // Check Dummy ID - যদি Dummy থাকে তাহলে ব্লক, পয়েন্ট দিবে না - এটাই Loss-Proof
+  if(CONFIG.MONETAG_ZONE.includes("REPLACE") && CONFIG.GIGAPUB_ID.includes("REPLACE")){
+    statusEl.innerText="❌ Ad Account বসানো হয়নি (Dummy ID)। Real ID বসালে কাজ করবে।";
+    btn.innerText=orig; btn.disabled=false;
+    alert("⚠️ এখন Ad Account Dummy বসানো আছে তাই পয়েন্ট ব্লক করা হলো।\n\nতুমি Monetag/GigaPub থেকে ID নিয়ে নিচে বসালেই চালু হবে।\n\nলস হবে না।");
+    return;
   }
 
-  // 15s Verify
-  let sec=WAIT;
-  const timer=setInterval(()=>{
+  let adDone=false;
+  try{ if(typeof show_RewardedAd==='function'){ await show_RewardedAd(); adDone=true; } }catch(e){}
+  try{ if(typeof showGiga==='function'){ await showGiga(); adDone=true; } }catch(e){}
+
+  if(!adDone){
+    statusEl.innerText="❌ Ad Load হয়নি, আবার চেষ্টা করো";
+    btn.innerText=orig; btn.disabled=false; return;
+  }
+
+  let sec=CONFIG.WAIT;
+  const timer=setInterval(async()=>{
     btn.innerText=sec+"s Verifying...";
     sec--;
     if(sec<0){
       clearInterval(timer);
-      // Reward
-      let bal=parseFloat(localStorage.getItem('balance')||'115');
-      bal+=0.10;
-      localStorage.setItem('balance',bal);
-      hourlyAds.push(Date.now());
-      dailyAds++;
+      const ref=doc(db,"users",userId);
+      await updateDoc(ref,{balance:increment(0.10),totalAds:increment(1),totalEarned:increment(0.10)});
+      hourlyAds.push(Date.now()); dailyAds++;
       localStorage.setItem('hourlyAds',JSON.stringify(hourlyAds));
       localStorage.setItem('dailyAds',dailyAds);
-      document.getElementById('bal').innerText=bal.toFixed(2);
-      document.getElementById('miniBal').innerText=bal.toFixed(2);
-      document.getElementById('dailyUsed').innerText=dailyAds;
-      document.getElementById('dailyFill').style.width=(dailyAds/30*100)+"%";
-      btn.innerText="✅ +৳0.10 পেয়েছেন";
-      document.getElementById('adStatus').innerText="✅ Success! ব্যালেন্স যোগ হয়েছে";
-      setTimeout(()=>{btn.innerText=orig; btn.disabled=false;},2000);
+      localStorage.setItem('dailyDate',new Date().toDateString());
+      btn.innerText="✅ +৳0.10"; statusEl.innerText="✅ Success!";
+      setTimeout(()=>location.reload(),800);
     }
   },1000);
 }
 
-// Load saved balance instantly - No Loading
-(function(){
-  const savedBal=localStorage.getItem('balance')||'115.00';
-  document.getElementById('bal').innerText=parseFloat(savedBal).toFixed(2);
-  document.getElementById('miniBal').innerText=parseFloat(savedBal).toFixed(2);
+window.withdraw=async()=>{
+  const num=document.getElementById('walletNumber').value.trim();
+  const amt=parseFloat(document.getElementById('amount').value);
+  if(!num || !amt){alert("নাম্বার ও টাকা দিন");return;}
+  if(amt < CONFIG.MIN_WITHDRAW){alert("Min Withdraw ৳50");return;}
+  const ref=doc(db,"users",userId); const snap=await getDoc(ref); const data=snap.data();
+  if((data.referrals||0) < CONFIG.MIN_REFER){alert("Withdraw করতে 2 জন Refer লাগবে");return;}
+  if((data.balance||0) < amt){alert("ব্যালেন্স কম");return;}
+  await addDoc(collection(db,"withdraws"),{userId,number:num,amount:amt,status:"pending",time:Date.now(),name:data.name||"User"});
+  await updateDoc(ref,{balance:increment(-amt)});
+  alert("✅ Withdraw Request পাঠানো হয়েছে!"); location.reload();
+}
+
+async function initUser(){
+  const ref=doc(db,"users",userId); let snap=await getDoc(ref);
+  if(!snap.exists()){
+    await setDoc(ref,{name:document.getElementById('uName').innerText,balance:0,referrals:0,totalAds:0,totalEarned:0,joined:Date.now()});
+    snap=await getDoc(ref);
+  }
+  const data=snap.data();
+  const bal=(data.balance||0).toFixed(2);
+  document.getElementById('bal').innerText=bal;
+  document.getElementById('bal2').innerText=bal;
+  document.getElementById('miniBal').innerText=bal;
+  document.getElementById('totalEarn').innerText=(data.totalEarned||0).toFixed(2);
+  document.getElementById('taskDone').innerText=data.totalAds||0;
+  document.getElementById('refCount').innerText=data.referrals||0;
+
+  // Admin Check
+  if(CONFIG.ADMIN_IDS.includes(userId)){
+    document.getElementById('adminBadge').innerHTML='<span class="badge-admin">ADMIN</span>';
+    document.getElementById('nav-admin').style.display='block';
+    loadAdmin();
+  }
+}
+
+async function loadAdmin(){
+  const wSnap=await getDocs(collection(db,"withdraws"));
+  let html="";
+  wSnap.forEach(d=>{
+    const w=d.data();
+    html+=`<div style="border:1px solid #eee;padding:8px;border-radius:10px;margin-top:6px;font-size:12px"><b>${w.name}</b> - ৳${w.amount} - ${w.number} - ${w.status}</div>`;
+  });
+  document.getElementById('adminWithdrawList').innerHTML=html||"কোনো Request নাই";
+  document.getElementById('adminStats').innerHTML=`Total Withdraw: ${wSnap.size}`;
+}
+
+function initTelegram(){
+  let u=null;
+  try{ if(window.Telegram?.WebApp){ Telegram.WebApp.ready(); Telegram.WebApp.expand(); u=Telegram.WebApp.initDataUnsafe?.user; } }catch(e){}
+  if(u){ userId=String(u.id); document.getElementById('uName').innerText=u.first_name||"User"; document.getElementById('uName2').innerText=u.first_name||"User"; document.getElementById('uIdShow').innerText="ID: "+userId; }
+  else{ userId="1268910643"; document.getElementById('uName').innerText="@TechBd24kz"; } // তোমার ID দিয়ে টেস্ট
+  document.getElementById('inviteLinkBox').innerText=CONFIG.BOT_LINK+userId;
+  const savedDate=localStorage.getItem('dailyDate');
+  if(savedDate!==new Date().toDateString()){ dailyAds=0; } else { dailyAds=parseInt(localStorage.getItem('dailyAds')||'0'); }
+  try{ hourlyAds=JSON.parse(localStorage.getItem('hourlyAds')||'[]'); }catch(e){ hourlyAds=[]; }
   document.getElementById('dailyUsed').innerText=dailyAds;
+  document.getElementById('hourlyUsed').innerText=hourlyAds.length;
   document.getElementById('dailyFill').style.width=(dailyAds/30*100)+"%";
-})();
+  initUser();
+}
+initTelegram();
 </script>
 
-<!-- এখানে তোমার Real Ad ID বসাবে লস থেকে বাঁচতে -->
-<!-- <script src='//libtl.com/sdk.js' data-zone='YOUR_MONETAG_ZONE' data-sdk='show_RewardedAd'></script> -->
-<!-- <script src="https://ad.gigapub.tech/script/YOUR_GIGAPUB_ID.js"></script> -->
+<!-- ===== AD ACCOUNT PLACE - এখানে পরে Real ID বসাবে, এখন Dummy তাই কাজ করবে না ===== -->
+<!-- Monetag Real ID পেলে নিচের লাইনটা আনকমেন্ট করে YOUR_ZONE_ID চেঞ্জ করবে -->
+<!-- <script src='//libtl.com/sdk.js' data-zone='REPLACE_WITH_YOUR_MONETAG_ZONE' data-sdk='show_RewardedAd'></script> -->
+
+<!-- GigaPub Real ID পেলে নিচের লাইনটা আনকমেন্ট করে YOUR_ID চেঞ্জ করবে -->
+<!-- <script src="https://ad.gigapub.tech/script/REPLACE_WITH_YOUR_GIGAPUB_ID.js"></script> -->
 
 </body>
 </html>
