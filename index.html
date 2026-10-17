@@ -106,8 +106,9 @@ body{background:#eef2f6;padding-bottom:110px}
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"
 
+const db = getFirestore(app);
 const CONFIG = {
   BOT_LINK: "https://t.me/FreeIncomeBD_bot?start=ref_",
   MIN_WITHDRAW: 50,
@@ -115,14 +116,11 @@ const CONFIG = {
   DAILY_LIMIT: 30,
   HOURLY_LIMIT: 5,
   WAIT: 15,
-  ADMIN_IDS: ["5468979650"], // তোমার ID
+  ADMIN_IDS: ["5468979650"],
+  BOT_TOKEN: "8684890686:AAEM8kQ_LLNXh_ofg3enFguKnPbK1FJgydA"
   MONETAG_ZONE: "REPLACE_WITH_YOUR_MONETAG_ZONE",
   GIGAPUB_ID: "REPLACE_WITH_YOUR_GIGAPUB_ID"
 };
-
-const firebaseConfig = { apiKey: "AIzaSyAod-YPFHMwqyXLyT4I7BPrfnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb" };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 let userId=null, hourlyAds=[], dailyAds=0;
 window.switchTab=(t)=>{ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(p=>p.classList.remove('active')); document.getElementById('page-'+t)?.classList.add('active'); document.getElementById('nav-'+t)?.classList.add('active'); }
 
