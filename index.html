@@ -33,32 +33,50 @@ window.withdraw=async()=>{
   await addDoc(collection(db,"withdraws"),{userId,number:num,amount:amt,status:"pending",time:Date.now(),name:data.name||"User"});
   await updateDoc(ref,{balance:increment(-amt)}); alert("Request Sent"); location.reload();
 }
-window.adminTab=(tab)=>{ ['users','top','balance','withdraw','broadcast'].forEach(t=>{ const e=document.getElementById('adminTab-'+t); if(e) e.style.display='none'; }); document.getElementById('adminTab-'+tab).style.display='block'; }
+window.adminTab=(tab)=>{ ['users','top','balance','withdraw','broadcast'].forEach(t=>{ const e=document.getElementById('adminTab-'+t); if(e) e.style.display = (t===tab?'block':'none'); }); };
+
 window.sendBroadcast=async()=>{
   const txt=document.getElementById('broadcastText').value.trim();
   if(!txt){alert("মেসেজ লিখো");return;}
   const btn=document.getElementById('bBtn'); const status=document.getElementById('bStatus');
-  btn.disabled=true; btn.innerText="পাঠানো হচ্ছে..."; status.innerText="1. App Notice Save হচ্ছে...";
+  btn.disabled=true; btn.innerText="পাঠানো হচ্ছে...";
   try{ await setDoc(doc(db,"config","notice"),{text:txt,time:Date.now()}); }catch(e){}
-  status.innerText="2. Telegram এ সবার কাছে পাঠানো হচ্ছে...";
-  try{
-    const uSnap=await getDocs(collection(db,"users"));
-    let count=0;
-    for(const d of uSnap.docs){
-      const uid=d.id;
-      try{
-        await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`,{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({chat_id:uid,text:`📢 Free Income BD থেকে নোটিশ:\n\n${txt}`})
-        });
-        count++; status.innerText=`পাঠানো হচ্ছে ${count}/${uSnap.size}...`;
-        await new Promise(r=>setTimeout(r,80));
-      }catch(e){}
-    }
-    status.innerText=`✅ ${count} জনের কাছে গেছে!`; alert(`Done! ${count} জন পেয়েছে`);
-  }catch(e){ status.innerText="Error: "+e.message; }
-  btn.disabled=false; btn.innerText="📢 সবাইকে পাঠাও"; document.getElementById('broadcastText').value="";
+  const uSnap=await getDocs(collection(db,"users"));
+  let savedMsgs=[]; let count=0;
+  for(const d of uSnap.docs){
+    const uid=d.id;
+    try{
+      const res=await fetch(`https://api.telegram.org/bot{CONFIG.BOT_TOKEN}/sendMessage`,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({chat_id:uid,text:`📢 Free Income BD থেকে নোটিশ:\n\n${txt}`,parse_mode:"HTML"})
+      });
+      const data=await res.json();
+      if(data.ok){ savedMsgs.push({chat_id:uid,message_id:data.result.message_id}); count++; }
+      status.innerText=`পাঠানো হচ্ছে ${count}/${uSnap.size}...`;
+      await new Promise(r=>setTimeout(r,80));
+    }catch(e){}
+  }
+  await setDoc(doc(db,"config","lastBroadcast"),{messages:savedMsgs,time:Date.now()});
+  status.innerText=`✅ ${count} জনের কাছে গেছে!`; alert(`Done! ${count} জন পেয়েছে`);
+  btn.disabled=false; btn.innerText="📢 সবাইকে পাঠাও";
+}
+
+window.deleteLastBroadcast=async()=>{
+  if(!confirm("শেষ মেসেজটা সবার থেকে ডিলিট করবে?")) return;
+  const dBtn=document.getElementById('dBtn'); dBtn.disabled=true; dBtn.innerText="ডিলিট হচ্ছে...";
+  const lastDoc=await getDoc(doc(db,"config","lastBroadcast"));
+  if(!lastDoc.exists()){alert("কোনো মেসেজ পাইনি"); dBtn.disabled=false; return;}
+  const msgs=lastDoc.data().messages||[]; let del=0;
+  for(const m of msgs){
+    try{
+      await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/deleteMessage`,{
+        method:"POST", headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({chat_id:m.chat_id,message_id:m.message_id})
+      }); del++;
+    }catch(e){}
+  }
+  alert(`${del} জনের থেকে ডিলিট হয়েছে!`); dBtn.disabled=false; dBtn.innerText="🗑️ সবার থেকে ডিলিট করো";
 }
 async function loadAdmin(){
   const uSnap=await getDocs(collection(db,"users")); let totalBal=0,totalRef=0,users=[];
