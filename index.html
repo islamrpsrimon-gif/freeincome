@@ -3,16 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Income BD - 10 Points</title>
+<title>Free Income BD</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#eef2f7;font-family:sans-serif;padding-bottom:90px}
-.card{background:#fff;border-radius:16px;padding:14px;margin:10px;box-shadow:0 2px 8px #0001}
-.btn{border:none;border-radius:999px;padding:12px;width:100%;font-weight:700}
-.green{background:#0e9f6e;color:#fff}
-.top{background:#000;color:#fff;padding:12px;text-align:center;font-weight:700}
-.nav{position:fixed;bottom:8px;left:8px;right:8px;background:#fff;border-radius:999px;display:flex;justify-content:space-around;padding:6px;box-shadow:0 4px 15px #0002}
-.nav button{border:none;background:0;padding:6px 10px;border-radius:999px;font-size:12px}
-.on{background:#0e9f6e!important;color:#fff!important}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f0f3f7;padding-bottom:110px}
+.topbar{background:#000;color:#fff;padding:16px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:18px}
+.card{background:#fff;border-radius:22px;padding:16px;margin:10px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.avatar{width:58px;height:58px;background:#10906a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:22px}
+.stat{border-radius:14px;padding:14px 6px;text-align:center}
+.stat b{font-size:20px;display:block}
+.stat span{font-size:13px;color:#333}
+.tab{border:1.5px solid #e5e7eb;background:#fff;padding:8px 18px;border-radius:999px;font-size:13px;display:flex;flex-direction:column;align-items:center;line-height:14px}
+.input{width:100%;border:2.5px solid #f59e0b;border-radius:14px;padding:14px;font-size:15px;outline:none;min-height:80px}
+.btn{border:none;border-radius:14px;padding:16px;width:100%;font-weight:800;font-size:16px;background:#0e9f6e;color:#fff}
+.nav{position:fixed;bottom:10px;left:10px;right:10px;background:#fff;border-radius:999px;display:flex;justify-content:space-around;padding:8px 4px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.nav button{border:none;background:none;padding:8px 10px;border-radius:999px;font-size:11px;color:#6b7280;line-height:12px}
+.active{background:#0e9f6e!important;color:#fff!important}
 .page{display:none}.show{display:block}
 .gate{position:fixed;inset:0;background:#0f172af2;z-index:99;display:flex;align-items:center;justify-content:center;padding:20px}
 </style>
@@ -20,99 +26,83 @@
 <body>
 
 <div id="gate" class="gate">
-<div class="card" style="max-width:300px;width:100%;text-align:center">
-<h2>🔐 Join Channel</h2>
-<p style="font-size:13px;color:#666;margin:8px 0">10 Points পেতে জয়েন করুন</p>
-<a href="https://t.me/FreeIncomeBD_2026" target="_blank" style="display:block;background:#229ED9;color:#fff;padding:12px;border-radius:999px;text-decoration:none;font-weight:700;margin:12px 0">📢 @FreeIncomeBD_2026</a>
-<button onclick="join()" class="btn green">✅ জয়েন করেছি</button>
+<div class="card" style="max-width:320px;width:100%;text-align:center">
+<div style="font-size:36px">🔐</div><h3>Free Income BD</h3>
+<p style="font-size:12px;color:#666;margin-top:6px">চ্যানেলে জয়েন করলেই 10 Points</p>
+<a href="https://t.me/FreeIncomeBD_2026" target="_blank" style="display:block;background:#229ED9;color:#fff;padding:12px;border-radius:999px;text-decoration:none;font-weight:700;margin:14px 0">📢 @FreeIncomeBD_2026 Join</a>
+<button onclick="localStorage.setItem('joined','yes');document.getElementById('gate').style.display='none'" class="btn">✅ জয়েন করেছি</button>
 </div>
 </div>
 
-<div class="top">FREE INCOME | OWNER 👑 ID:5468979650</div>
+<div class="topbar"><span style="display:flex;align-items:center;gap:10px">✕ &nbsp; Free Income BD</span><span>⌄ &nbsp; ⋮</span></div>
 
-<div class="card" style="display:flex;justify-content:space-between;align-items:center">
-<div><b>OWNER</b><div style="font-size:11px;color:#888">5468979650 Only</div></div>
-<b style="color:#0e9f6e"><span id="bt">10</span> Points</b>
+<!-- TOP PROFILE CARD LIKE IMAGE -->
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px">
+<div style="display:flex;gap:12px;align-items:center">
+<div class="avatar">T</div>
+<div><div style="font-weight:800;font-size:15px">FREE INCOME | OWNER 👑</div><div style="display:flex;align-items:center;gap:6px;margin-top:2px"><span>💼</span><span style="color:#0e9f6e;font-weight:800;font-size:18px">৳ <span id="topBal">10</span></span></div></div>
 </div>
-
-<div id="Home" class="page show">
-<div class="card green" style="text-align:center;padding:24px"><div>AVAILABLE</div><div style="font-size:36px;font-weight:800"><span id="mb">10</span> Points</div></div>
-<div class="card"><button onclick="pg('Earn')" class="btn green">🚀 Earn 10 Points</button></div>
-</div>
-
-<div id="Earn" class="page">
-<div class="card"><b>Earn - 10 Points per Ad</b>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-<div style="border:1px solid #eee;border-radius:12px;padding:14px;text-align:center">🎬<br><b>+10</b><br><button onclick="earn(10)" class="btn green" style="margin-top:8px">Watch</button></div>
-<div style="border:1px solid #eee;border-radius:12px;padding:14px;text-align:center">🎁<br><b>+10</b><br><button onclick="earn(10)" class="btn green" style="margin-top:8px;background:#2196f3">Bonus</button></div>
-</div>
-</div>
+<div style="background:#e6f4ee;color:#0e9f6e;padding:8px 18px;border-radius:999px;font-weight:800">BD</div>
 </div>
 
-<div id="Admin" class="page">
-<div class="card">
-<b>🔐 Admin Panel - 5468979650 Only</b>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-top:10px">
-<div style="background:#e8f5e9;border-radius:10px;padding:10px;text-align:center"><b id="aU">1</b><br><span style="font-size:10px">Users</span></div>
-<div style="background:#fff8e1;border-radius:10px;padding:10px;text-align:center"><b>0</b><br><span style="font-size:10px">Pending</span></div>
-<div style="background:#e3f2fd;border-radius:10px;padding:10px;text-align:center"><b id="aT">10</b><br><span style="font-size:10px">Total</span></div>
-<div style="background:#fce4ec;border-radius:10px;padding:10px;text-align:center"><b>0</b><br><span style="font-size:10px">Refs</span></div>
+<!-- ADMIN PANEL - EXACT LIKE YOUR SCREENSHOT -->
+<div id="Admin" class="page show">
+<div class="card" style="padding:18px">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:22px">🔐</span><b style="font-size:20px">Board Admin - Secret</b></div>
+<div style="color:#ef4444;font-size:13px;margin-top:2px">ID: 5468979650 Only</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:16px">
+<div class="stat" style="background:#eefaf3"><b>14</b><span>Users</span></div>
+<div class="stat" style="background:#fef9c3"><b>0</b><span>Pending</span></div>
+<div class="stat" style="background:#dbeafe"><b><span id="totalBal">130</span></b><span>Total ৳</span></div>
+<div class="stat" style="background:#fce7f3"><b>3</b><span>Refs</span></div>
 </div>
-<textarea id="msg" placeholder="Broadcast message..." style="width:100%;border:2px solid #ffc107;border-radius:10px;padding:10px;margin-top:12px;height:60px"></textarea>
-<button onclick="send()" class="btn green" style="margin-top:8px">📢 সবার কাছে পাঠাও</button>
-<div id="list" style="margin-top:12px"></div>
+
+<div style="display:flex;gap:8px;margin-top:16px;overflow:auto">
+<div style="min-width:36px;height:44px;background:#0e9f6e;border-radius:999px 0 0 999px"></div>
+<button class="tab">🏆<span>Top</span></button>
+<button class="tab">💰<span>Balance</span></button>
+<button class="tab">💳<span>Withdraw</span></button>
+<button class="tab" style="border-color:#0e9f6e">📢<span>Broadcast</span></button>
+</div>
+
+<textarea id="msg" class="input" placeholder="সবাইকে মেসেজ"></textarea>
+<button onclick="send()" class="btn" style="margin-top:14px;border-radius:12px">পাঠাও</button>
+<div id="list" style="margin-top:14px"></div>
 </div>
 </div>
 
-<div id="Profile" class="page">
-<div class="card" style="text-align:center">
-<div style="width:60px;height:60px;background:#0e9f6e;color:#fff;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:24px">T</div>
-<h3 style="margin-top:8px">FREE INCOME | OWNER 👑</h3>
-<p style="font-size:12px;color:#666">https://t.me/FreeIncomeBD_2026</p>
-<p style="margin-top:8px;font-weight:700;color:#0e9f6e"><span id="mb2">10</span> Points</p>
+<div id="Home" class="page">
+<div class="card" style="text-align:center;padding:24px"><div style="color:#999;font-size:11px;letter-spacing:1px">AVAILABLE BALANCE</div><div style="font-size:36px;font-weight:900;margin-top:6px">৳ <span id="mb">10</span></div></div>
 </div>
-</div>
+
+<div id="Earn" class="page"><div class="card" style="text-align:center"><b>Earn 10 Points per Ad</b><br><button onclick="earn(10)" class="btn" style="margin-top:12px">+10 Points Earn</button></div></div>
+<div id="Refer" class="page"><div class="card" style="text-align:center"><b>Refer Link</b><div style="background:#f3faf6;padding:10px;border-radius:999px;font-size:11px;margin-top:10px;word-break:break-all">https://t.me/FreeIncomeBD_bot?start=ref_5468979650</div></div></div>
+<div id="Withdraw" class="page"><div class="card"><b>Withdraw - Min 100 Points</b><input id="wal" placeholder="Number" style="width:100%;margin-top:10px;padding:12px;border-radius:999px;border:none;background:#f1f5f9"><input id="amt" placeholder="Points" type="number" style="width:100%;margin-top:8px;padding:12px;border-radius:999px;border:none;background:#f1f5f9"><button onclick="wd()" class="btn" style="margin-top:10px">Withdraw</button></div></div>
+<div id="Profile" class="page"><div class="card" style="text-align:center"><div class="avatar" style="margin:0 auto">T</div><b style="display:block;margin-top:8px">FREE INCOME | OWNER 👑</b><div style="font-size:12px;color:#666">ID: 5468979650 | https://t.me/FreeIncomeBD_2026</div><div style="margin-top:10px;color:#0e9f6e;font-weight:800"><span id="mb2">10</span> Points</div></div></div>
 
 <div class="nav">
-<button id="bHome" class="on" onclick="pg('Home')">🏠<br>Home</button>
+<button id="bHome" onclick="pg('Home')">🏠<br>Home</button>
 <button id="bEarn" onclick="pg('Earn')">▶️<br>Earn</button>
-<button id="bAdmin" onclick="pg('Admin')">🔐<br>Admin</button>
+<button id="bRefer" onclick="pg('Refer')">👥<br>Refer</button>
+<button id="bWithdraw" onclick="pg('Withdraw')">💳<br>Withdraw</button>
 <button id="bProfile" onclick="pg('Profile')">👤<br>Profile</button>
+<button id="bAdmin" class="active" onclick="pg('Admin')">🔐<br>Admin</button>
 </div>
 
 <script>
-let bal = parseInt(localStorage.getItem('bal')||'10');
-let bcs = JSON.parse(localStorage.getItem('bcs')||'[]');
-function pg(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
-document.getElementById(id).classList.add('show');
-document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));
-document.getElementById('b'+id).classList.add('on');
-}
-function upd(){
-document.getElementById('mb').innerText=bal;
-document.getElementById('mb2').innerText=bal;
-document.getElementById('bt').innerText=bal;
-document.getElementById('aT').innerText=bal;
-localStorage.setItem('bal',bal);
-}
+let bal=parseInt(localStorage.getItem('bal')||'10');
+let bcs=JSON.parse(localStorage.getItem('bcs')||'[]');
+let wds=JSON.parse(localStorage.getItem('wds')||'[]');
+function pg(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById(id).classList.add('show');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));document.getElementById('b'+id).classList.add('active');}
+function upd(){document.getElementById('mb').innerText=bal;document.getElementById('mb2').innerText=bal;document.getElementById('topBal').innerText=bal;document.getElementById('totalBal').innerText=bal*13;localStorage.setItem('bal',bal);}
 function earn(v){bal+=v;upd();alert('✅ +'+v+' Points');}
-function join(){localStorage.setItem('joined','yes');document.getElementById('gate').style.display='none';}
-function send(){
-let m=document.getElementById('msg').value.trim();
-if(!m)return;
-bcs.unshift({id:Date.now(),msg:m});
-localStorage.setItem('bcs',JSON.stringify(bcs));
-document.getElementById('msg').value='';
-render();
-}
-function render(){
-let l=document.getElementById('list');l.innerHTML='';
-bcs.forEach(b=>{l.innerHTML+='<div style="border:1px solid #eee;padding:8px;border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between"><span>'+b.msg+'</span><button onclick="del('+b.id+')" style="background:#fee2e2;color:red;border:none;padding:4px 8px;border-radius:999px">X</button></div>'});
-}
+function wd(){let w=document.getElementById('wal').value;let a=parseInt(document.getElementById('amt').value);if(!w||!a)return alert('সব দিন');if(a<100)return alert('Min 100');if(a>bal)return alert('Balance কম');wds.push({w,a});localStorage.setItem('wds',JSON.stringify(wds));bal-=a;upd();alert('Withdraw Done');}
+function send(){let m=document.getElementById('msg').value.trim();if(!m)return;bcs.unshift({id:Date.now(),msg:m});localStorage.setItem('bcs',JSON.stringify(bcs));document.getElementById('msg').value='';render();}
+function render(){let l=document.getElementById('list');l.innerHTML='';bcs.forEach(b=>{l.innerHTML+='<div style="border:1px solid #eee;padding:10px;border-radius:10px;margin-bottom:6px;display:flex;justify-content:space-between"><span>'+b.msg+'</span><button onclick="del('+b.id+')" style="background:#fee2e2;color:red;border:none;padding:4px 10px;border-radius:999px">Delete</button></div>';});}
 function del(id){bcs=bcs.filter(x=>x.id!=id);localStorage.setItem('bcs',JSON.stringify(bcs));render();}
-if(localStorage.getItem('joined')=='yes'){document.getElementById('gate').style.display='none';}
-upd();render();
+if(localStorage.getItem('joined')=='yes')document.getElementById('gate').style.display='none';
+upd();render();pg('Admin');
 </script>
 </body>
 </html>
