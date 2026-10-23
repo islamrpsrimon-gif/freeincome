@@ -1,70 +1,68 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Free Income BD - Final Fixed</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Income BD</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<style>:root{--green:#0e9f6e}*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}body{background:#eef2f6;padding-bottom:110px}.top-user{background:#fff;border-radius:24px;padding:14px 16px;margin:12px;display:flex;justify-content:space-between;align-items:center}.t-avatar{width:48px;height:48px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}.header-green{background:linear-gradient(180deg,#0e9f6e,#0a7a53);border-radius:28px;margin:12px;padding:18px 14px 30px 14px;color:#fff}.active-pill{background:rgba(255,255,255,0.25);padding:5px 14px;border-radius:20px;font-size:12px}.balance-white{background:#fff;border-radius:26px;padding:22px;text-align:center;color:#0f172a;margin-top:12px}.balance-amount{font-size:40px;font-weight:800}.stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px}.stat-card{background:#fff;border-radius:20px;padding:14px;text-align:center}.btn-green{background:linear-gradient(135deg,#0e9f6e,#0a7a53);color:#fff;border:none;width:calc(100% - 24px);margin:10px 12px;padding:18px;border-radius:20px;font-weight:700;font-size:16px}.bottom-nav{position:fixed;bottom:12px;left:12px;right:12px;background:#fff;border-radius:28px;display:flex;justify-content:space-around;padding:8px;box-shadow:0 10px 40px rgba(0,0,0,0.15);z-index:100}.nav-item{color:#94a3b8;font-size:11px;padding:8px 6px;border-radius:20px;text-align:center;cursor:pointer}.nav-item.active{background:var(--green);color:#fff}.page{display:none}.page.active{display:block}.card-white{background:#fff;border-radius:20px;padding:16px;margin:10px 12px}</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<style>.card-shadow{box-shadow:0 10px 30px rgba(16,185,129,.08)}.green-gradient{background:linear-gradient(135deg,#10b981,#059669,#047857)}</style>
 </head>
-<body>
-<div id="joinPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;">
-<h2 style="color:white;">⚠️ প্রথমে চ্যানেলে জয়েন করুন</h2>
-<p style="color:#ccc;margin:10px 0;">কাজ করার জন্য আমাদের চ্যানেলে জয়েন করা বাধ্যতামূলক</p>
-<a id="joinLinkBtn" href="" target="_blank" onclick="localStorage.setItem('clickedJoin','yes')" style="background:#09f;color:white;padding:12px 25px;border-radius:10px;text-decoration:none;margin:10px;display:inline-block;">Join Channel</a>
-<button onclick="checkJoin()" style="background:#0e9f6e;color:white;padding:12px 25px;border-radius:10px;border:0;margin:10px;">✅ Joined - Check Now</button>
+<body class="bg-[#eef2f7] pb-[90px]">
+<div class="mx-3 mt-3 bg-white rounded-[20px] p-3 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-12 h-12 bg-[#0e9f6e] rounded-full flex items-center justify-center text-white font-bold">T</div><div><div class="font-bold">FREE INCOME | OWNER 👑</div><div class="text-[11px]">ID: 5468979650 Only - ৳ <span id="balanceTop">0.10</span></div></div></div><div class="bg-[#e8f8f0] text-[#0e9f6e] px-3 py-1 rounded-full">BD</div></div>
+
+<div id="page-Home" class="page">
+<div class="mx-3 mt-3 green-gradient rounded-[28px] p-4 pt-5 pb-[90px] relative"><div class="flex justify-between text-white text-sm"><span>☀️ Good to see you!</span><span class="bg-white/20 px-3 py-1 rounded-full text-xs">● ACTIVE</span></div>
+<div class="bg-white rounded-[28px] p-6 mt-3 text-center absolute left-3 right-3 top-[50px]"><div class="text-[12px] text-gray-500">AVAILABLE BALANCE</div><div class="text-[44px] font-extrabold">৳ <span id="mainBalance">0.10</span></div><div class="bg-[#e8f8f0] text-[#0e9f6e] text-xs px-4 py-1.5 rounded-full inline-block">↑ +100% GigaPub Live Engine</div></div></div>
+<div class="mt-[95px] mx-3 grid grid-cols-3 gap-2"><div class="bg-white rounded-[20px] p-3 text-center">🏆<div id="totalEarned" class="font-bold">0.10</div><div class="text-[10px]">TOTAL EARNED</div></div><div class="bg-white rounded-[20px] p-3 text-center">▶️<div id="tasksDone" class="font-bold">0/30</div><div class="text-[10px]">TASKS DONE</div></div><div class="bg-white rounded-[20px] p-3 text-center">👥<div id="referralCount" class="font-bold">0</div><div class="text-[10px]">REFERRALS</div></div></div>
 </div>
-<div class="top-user"><div style="display:flex;align-items:center;gap:10px"><div class="t-avatar">T</div><div><b>FREE INCOME | OWNER 👑</b><div style="color:#0e9f6e;font-weight:700">💼 ৳ <span id="miniBal">0.00</span></div></div></div><div style="background:#e8f5ef;color:#0e9f6e;padding:6px 14px;border-radius:20px;font-weight:700">BD</div></div>
-<div id="page-home" class="page active"><div class="header-green"><div style="display:flex;justify-content:space-between"><span>☀️ Good to see you!</span><span class="active-pill">● ACTIVE</span></div><div class="balance-white"><div style="font-size:11px;color:#64748b;letter-spacing:1px">AVAILABLE BALANCE</div><div class="balance-amount">৳ <span id="bal">0.00</span></div><div>+100% GigaPub Live Engine</div></div></div><div class="stats-row"><div class="stat-card">🏆<br><b id="totalEarn">0.00</b><br><small>TOTAL EARNED</small></div><div class="stat-card">▶️<br><b><span id="taskDone">0</span>/30</b><br><small>TASKS DONE</small></div><div class="stat-card">👥<br><b id="refCount">0</b><br><small>REFERRALS</small></div></div><button class="btn-green" onclick="switchTab('earn')">🚀 Start Earning Now →</button></div>
-<div id="page-earn" class="page"><div class="card-white" style="text-align:center"><h3>🎬 ভিডিও অ্যাড - ৳0.10</h3><button onclick="showAd(this)" style="width:100%;margin-top:12px;padding:14px;border-radius:14px;border:none;background:#0e9f6e;color:#fff;font-weight:700">অ্যাড দেখুন</button><div id="adStatus" style="margin-top:10px;font-size:12px;color:#64748b"></div></div></div>
-<div id="page-refer" class="page"><div class="card-white" style="text-align:center"><h3>Invite - ৳5 Bonus</h3><div id="inviteLinkBox" style="background:#f8fafc;border:1px dashed #ccc;padding:10px;border-radius:10px;font-size:11px;margin:10px 0;word-break:break-all"></div></div></div>
-<div id="page-withdraw" class="page"><div class="card-white" style="text-align:center"><div class="balance-amount">৳ <span id="bal2">0.00</span></div><div style="font-size:12px;color:#64748b">Min ৳50 | 2 Refer লাগবে</div><select id="walletType" onchange="updateWalletPlaceholder()" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-top:12px;background:#fff"><option value="bkash">💗 Bkash</option><option value="nagad">🧡 Nagad</option></select><input id="walletNumber" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-top:8px" placeholder="Bkash Number দিন"><input id="amount" type="number" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e2e8f0;margin-top:8px" placeholder="Amount Min 50"><button onclick="withdraw()" class="btn-green" style="width:100%">Withdraw</button></div></div>
-<div id="page-profile" class="page"><div class="card-white" style="text-align:center"><div class="t-avatar" style="margin:0 auto">T</div><b>FREE INCOME | OWNER 👑</b><div style="font-size:12px;color:#64748b">ID: 5468979650</div></div></div>
-<div id="page-admin" class="page"><div class="card-white"><h3>🔐 Board Admin</h3><div style="display:flex;gap:6px;margin-top:14px;overflow:auto"><button onclick="adminTab('users')" style="padding:8px 12px;border-radius:20px;border:none;background:#0e9f6e;color:#fff;font-size:12px">👥 Users</button><button onclick="adminTab('withdraw')" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#fff;font-size:12px">💳 Withdraw</button><button onclick="adminTab('broadcast')" style="padding:8px 12px;border-radius:20px;border:1px solid #ddd;background:#fff;font-size:12px">📢 Broadcast</button></div><div id="adminTab-users" style="margin-top:12px"></div><div id="adminTab-withdraw" style="margin-top:12px;display:none"></div><div id="adminTab-broadcast" style="margin-top:12px;display:none"><textarea id="broadcastText" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd" rows="4" placeholder="মেসেজ লিখো..."></textarea><button onclick="sendBroadcast()" id="bBtn" style="width:100%;margin-top:8px;padding:12px;border-radius:10px;border:none;background:#0e9f6e;color:#fff;font-weight:700">📢 সবাইকে পাঠাও</button><button onclick="deleteLastBroadcast()" id="dBtn" style="width:100%;margin-top:8px;padding:12px;border-radius:10px;border:none;background:#ff3b30;color:#fff;font-weight:700">🗑️ সবার থেকে ডিলিট করো</button><div id="bStatus" style="font-size:12px;margin-top:8px;text-align:center"></div></div></div></div>
-<div class="bottom-nav"><div id="nav-home" class="nav-item active" onclick="switchTab('home')">🏠<br>Home</div><div id="nav-earn" class="nav-item" onclick="switchTab('earn')">▶️<br>Earn</div><div id="nav-refer" class="nav-item" onclick="switchTab('refer')">👥<br>Refer</div><div id="nav-withdraw" class="nav-item" onclick="switchTab('withdraw')">💳<br>Withdraw</div><div id="nav-profile" class="nav-item" onclick="switchTab('profile')">👤<br>Profile</div><div id="nav-admin" class="nav-item" style="display:none" onclick="switchTab('admin')">🔐<br>Admin</div></div>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, getDocs, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-const firebaseConfig = { apiKey: "AIzaSyAod-YPFHMwqyXLyT4I7BPrfnZe3vb10", authDomain: "freeincome-5a9bb.firebaseapp.com", projectId: "freeincome-5a9bb" };
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const CONFIG = { BOT_LINK: "https://t.me/FreeIncomeBD_bot?start=ref_", MIN_WITHDRAW: 50, MIN_REFER: 2, ADMIN_IDS: ["5468979650"], BOT_TOKEN: "YOUR_BOT_TOKEN_HERE", CHANNEL_USERNAME: "@FreeIncomeBD_2026", CHANNEL_LINK: "https://t.me/FreeIncomeBD_2026" };
-let userId="5468979650";
-window.switchTab=(t)=>{ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(p=>p.classList.remove('active')); document.getElementById('page-'+t)?.classList.add('active'); document.getElementById('nav-'+t)?.classList.add('active'); }
-window.updateWalletPlaceholder=()=>{ const type=document.getElementById('walletType').value; const input=document.getElementById('walletNumber'); if(type==='bkash'){input.placeholder='Bkash Number দিন (01XXXXXXXXX)';} else {input.placeholder='Nagad Number দিন (01XXXXXXXXX)';} }
-window.showAd=async(btn)=>{ alert("Ad System - Real ID বসালে কাজ করবে"); }
-window.checkJoin=async function(){
-  if(localStorage.getItem('joinedChannel')=='yes'){
-    document.getElementById('joinPopup').style.display='none';
-    return true;
-  }
-  if(localStorage.getItem('clickedJoin')!='yes'){
-    alert('⚠️ প্রথমে Join Channel বাটনে ক্লিক করে চ্যানেলে জয়েন করে আসুন!');
-    return false;
-  }
-  document.getElementById('joinPopup').style.display='none';
-  localStorage.setItem('joinedChannel','yes');
-  return true;
-}
-window.withdraw=async()=>{ const type=document.getElementById('walletType').value; const num=document.getElementById('walletNumber').value.trim(); const amt=parseFloat(document.getElementById('amount').value); if(!num||!amt){alert("Number & Amount দিন");return;} if(amt<CONFIG.MIN_WITHDRAW){alert("Min 50");return;} try{ const ref=doc(db,"users",userId); const snap=await getDoc(ref); const data=snap.data(); if((data.referrals||0)<CONFIG.MIN_REFER){alert("2 Refer লাগবে");return;} if((data.balance||0)<amt){alert("Balance কম");return;} await addDoc(collection(db,"withdraws"),{userId,number:num,walletType:type,amount:amt,status:"pending",time:Date.now(),name:data.name||"User"}); await updateDoc(ref,{balance:increment(-amt)}); alert(type+" তে Request গেছে!"); location.reload(); }catch(e){alert("Error: "+e.message);} }
-window.adminTab=(tab)=>{ ['users','withdraw','broadcast'].forEach(t=>{ const e=document.getElementById('adminTab-'+t); if(e) e.style.display='none'; }); document.getElementById('adminTab-'+tab).style.display='block'; }
-window.sendBroadcast=async()=>{ const txt=document.getElementById('broadcastText').value.trim(); if(!txt){alert("মেসেজ লিখো");return;} const btn=document.getElementById('bBtn'); const status=document.getElementById('bStatus'); btn.disabled=true; btn.innerText="পাঠানো হচ্ছে..."; status.innerText="Telegram এ পাঠানো হচ্ছে..."; try{ const uSnap=await getDocs(collection(db,"users")); let count=0; let savedMsgs=[]; for(const d of uSnap.docs){ try{ const res=await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({chat_id:d.id,text:`📢 Free Income BD:\n\n${txt}`}) }); const data=await res.json(); if(data.ok){ savedMsgs.push({chat_id:d.id,message_id:data.result.message_id}); } count++; status.innerText=`${count}/${uSnap.size} জনকে পাঠানো হলো...`; await new Promise(r=>setTimeout(r,80)); }catch(e){} } await setDoc(doc(db,"config","lastBroadcast"),{messages:savedMsgs,time:Date.now()}); status.innerText=`✅ ${count} জনের কাছে গেছে!`; alert(`Done! ${count} জন পেয়েছে`); }catch(e){ status.innerText="Error: "+e.message; } btn.disabled=false; btn.innerText="📢 সবাইকে পাঠাও"; document.getElementById('broadcastText').value=""; }
-window.deleteLastBroadcast=async()=>{ if(!confirm("শেষ মেসেজটা সবার থেকে ডিলিট করবে?")) return; const dBtn=document.getElementById('dBtn'); dBtn.disabled=true; dBtn.innerText="ডিলিট হচ্ছে..."; try{ const lastDoc=await getDoc(doc(db,"config","lastBroadcast")); if(!lastDoc.exists()){alert("কোনো মেসেজ পাইনি"); dBtn.disabled=false; return;} const msgs=lastDoc.data().messages||[]; let del=0; for(const m of msgs){ try{ await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/deleteMessage`,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({chat_id:m.chat_id,message_id:m.message_id})}); del++; }catch(e){} } alert(del+" জনের থেকে ডিলিট হয়েছে!"); }catch(e){alert("Error: "+e.message);} dBtn.disabled=false; dBtn.innerText="🗑️ সবার থেকে ডিলিট করো"; }
-async function loadAdminSafe(){ try{ const uSnap=await getDocs(collection(db,"users")); document.getElementById('adminTab-users').innerHTML=`Total Users: ${uSnap.size}`; const wSnap=await getDocs(collection(db,"withdraws")); let html=""; wSnap.forEach(d=>{ const w=d.data(); html+=`<div style="border:1px solid #eee;padding:8px;margin-top:6px;font-size:12px">${w.walletType||'wallet'} ${w.number} - ৳${w.amount} - ${w.status}</div>`; }); document.getElementById('adminTab-withdraw').innerHTML=html||"No Request"; }catch(e){} }
-async function init(){
-  try{ if(window.Telegram?.WebApp){ Telegram.WebApp.ready(); Telegram.WebApp.expand(); const u=Telegram.WebApp.initDataUnsafe?.user; if(u) userId=String(u.id); } }catch(e){}
-  document.getElementById('inviteLinkBox').innerText=CONFIG.BOT_LINK+userId;
-  document.getElementById('joinLinkBtn').href = CONFIG.CHANNEL_LINK;
-  if(localStorage.getItem('joinedChannel')=='yes'){
-    document.getElementById('joinPopup').style.display='none';
-  } else {
-    document.getElementById('joinPopup').style.display='flex';
-  }
-  try{ const ref=doc(db,"users",userId); let snap=await getDoc(ref); if(!snap.exists()){ await setDoc(ref,{name:"OWNER",balance:0.10,referrals:0,totalAds:0,totalEarned:0,joined:Date.now()}); snap=await getDoc(ref); } const data=snap.data(); const bal=(data.balance||0).toFixed(2); document.getElementById('bal').innerText=bal; document.getElementById('bal2').innerText=bal; document.getElementById('miniBal').innerText=bal; document.getElementById('totalEarn').innerText=(data.totalEarned||0).toFixed(2); document.getElementById('taskDone').innerText=data.totalAds||0; document.getElementById('refCount').innerText=data.referrals||0; }catch(e){ console.log(e); }
-  if(CONFIG.ADMIN_IDS.includes(userId)){ document.getElementById('nav-admin').style.display='block'; loadAdminSafe(); }
-  updateWalletPlaceholder();
-}
-init();
+
+<div id="page-Earn" class="page hidden"><div class="mx-3 mt-3"><div class="font-bold">বিজ্ঞাপন দেখে ইনকাম করুন (GigaPub)</div><div class="grid grid-cols-2 gap-3 mt-2"><div class="bg-white rounded-[22px] p-4 text-center"><div class="text-4xl">🎬</div><div class="font-bold">ভিডিও বিজ্ঞাপন</div><button onclick="watchAd()" class="w-full green-gradient text-white rounded-full py-2 mt-2">অ্যাড দেখুন</button></div><div class="bg-white rounded-[22px] p-4 text-center"><div class="text-4xl">🎁</div><div class="font-bold">পপ-আপ বোনাস</div><button onclick="claimBonus()" class="w-full bg-blue-500 text-white rounded-full py-2 mt-2">বোনাস নিন</button></div></div></div></div>
+
+<div id="page-Tasks" class="page hidden"><div class="mx-3 mt-3 bg-white rounded-[20px] p-4 flex justify-between"><div><div class="font-semibold">TechBD24kDevelopers</div><div class="text-xs text-green-600">+৳10.00</div></div><button onclick="completeTask(this,10)" class="text-green-600 font-bold">✓ Done</button></div></div>
+
+<div id="page-Refer" class="page hidden"><div class="mx-3 mt-3 bg-white rounded-[26px] p-5 text-center"><div class="text-5xl">🛸</div><div class="font-bold text-xl mt-2">বন্ধুদের ইনভাইট করুন</div><div class="mt-3 bg-[#f5faf7] rounded-full p-3 text-xs text-green-700 break-all" id="refLink">https://t.me/FreeIncomeBD_bot?start=ref_5468979650</div><div class="grid grid-cols-2 gap-2 mt-3"><button onclick="copyRef()" class="border rounded-full py-3">📋 কপি লিংক</button><button onclick="shareRef()" class="green-gradient text-white rounded-full py-3">🚀 শেয়ার করুন</button></div></div></div>
+
+<div id="page-Withdraw" class="page hidden"><div class="bg-white rounded-t-[26px] p-5"><div class="font-bold text-xl">টাকা উত্তোলন করুন</div><div class="grid grid-cols-2 gap-2 mt-3"><button id="btnNagad" onclick="setMethod('Nagad')" class="border border-green-600 bg-green-50 rounded-full py-3">Nagad</button><button id="btnBkash" onclick="setMethod('Bkash')" class="bg-gray-100 rounded-full py-3">Bkash</button></div><input id="walletInput" placeholder="বিকাশ / নগদ নাম্বার" class="w-full mt-3 bg-gray-100 rounded-full p-3"><input id="amountInput" type="number" placeholder="টাকার পরিমাণ" class="w-full mt-3 bg-gray-100 rounded-full p-3"><button onclick="requestWithdraw()" class="w-full mt-3 green-gradient text-white rounded-full py-3">উত্তোলন কনফার্ম করুন</button></div></div>
+
+<div id="page-Profile" class="page hidden"><div class="mx-3 bg-white rounded-[22px] p-6 text-center"><div class="w-16 h-16 bg-[#0e9f6e] rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">T</div><div class="font-bold mt-2">FREE INCOME | OWNER</div><div class="text-sm text-gray-500">Telegram ID: 5468979650</div></div></div>
+
+<div id="page-Admin" class="page hidden"><div class="mx-3 bg-white rounded-[22px] p-4"><div class="font-bold">🔐 Board Admin - Secret</div><div class="text-xs text-red-500">ID: 5468979650 Only</div><div class="grid grid-cols-4 gap-2 mt-3"><div class="bg-green-50 rounded-xl p-2 text-center"><div class="font-bold" id="adminUsers">14</div><div class="text-xs">Users</div></div><div class="bg-yellow-50 rounded-xl p-2 text-center"><div class="font-bold" id="adminPending">0</div><div class="text-xs">Pending</div></div><div class="bg-blue-50 rounded-xl p-2 text-center"><div class="font-bold" id="adminTotal">130</div><div class="text-xs">Total ৳</div></div><div class="bg-pink-50 rounded-xl p-2 text-center"><div class="font-bold" id="adminRefs">3</div><div class="text-xs">Refs</div></div></div><textarea id="broadcastMsg" placeholder="সবাইকে মেসেজ" class="w-full border-2 border-amber-400 rounded-xl p-3 h-20 mt-3"></textarea><button onclick="sendBroadcast()" class="w-full mt-2 green-gradient text-white rounded-xl py-3 font-bold">পাঠাও</button><div id="adminList" class="mt-4 space-y-2"></div></div></div>
+
+<div id="broadcastBox" class="mx-3 mt-3 hidden"><div id="broadcastItems" class="bg-white rounded-xl p-3"></div></div>
+
+<div class="fixed bottom-3 left-3 right-3 bg-white rounded-full p-2 flex justify-between">
+<button onclick="switchTab('Home')" class="navBtn flex-1" data-tab="Home">🏠 Home</button>
+<button onclick="switchTab('Earn')" class="navBtn flex-1" data-tab="Earn">▶️ Earn</button>
+<button onclick="switchTab('Tasks')" class="navBtn flex-1" data-tab="Tasks">☑️ Tasks</button>
+<button onclick="switchTab('Refer')" class="navBtn flex-1" data-tab="Refer">👥 Refer</button>
+<button onclick="switchTab('Withdraw')" class="navBtn flex-1" data-tab="Withdraw">💳 Withdraw</button>
+<button onclick="switchTab('Profile')" class="navBtn flex-1" data-tab="Profile">👤 Profile</button>
+<button onclick="switchTab('Admin')" class="navBtn flex-1 bg-[#0e9f6e] text-white rounded-full" data-tab="Admin">🔐 Admin</button>
+</div>
+
+<script>
+const ADMIN_ID="5468979650";
+const firebaseConfig={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",appId:"YOUR_APP"};
+firebase.initializeApp(firebaseConfig); const db=firebase.firestore();
+let currentUserId=Telegram?.WebApp?.initDataUnsafe?.user?.id?.toString()||ADMIN_ID;
+let balance=0.10; let currentMethod="Nagad";
+function switchTab(t){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('page-'+t).classList.remove('hidden');}
+function setMethod(m){currentMethod=m;}
+function updateBalanceUI(){document.getElementById('mainBalance').innerText=balance.toFixed(2);document.getElementById('balanceTop').innerText='৳ '+balance.toFixed(2);}
+async function watchAd(){balance+=0.10;updateBalanceUI();await db.collection('users').doc(currentUserId).set({balance:balance},{merge:true});}
+async function claimBonus(){balance+=0.10;updateBalanceUI();}
+function completeTask(b,v){b.innerText="Done";balance+=v;updateBalanceUI();}
+function copyRef(){navigator.clipboard.writeText(document.getElementById('refLink').innerText);}
+function shareRef(){copyRef(); alert("লিংক কপি হয়েছে");}
+async function requestWithdraw(){const w=document.getElementById('walletInput').value;const a=parseFloat(document.getElementById('amountInput').value);await db.collection('withdrawals').add({userId:currentUserId,wallet:w,amount:a,method:currentMethod,status:'pending',time:firebase.firestore.FieldValue.serverTimestamp()});balance-=a;updateBalanceUI();}
+async function sendBroadcast(){const msg=document.getElementById('broadcastMsg').value;await db.collection('broadcasts').add({message:msg,time:firebase.firestore.FieldValue.serverTimestamp(),by:ADMIN_ID});document.getElementById('broadcastMsg').value="";loadBroadcasts();}
+async function loadBroadcasts(){const snap=await db.collection('broadcasts').orderBy('time','desc').limit(20).get();const list=document.getElementById('adminList');list.innerHTML="";snap.forEach(doc=>{const d=doc.data();list.innerHTML+=`<div class='bg-white border rounded-xl p-3 flex justify-between'><div>${d.message}</div><button onclick="deleteBroadcast('${doc.id}')" class='bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs'>Delete</button></div>`;});}
+async function deleteBroadcast(id){await db.collection('broadcasts').doc(id).delete();loadBroadcasts();}
+updateBalanceUI(); switchTab('Home');
+db.collection('broadcasts').orderBy('time','desc').limit(5).onSnapshot(s=>{const b=document.getElementById('broadcastItems');if(s.empty){document.getElementById('broadcastBox').classList.add('hidden');return;}document.getElementById('broadcastBox').classList.remove('hidden');b.innerHTML="";s.forEach(doc=>{b.innerHTML+=`<div>📢 ${doc.data().message}</div>`;});});
+document.getElementById('refLink').innerText="https://t.me/FreeIncomeBD_bot?start=ref_"+currentUserId;
 </script>
 </body>
 </html>
