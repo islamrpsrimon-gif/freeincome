@@ -3,34 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Income BD - New Original</title>
+<title>Free Income BD</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#eef2f7;padding-bottom:120px}
-.top{position:sticky;top:0;z-index:10;background:#000;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;font-weight:700}
+/* TOP HEADER বাদ দিলাম - এখন ১টাই থাকবে */
 .card{background:#fff;border-radius:24px;padding:18px;margin:10px;box-shadow:0 6px 20px #0001}
 .badge{background:#e8f8f0;color:#0e9f6e;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:800;display:inline-block}
-.nav{position:fixed;bottom:12px;left:12px;right:12px;background:#fff;border-radius:999px;display:flex;justify-content:space-around;padding:8px;box-shadow:0 10px 30px #0002}
+.nav{position:fixed;bottom:12px;left:12px;right:12px;background:#fff;border-radius:999px;display:flex;justify-content:space-around;padding:8px;box-shadow:0 10px 30px #0002;z-index:20}
 .nav button{border:0;background:none;padding:8px 6px;border-radius:999px;font-size:10px;color:#6b7280}
 .on{background:#0e9f6e!important;color:#fff!important}
 .page{display:none}.show{display:block}
-.sbox{border-radius:18px;padding:16px 4px;text-align:center}
-.sbox b{font-size:22px;display:block}
-.tabs{display:flex;gap:7px;overflow:auto;margin-top:14px;padding-bottom:4px}
-.tabs::-webkit-scrollbar{display:none}
+.sbox{border-radius:18px;padding:16px 4px;text-align:center}.sbox b{font-size:22px;display:block}
+.tabs{display:flex;gap:7px;overflow:auto;margin-top:14px;padding-bottom:4px}.tabs::-webkit-scrollbar{display:none}
 .t{border:1.6px solid #e5e7eb;background:#fff;padding:11px 16px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap}
 .tOn{background:#0e9f6e!important;color:#fff!important;border-color:#0e9f6e!important}
 .row{border:1.5px solid #f1f5f9;border-radius:14px;padding:12px 14px;margin-bottom:10px;background:#fff;display:flex;justify-content:space-between;align-items:center}
 .input{width:100%;border:2px solid #fbbf24;border-radius:16px;padding:16px;outline:none;min-height:90px;font-size:14px}
-.btn{background:#0e9f6e;color:#fff;border:0;border-radius:14px;padding:15px;width:100%;font-weight:900;font-size:14px}
+.btn{background:#0e9f6e;color:#fff;border:0;border-radius:14px;padding:15px;width:100%;font-weight:900}
 </style>
 </head>
 <body>
 
-<div class="top"><div>✕ Free Income BD</div><div>⋮</div></div>
+<!-- উপরের কালো Header টা বাদ দিছি, এখন Telegram এর ১টাই থাকবে -->
 
-<!-- HOME ORIGINAL -->
 <div id="Home" class="page show">
 <div style="background:linear-gradient(135deg,#10b981,#059669);padding:18px 18px 80px;border-radius:0 0 28px 28px;color:#fff;display:flex;justify-content:space-between;font-size:13px">
 <span>☀️ Good to see you!</span><span style="background:rgba(255,255,255,.25);padding:6px 14px;border-radius:999px">● ACTIVE</span>
@@ -43,42 +40,27 @@ body{background:#eef2f7;padding-bottom:120px}
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:0 10px">
 <div class="card" style="margin:0;text-align:center;padding:14px"><div>🏆</div><b id="te">22</b><br><span style="font-size:10px;color:#888">TOTAL EARNED</span></div>
 <div class="card" style="margin:0;text-align:center;padding:14px"><div>▶️</div><b>0/30</b><br><span style="font-size:10px;color:#888">TASKS DONE</span></div>
-<div class="card" style="margin:0;text-align:center;padding:14px"><div>👥</div><b id="refC">0</b><br><span style="font-size:10px;color:#888">REFERRALS</span></div>
+<div class="card" style="margin:0;text-align:center;padding:14px"><div>👥</div><b>0</b><br><span style="font-size:10px;color:#888">REFERRALS</span></div>
 </div>
 <div style="margin:12px 10px"><button onclick="go('Earn')" class="btn" style="border-radius:999px">🚀 Start Earning Now →</button></div>
 </div>
 
-<div id="Earn" class="page">
-<div class="card" style="text-align:center">
-<b>Watch Ads & Earn - 10 Points Per Ad</b><br><br>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<div style="border:1.5px solid #eee;border-radius:18px;padding:16px"><div style="font-size:32px">🎬</div><b>ভিডিও</b><div style="color:#0e9f6e;font-weight:800">+10</div><button onclick="add(10)" class="btn" style="margin-top:10px;border-radius:999px;padding:12px">অ্যাড দেখুন</button></div>
-<div style="border:1.5px solid #eee;border-radius:18px;padding:16px"><div style="font-size:32px">🎁</div><b>বোনাস</b><div style="color:#0e9f6e;font-weight:800">+10</div><button onclick="add(10)" class="btn" style="margin-top:10px;border-radius:999px;padding:12px;background:#2196f3">বোনাস নিন</button></div>
-</div>
-</div>
-</div>
+<div id="Earn" class="page"><div class="card" style="text-align:center"><b>10 Points Per Ad</b><br><br><button onclick="add(10)" class="btn" style="border-radius:999px">🎬 অ্যাড দেখুন +10</button></div></div>
+<div id="Tasks" class="page"><div class="card"><b>Tasks</b><div class="row" style="margin-top:10px"><div><b>Join @FreeIncomeBD_2026</b><div style="color:#0e9f6e;font-size:12px">+10</div></div><a href="https://t.me/FreeIncomeBD_2026" target="_blank" style="border:1.5px solid #0e9f6e;color:#0e9f6e;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:800">Join</a></div></div></div>
+<div id="Refer" class="page"><div class="card" style="text-align:center"><b>Refer</b><div style="background:#f3faf6;padding:12px;border-radius:999px;font-size:11px;color:#0e9f6e;margin-top:12px">https://t.me/FreeIncomeBD_bot?start=ref_5468979650</div></div></div>
+<div id="Withdraw" class="page"><div class="card"><b>Withdraw Min 100</b><br><br><input id="wNum" placeholder="Bkash/Nagad" style="width:100%;padding:14px;border-radius:999px;border:0;background:#f1f5f9"><input id="wAmt" type="number" placeholder="Points" style="width:100%;margin-top:8px;padding:14px;border-radius:999px;border:0;background:#f1f5f9"><button onclick="withdraw()" class="btn" style="margin-top:12px;border-radius:999px">Confirm</button></div></div>
+<div id="Profile" class="page"><div class="card" style="text-align:center"><b>OWNER 👑</b><br>ID: 5468979650<br><b><span id="bal2">22</span> Points</b></div></div>
 
-<div id="Tasks" class="page"><div class="card"><b>Tasks</b><div class="row" style="margin-top:10px"><div><b style="font-size:13px">FreeIncomeBD_2026 Join</b><div style="color:#0e9f6e;font-size:12px;font-weight:700">+10 Points</div></div><a href="https://t.me/FreeIncomeBD_2026" target="_blank" style="border:1.5px solid #0e9f6e;color:#0e9f6e;padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:800">Join</a></div></div></div>
-
-<div id="Refer" class="page"><div class="card" style="text-align:center"><div style="font-size:40px">🛸</div><b>বন্ধুদের ইনভাইট করুন</b><div style="background:#f3faf6;padding:12px;border-radius:999px;font-size:11px;color:#0e9f6e;margin-top:12px;word-break:break-all;font-weight:700">https://t.me/FreeIncomeBD_bot?start=ref_5468979650</div><button onclick="navigator.clipboard.writeText('https://t.me/FreeIncomeBD_bot?start=ref_5468979650');alert('Copy Done')" class="btn" style="margin-top:12px;background:#fff;color:#111;border:1.5px solid #ddd;border-radius:999px">📋 কপি লিংক</button></div></div>
-
-<div id="Withdraw" class="page"><div class="card"><b style="font-size:18px">টাকা উত্তোলন</b><p style="font-size:12px;color:#666">Min 100 Points</p><input id="wNum" placeholder="Bkash/Nagad Number" style="width:100%;margin-top:12px;padding:14px;border-radius:999px;border:0;background:#f1f5f9"><input id="wAmt" type="number" placeholder="Points" style="width:100%;margin-top:8px;padding:14px;border-radius:999px;border:0;background:#f1f5f9"><button onclick="withdraw()" class="btn" style="margin-top:12px;border-radius:999px">Confirm Withdraw</button><div id="wList" style="margin-top:12px"></div></div></div>
-
-<div id="Profile" class="page"><div class="card" style="text-align:center"><div style="width:64px;height:64px;background:#0e9f6e;color:#fff;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900">F</div><b style="display:block;margin-top:10px">FREE INCOME | OWNER 👑</b><div style="font-size:11px;color:#666">ID: 5468979650 Only</div><div style="margin-top:10px"><span class="badge">💼 <span id="bal2">22</span> Points</span></div><div style="text-align:left;margin-top:14px;background:#f8fafc;padding:12px;border-radius:12px;font-size:12px;line-height:22px"><div>📢 Channel: @FreeIncomeBD_2026</div><div>🔗 https://t.me/FreeIncomeBD_2026</div><div>💰 Per Ad: 10 Points</div></div></div></div>
-
-<!-- ADMIN ORIGINAL - 5 BUTTONS EXACT LIKE PIC -->
 <div id="Admin" class="page">
 <div class="card">
 <div style="display:flex;gap:8px;align-items:center"><span style="font-size:24px">🔐</span><b style="font-size:20px">Board Admin - Secret</b></div>
-<div style="color:#ef4444;font-size:13px;font-weight:800;margin-top:2px">ID: 5468979650 Only</div>
-
+<div style="color:#ef4444;font-size:13px;font-weight:800">ID: 5468979650 Only</div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:16px">
-<div class="sbox" style="background:#e8f8ee"><b id="uC">1</b><span style="font-size:12px;font-weight:700">Users</span></div>
-<div class="sbox" style="background:#fef9c3"><b id="pC">0</b><span style="font-size:12px;font-weight:700">Pending</span></div>
-<div class="sbox" style="background:#dbeafe"><b id="tB">130</b><span style="font-size:12px;font-weight:700">Total ৳</span></div>
-<div class="sbox" style="background:#fce7f3"><b>3</b><span style="font-size:12px;font-weight:700">Refs</span></div>
+<div class="sbox" style="background:#e8f8ee"><b id="uC">1</b><span style="font-size:12px">Users</span></div>
+<div class="sbox" style="background:#fef9c3"><b id="pC">0</b><span style="font-size:12px">Pending</span></div>
+<div class="sbox" style="background:#dbeafe"><b id="tB">130</b><span style="font-size:12px">Total ৳</span></div>
+<div class="sbox" style="background:#fce7f3"><b>3</b><span style="font-size:12px">Refs</span></div>
 </div>
-
 <div class="tabs">
 <button id="bUsers" onclick="aTab('Users')" class="t tOn">👥 Users</button>
 <button id="bTop" onclick="aTab('Top')" class="t">🏆 Top</button>
@@ -86,7 +68,6 @@ body{background:#eef2f7;padding-bottom:120px}
 <button id="bWithdraw" onclick="aTab('Withdraw')" class="t">💳 Withdraw</button>
 <button id="bBroadcast" onclick="aTab('Broadcast')" class="t">📢 Broadcast</button>
 </div>
-
 <div id="aBox" style="margin-top:14px"></div>
 </div>
 </div>
@@ -102,104 +83,21 @@ body{background:#eef2f7;padding-bottom:120px}
 </div>
 
 <script>
-const TOKEN = "8684890686:AAEM8kQ_LLNXh_ofg3enFguKnPbK1FJgydA";
-let tg = window.Telegram?.WebApp; if(tg){tg.ready(); tg.expand();}
-let bal = parseInt(localStorage.getItem('f_bal')||'22');
-let wds = JSON.parse(localStorage.getItem('f_wds')||'[]');
-let users = JSON.parse(localStorage.getItem('f_users')||'[]');
-let curA = 'Broadcast';
-
-// Save real user
-if(tg?.initDataUnsafe?.user){
-  let uid = String(tg.initDataUnsafe.user.id);
-  if(!users.includes(uid)){users.push(uid); localStorage.setItem('f_users', JSON.stringify(users));}
-}
-if(users.length==0){users=["5468979650"]; localStorage.setItem('f_users', JSON.stringify(users));}
-
-function go(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
-  document.getElementById(id).classList.add('show');
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));
-  document.getElementById('n'+id).classList.add('on');
-  if(id==='Admin') aTab(curA);
-}
-function refresh(){
-  document.getElementById('bal').innerText=bal;
-  document.getElementById('bal2').innerText=bal;
-  document.getElementById('te').innerText=bal;
-  document.getElementById('tB').innerText=bal*6;
-  document.getElementById('uC').innerText=users.length;
-  document.getElementById('pC').innerText=wds.length;
-  localStorage.setItem('f_bal',bal);
-}
-function add(v){bal+=v; refresh(); alert('✅ +'+v+' Points');}
-function withdraw(){
-  let num=document.getElementById('wNum').value;
-  let amt=parseInt(document.getElementById('wAmt').value);
-  if(!num||!amt) return alert('সব লিখো');
-  if(amt<100) return alert('Min 100');
-  if(amt>bal) return alert('Balance কম');
-  wds.push({num,amt,t:new Date().toLocaleString()});
-  localStorage.setItem('f_wds',JSON.stringify(wds));
-  bal-=amt; refresh(); alert('Withdraw পাঠানো হয়েছে');
-  document.getElementById('wNum').value=''; document.getElementById('wAmt').value='';
-}
-
-function aTab(name){
-  curA=name;
-  document.querySelectorAll('.tabs .t').forEach(x=>x.classList.remove('tOn'));
-  document.getElementById('b'+name).classList.add('tOn');
-  let box=document.getElementById('aBox');
-  
-  if(name==='Users'){
-    let h=''; users.forEach((u,i)=>{h+=`<div class="row"><div><div style="font-weight:900">undefined <span style="color:#0e9f6e;font-weight:700">paid</span></div><div style="font-size:13px">৳15 ${u}</div></div><div style="font-size:11px;color:#999">#${i+1}</div></div>`;});
-    if(!h) h='<div style="text-align:center;color:#999;padding:20px">No Users</div>';
-    box.innerHTML=h;
-  }
-  else if(name==='Top'){
-    box.innerHTML=`<div class="row" style="display:block"><b>🏆 Top Earners</b><br><br>1. 5468979650 - 130 ৳<br>2. ${users[0]||'01947...'} - ${bal} ৳</div>`;
-  }
-  else if(name==='Balance'){
-    box.innerHTML=`<div class="row" style="display:block"><b>💰 Balance Add</b><br><br><input id="ab" type="number" placeholder="10 Points" style="width:100%;padding:12px;border-radius:999px;border:1px solid #ddd"><button onclick="let v=parseInt(document.getElementById('ab').value||10);bal+=v;refresh();alert('Added '+v)" class="btn" style="margin-top:10px;border-radius:999px">Add Balance</button></div>`;
-  }
-  else if(name==='Withdraw'){
-    let h='<b>💳 Withdraw List</b><br><br>'; if(wds.length==0) h+='<div style="color:#999;text-align:center;padding:16px">কোনো Withdraw নেই</div>'; wds.forEach((o,i)=>{h+=`<div class="row"><div><b>${o.amt} Points</b><div style="font-size:11px">${o.num} - ${o.t}</div></div><button onclick="wds.splice(${i},1);localStorage.setItem('f_wds',JSON.stringify(wds));aTab('Withdraw');refresh()" style="background:#0e9f6e;color:#fff;border:0;padding:6px 12px;border-radius:999px">Approve</button></div>`;}); box.innerHTML=h;
-  }
-  else if(name==='Broadcast'){
-    box.innerHTML=`
-    <div style="display:block">
-      <div style="background:#e8f8f0;padding:12px;border-radius:12px;font-size:12px;color:#0e9f6e;font-weight:700">✅ Bot Connected - Token OK<br>মেসেজ বট থেকে সবার ইনবক্সে যাবে (Home এ না)</div>
-      <textarea id="msg" class="input" placeholder="সবাইকে মেসেজ... যেমন: আজ বিকালে পেমেন্ট" style="margin-top:12px"></textarea>
-      <button onclick="sendAll()" class="btn" style="margin-top:12px">📢 বট থেকে সবার কাছে পাঠাও</button>
-      <div id="log" style="margin-top:12px;font-size:13px;font-weight:800"></div>
-    </div>`;
-  }
-}
-
-async function sendAll(){
-  let m=document.getElementById('msg').value.trim();
-  let log=document.getElementById('log');
-  if(!m) return alert('মেসেজ লিখো ভাই');
-  log.innerHTML=`⏳ ${users.length} জনকে পাঠানো হচ্ছে...`;
-  let ok=0;
-  for(let chat_id of users){
-    try{
-      let r=await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({chat_id:chat_id, text:`📢 Free Income BD Notice\n\n${m}\n\nChannel: https://t.me/FreeIncomeBD_2026`})
-      });
-      let j=await r.json();
-      if(j.ok) ok++;
-      log.innerHTML=`📤 পাঠানো: ${ok}/${users.length}`;
-      await new Promise(r=>setTimeout(r,350));
-    }catch(e){log.innerHTML=`Error: ${e.message}`;}
-  }
-  log.innerHTML=`✅ ${ok} জনের বট ইনবক্সে চলে গেছে! (Bot থেকে)`;
-  document.getElementById('msg').value='';
-}
-
-refresh(); aTab('Broadcast');
+const TOKEN="8684890686:AAEM8kQ_LLNXh_ofg3enFguKnPbK1FJgydA";
+let tg=window.Telegram?.WebApp; if(tg){tg.ready();tg.expand();}
+let bal=parseInt(localStorage.getItem('f_bal')||'22');
+let wds=JSON.parse(localStorage.getItem('f_wds')||'[]');
+let users=JSON.parse(localStorage.getItem('f_users')||'[]');
+let curA='Broadcast';
+if(tg?.initDataUnsafe?.user){let uid=String(tg.initDataUnsafe.user.id); if(!users.includes(uid)){users.push(uid);localStorage.setItem('f_users',JSON.stringify(users));}}
+if(users.length==0){users=["5468979650"];localStorage.setItem('f_users',JSON.stringify(users));}
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById(id).classList.add('show');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));document.getElementById('n'+id).classList.add('on');if(id==='Admin')aTab(curA);}
+function refresh(){document.getElementById('bal').innerText=bal;document.getElementById('bal2').innerText=bal;document.getElementById('te').innerText=bal;document.getElementById('tB').innerText=bal*6;document.getElementById('uC').innerText=users.length;document.getElementById('pC').innerText=wds.length;localStorage.setItem('f_bal',bal);}
+function add(v){bal+=v;refresh();alert('✅ +'+v);}
+function withdraw(){let num=document.getElementById('wNum').value;let amt=parseInt(document.getElementById('wAmt').value);if(!num||!amt)return alert('সব লিখো');if(amt<100)return alert('Min 100');if(amt>bal)return alert('Balance কম');wds.push({num,amt});localStorage.setItem('f_wds',JSON.stringify(wds));bal-=amt;refresh();alert('Sent');}
+function aTab(name){curA=name;document.querySelectorAll('.tabs .t').forEach(x=>x.classList.remove('tOn'));document.getElementById('b'+name).classList.add('tOn');let box=document.getElementById('aBox'); if(name==='Users'){let h='';users.forEach((u,i)=>{h+=`<div class="row"><div><div style="font-weight:900">undefined <span style="color:#0e9f6e">paid</span></div><div style="font-size:13px">৳15 ${u}</div></div></div>`;});box.innerHTML=h||'No Users';} else if(name==='Top'){box.innerHTML=`<div class="row" style="display:block">🏆 Top<br>1. 5468979650 - 130</div>`;} else if(name==='Balance'){box.innerHTML=`<div class="row" style="display:block"><b>Balance</b><br><br><input id="ab" type="number" placeholder="10" style="width:100%;padding:12px;border-radius:999px;border:1px solid #ddd"><button onclick="let v=parseInt(document.getElementById('ab').value||10);bal+=v;refresh();alert('Added')" class="btn" style="margin-top:8px;border-radius:999px">Add</button></div>`;} else if(name==='Withdraw'){let h='<b>Withdraw</b><br><br>';if(wds.length==0)h+='No Withdraw';box.innerHTML=h;} else if(name==='Broadcast'){box.innerHTML=`<div style="display:block"><div style="background:#e8f8f0;padding:12px;border-radius:12px;font-size:12px;color:#0e9f6e;font-weight:700">✅ Bot Connected - বট থেকে যাবে</div><textarea id="msg" class="input" placeholder="সবাইকে মেসেজ..." style="margin-top:12px"></textarea><button onclick="sendAll()" class="btn" style="margin-top:12px">📢 বট থেকে সবার কাছে পাঠাও</button><div id="log" style="margin-top:12px;font-weight:800"></div></div>`;}}
+async function sendAll(){let m=document.getElementById('msg').value.trim();let log=document.getElementById('log');if(!m)return alert('মেসেজ লিখো');log.innerHTML=`⏳ ${users.length} জনকে...`;let ok=0;for(let chat_id of users){try{let r=await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id,text:`📢 Free Income BD Notice\n\n${m}\n\nChannel: https://t.me/FreeIncomeBD_2026`})});let j=await r.json();if(j.ok)ok++;log.innerHTML=`📤 ${ok}/${users.length}`;await new Promise(r=>setTimeout(r,350));}catch(e){}}log.innerHTML=`✅ ${ok} জনের বটে গেছে!`;document.getElementById('msg').value='';}
+refresh();aTab('Broadcast');
 </script>
 </body>
 </html>
