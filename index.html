@@ -6,69 +6,82 @@
 <title>Free Income BD</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
-<style>*{font-family:'Hind Siliguri'} body{background:#eef2f7; padding-bottom:110px} .green{background:linear-gradient(135deg,#10b981,#059669,#047857)} .card{box-shadow:0 12px 32px rgba(16,185,129,.1); background:white} .nav-active{background:#0e9f6e!important;color:white!important}</style>
+<style>*{font-family:'Hind Siliguri'} body{background:#eef2f7;padding-bottom:110px} .green{background:linear-gradient(135deg,#10b981,#059669,#047857)} .card{background:white;box-shadow:0 12px 32px rgba(16,185,129,.1)} .nav-active{background:#0e9f6e!important;color:white!important}</style>
 </head>
 <body>
+
+<!-- JOIN GATE - FIRST TIME -->
+<div id="joinGate" class="fixed inset-0 bg-[#0f172a]/90 z-[200] flex items-center justify-center p-4">
+<div class="card rounded-[26px] p-6 w-full max-w-[340px] text-center">
+<div class="w-20 h-20 bg-[#e8f8f0] rounded-full mx-auto flex items-center justify-center text-4xl">🔐</div>
+<div class="font-bold text-[20px] mt-4">চ্যানেলে জয়েন করুন</div>
+<div class="text-[13px] text-gray-500 mt-2">Free Income BD ব্যবহার করতে প্রথমে আমাদের অফিসিয়াল চ্যানেলে জয়েন করতে হবে</div>
+<div class="mt-5 bg-[#f3faf6] rounded-xl p-3 text-xs text-left">
+<div>✅ 1. নিচের Join বাটনে ক্লিক করুন</div>
+<div>✅ 2. চ্যানেলে Join করুন</div>
+<div>✅ 3. ফিরে এসে "জয়েন করেছি" চাপুন</div>
+</div>
+<a href="https://t.me/FreeIncomeBD_2026" target="_blank" class="block mt-5 bg-[#229ED9] text-white rounded-full py-3.5 font-bold">📢 Join @FreeIncomeBD_2026</a>
+<button onclick="confirmJoin()" class="w-full mt-3 green text-white rounded-full py-3.5 font-bold">✅ জয়েন করেছি - ভিতরে ঢুকুন</button>
+<div class="text-[11px] text-gray-400 mt-3">ID: 5468979650 Only</div>
+</div>
+</div>
+
+<!-- TOP -->
 <div class="bg-black text-white px-4 py-3.5 flex justify-between sticky top-0 z-50"><b>Free Income BD</b><span>⋮</span></div>
 
 <div class="mx-3 mt-3 card rounded-[20px] p-3.5 flex justify-between items-center">
-<div class="flex gap-3 items-center"><div class="w-12 h-12 bg-[#0e9f6e] rounded-full flex items-center justify-center text-white font-bold">T</div><div><div class="font-bold">FREE INCOME | OWNER 👑 💼 ৳ <span id="balanceTop">0.10</span></div><div class="text-[11px] text-gray-400">ID: 5468979650 Only</div></div></div><div class="bg-[#e8f8f0] text-[#0e9f6e] px-3 py-1 rounded-full font-bold">BD</div>
+<div class="flex gap-3 items-center"><div class="w-12 h-12 bg-[#0e9f6e] rounded-full flex items-center justify-center text-white font-bold">T</div><div><div class="font-bold">FREE INCOME | OWNER 👑 ৳ <span id="balanceTop">0.10</span></div><div class="text-[11px] text-gray-400">ID: 5468979650 Only</div></div></div><div class="bg-[#e8f8f0] text-[#0e9f6e] px-3 py-1 rounded-full font-bold">BD</div>
 </div>
 
 <div id="broadcastBox" class="mx-3 mt-3 hidden"><div class="card rounded-[16px] p-3"><div class="font-bold text-sm">📢 নোটিশ</div><div id="broadcastItems"></div></div></div>
 
 <div id="page-Home" class="page">
-<div class="mx-3 mt-3 green rounded-[28px] p-4 pb-[95px] relative"><div class="flex justify-between text-white text-sm"><span>☀️ Good to see you!</span><span class="bg-white/20 px-3 py-1 rounded-full text-xs">● ACTIVE</span></div><div class="card rounded-[28px] p-6 text-center absolute left-3 right-3 top-[45px]"><div class="text-xs text-gray-400 tracking-widest">AVAILABLE BALANCE</div><div class="text-[44px] font-extrabold">৳ <span id="mainBalance">0.10</span></div><div class="bg-[#e8f8f0] text-[#0e9f6e] text-xs px-4 py-1.5 rounded-full inline-block">↑ +100% GigaPub Live Engine</div></div></div>
-<div class="mt-[95px] mx-3 grid grid-cols-3 gap-2"><div class="card rounded-[20px] p-3 text-center"><div>🏆</div><b id="totalEarned">0.10</b><div class="text-[10px] text-gray-500">TOTAL EARNED</div></div><div class="card rounded-[20px] p-3 text-center"><div>▶️</div><b id="tasksDone">0/30</b><div class="text-[10px]">TASKS DONE</div></div><div class="card rounded-[20px] p-3 text-center"><div>👥</div><b id="referralCount">0</b><div class="text-[10px]">REFERRALS</div></div></div>
+<div class="mx-3 mt-3 green rounded-[28px] p-4 pb-[95px] relative"><div class="flex justify-between text-white text-sm"><span>☀️ Good to see you!</span><span class="bg-white/20 px-3 py-1 rounded-full text-xs">● ACTIVE</span></div><div class="card rounded-[28px] p-6 text-center absolute left-3 right-3 top-[45px]"><div class="text-xs text-gray-400">AVAILABLE BALANCE</div><div class="text-[44px] font-extrabold">৳ <span id="mainBalance">0.10</span></div><div class="bg-[#e8f8f0] text-[#0e9f6e] text-xs px-4 py-1.5 rounded-full inline-block">↑ +100% GigaPub Live Engine</div></div></div>
+<div class="mt-[95px] mx-3 grid grid-cols-3 gap-2"><div class="card rounded-[20px] p-3 text-center">🏆<br><b id="totalEarned">0.10</b><div class="text-[10px]">TOTAL EARNED</div></div><div class="card rounded-[20px] p-3 text-center">▶️<br><b id="tasksDone">0/30</b><div class="text-[10px]">TASKS DONE</div></div><div class="card rounded-[20px] p-3 text-center">👥<br><b id="referralCount">0</b><div class="text-[10px]">REFERRALS</div></div></div>
 <div class="mx-3 mt-3 green rounded-full p-4 text-center text-white font-bold" onclick="switchTab('Earn')">🚀 Start Earning Now →</div>
 </div>
 
-<div id="page-Earn" class="page hidden"><div class="mx-3 mt-3"><b>বিজ্ঞাপন দেখে ইনকাম করুন</b><div class="grid grid-cols-2 gap-3 mt-3"><div class="card rounded-[22px] p-5 text-center"><div class="text-4xl">🎬</div><b>ভিডিও বিজ্ঞাপন</b><div class="text-xs text-gray-500">৳ 0.10</div><button onclick="watchAd()" class="w-full green text-white rounded-full py-3 mt-3 font-bold">অ্যাড দেখুন</button></div><div class="card rounded-[22px] p-5 text-center"><div class="text-4xl">🎁</div><b>পপ-আপ বোনাস</b><div class="text-xs">৳ 0.10</div><button onclick="claimBonus()" class="w-full bg-blue-500 text-white rounded-full py-3 mt-3 font-bold">বোনাস নিন</button></div></div></div></div>
+<div id="page-Earn" class="page hidden"><div class="mx-3 mt-3"><b>বিজ্ঞাপন দেখে ইনকাম করুন</b><div class="grid grid-cols-2 gap-3 mt-3"><div class="card rounded-[22px] p-5 text-center"><div class="text-4xl">🎬</div><b>ভিডিও বিজ্ঞাপন</b><div class="text-xs">৳0.10</div><button onclick="watchAd()" class="w-full green text-white rounded-full py-3 mt-3 font-bold">অ্যাড দেখুন</button></div><div class="card rounded-[22px] p-5 text-center"><div class="text-4xl">🎁</div><b>পপ-আপ বোনাস</b><div class="text-xs">৳0.10</div><button onclick="claimBonus()" class="w-full bg-blue-500 text-white rounded-full py-3 mt-3 font-bold">বোনাস নিন</button></div></div></div></div>
 
-<div id="page-Tasks" class="page hidden"><div class="mx-3 mt-3"><b>টেলিগ্রাম ও সোশ্যাল টাস্ক</b><div class="mt-3 space-y-2"><div class="card rounded-[20px] p-4 flex justify-between"><div><b>TechBD24kDevelopers</b><div class="text-xs text-green-600">+৳10.00</div></div><button onclick="completeTask(this,10)" class="text-green-600 font-bold border px-4 py-1 rounded-full">✓ Done</button></div></div></div></div>
+<div id="page-Tasks" class="page hidden"><div class="mx-3 mt-3"><b>টেলিগ্রাম ও সোশ্যাল টাস্ক</b><div class="mt-3 space-y-2"><div class="card rounded-[20px] p-4 flex justify-between"><div><b>FreeIncomeBD_2026 Join</b><div class="text-xs text-green-600">+৳10.00</div></div><a href="https://t.me/FreeIncomeBD_2026" target="_blank" class="text-green-600 font-bold border px-4 py-1 rounded-full">Join</a></div></div></div></div>
 
-<div id="page-Refer" class="page hidden"><div class="mx-3 mt-3 card rounded-[26px] p-6 text-center"><div class="text-5xl">🛸</div><b class="text-xl mt-2 block">বন্ধুদের ইনভাইট করুন</b><div class="mt-3 bg-[#f3faf6] rounded-full p-3 text-xs text-green-700 break-all" id="refLink">https://t.me/FreeIncomeBD_bot?start=ref_5468979650</div><div class="grid grid-cols-2 gap-3 mt-3"><button onclick="copyRef()" class="border rounded-full py-3 font-bold">📋 কপি লিংক</button><button onclick="shareRef()" class="green text-white rounded-full py-3 font-bold">🚀 শেয়ার</button></div></div></div>
+<div id="page-Refer" class="page hidden"><div class="mx-3 mt-3 card rounded-[26px] p-6 text-center"><div class="text-5xl">🛸</div><b class="text-xl mt-2 block">বন্ধুদের ইনভাইট করুন</b><div class="mt-3 bg-[#f3faf6] rounded-full p-3 text-xs text-green-700 break-all">https://t.me/FreeIncomeBD_bot?start=ref_5468979650</div><button onclick="copyRef()" class="w-full mt-3 border rounded-full py-3 font-bold">📋 কপি লিংক</button></div></div>
 
-<div id="page-Withdraw" class="page hidden"><div class="bg-white rounded-t-[28px] p-6 mt-8 card"><b class="text-xl">টাকা উত্তোলন করুন</b><div class="text-sm text-gray-500">সর্বনিম্ন ৳100</div><div class="grid grid-cols-2 gap-3 mt-4"><button id="btnNagad" onclick="setMethod('Nagad')" class="border-2 border-green-600 bg-green-50 rounded-full py-3 font-bold">Nagad</button><button id="btnBkash" onclick="setMethod('Bkash')" class="bg-gray-100 rounded-full py-3 font-bold">Bkash</button></div><input id="walletInput" placeholder="বিকাশ / নগদ নাম্বার" class="w-full mt-3 bg-gray-100 rounded-full p-3"><input id="amountInput" type="number" placeholder="টাকার পরিমাণ" class="w-full mt-3 bg-gray-100 rounded-full p-3"><button onclick="requestWithdraw()" class="w-full mt-4 green text-white rounded-full py-4 font-bold">উত্তোলন কনফার্ম করুন</button></div></div>
+<div id="page-Withdraw" class="page hidden"><div class="bg-white rounded-t-[28px] p-6 mt-8 card"><b class="text-xl">টাকা উত্তোলন করুন</b><div class="text-sm text-gray-500">মিনিমাম ৳100</div><input id="walletInput" placeholder="নগদ/বিকাশ নাম্বার" class="w-full mt-3 bg-gray-100 rounded-full p-3"><input id="amountInput" type="number" placeholder="টাকার পরিমাণ" class="w-full mt-3 bg-gray-100 rounded-full p-3"><button onclick="requestWithdraw()" class="w-full mt-4 green text-white rounded-full py-4 font-bold">উত্তোলন কনফার্ম করুন</button></div></div>
 
-<div id="page-Profile" class="page hidden">
-<div class="mx-3 mt-3 card rounded-[22px] p-6 text-center"><div class="w-16 h-16 bg-[#0e9f6e] rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">T</div><div class="font-bold text-lg mt-3">FREE INCOME | OWNER 👑</div><div class="text-sm text-gray-500">ID: 5468979650 | @TechBD24kDevelopers</div><div class="mt-2 bg-[#e8f8f0] text-[#0e9f6e] px-4 py-1 rounded-full inline-block font-bold">💼 ৳ <span class="mainBalanceDup">0.10</span></div><div class="mt-4 text-left bg-[#f8fafc] rounded-xl p-3 text-sm"><div>Bot: @FreeIncomeBD_bot</div><div>Support: @TechBD24kDevelopers</div><div>Total Withdraw: ৳ <span id="profileWithdraw">0</span></div></div></div>
-</div>
+<div id="page-Profile" class="page hidden"><div class="mx-3 mt-3 card rounded-[22px] p-6 text-center"><div class="w-16 h-16 bg-[#0e9f6e] rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">T</div><div class="font-bold text-lg mt-3">FREE INCOME | OWNER</div><div class="text-sm text-gray-500">ID: 5468979650 | Channel: @FreeIncomeBD_2026</div><div class="mt-2 bg-[#e8f8f0] text-[#0e9f6e] px-4 py-1 rounded-full inline-block font-bold">💼 ৳ <span class="mainBalanceDup">0.10</span></div></div></div>
 
-<div id="page-Admin" class="page hidden"><div class="mx-3 mt-3 card rounded-[22px] p-4"><b>🔐 Board Admin - Secret</b><div class="text-xs text-red-500">ID: 5468979650 Only</div><div class="grid grid-cols-4 gap-2 mt-3"><div class="bg-green-50 rounded-xl p-2 text-center"><b id="adminUsers">1</b><div class="text-[10px]">Users</div></div><div class="bg-yellow-50 rounded-xl p-2 text-center"><b id="adminPending">0</b><div class="text-[10px]">Pending</div></div><div class="bg-blue-50 rounded-xl p-2 text-center"><b id="adminTotal">0</b><div class="text-[10px]">Total ৳</div></div><div class="bg-pink-50 rounded-xl p-2 text-center"><b id="adminRefs">0</b><div class="text-[10px]">Refs</div></div></div><div class="flex gap-2 mt-3"><button onclick="loadWithdraws()" class="border px-4 py-2 rounded-full text-sm">💳 Withdraw</button><button onclick="loadBroadcasts()" class="bg-[#0e9f6e] text-white px-4 py-2 rounded-full text-sm">📢 Broadcast</button></div><textarea id="broadcastMsg" placeholder="সবাইকে মেসেজ" class="w-full border-2 border-amber-400 rounded-xl p-3 h-20 mt-3"></textarea><button onclick="sendBroadcast()" class="w-full mt-2 green text-white rounded-xl py-3 font-bold">পাঠাও - সবার কাছে যাবে</button><div id="adminList" class="mt-4 space-y-2"></div></div></div>
+<div id="page-Admin" class="page hidden"><div class="mx-3 mt-3 card rounded-[22px] p-4"><b>🔐 Board Admin - Secret ID: 5468979650 Only</b><div class="mt-3"><textarea id="broadcastMsg" placeholder="সবাইকে মেসেজ" class="w-full border-2 border-amber-400 rounded-xl p-3 h-20"></textarea><button onclick="sendBroadcast()" class="w-full mt-2 green text-white rounded-xl py-3 font-bold">পাঠাও</button></div><div id="adminList" class="mt-4 space-y-2"></div></div></div>
 
-<div class="fixed bottom-3 left-3 right-3 bg-white rounded-full p-2 flex justify-between z-50 card">
+<div class="fixed bottom-3 left-3 right-3 bg-white rounded-full p-2 flex justify-between z-40 card">
 <button onclick="switchTab('Home')" class="navBtn flex-1 py-2 rounded-full text-[11px] nav-active" data-tab="Home">🏠 Home</button>
 <button onclick="switchTab('Earn')" class="navBtn flex-1 py-2 rounded-full text-[11px]" data-tab="Earn">▶️ Earn</button>
-<button onclick="switchTab('Tasks')" class="navBtn flex-1 py-2 rounded-full text-[11px]" data-tab="Tasks">☑️ Tasks</button>
 <button onclick="switchTab('Refer')" class="navBtn flex-1 py-2 rounded-full text-[11px]" data-tab="Refer">👥 Refer</button>
 <button onclick="switchTab('Withdraw')" class="navBtn flex-1 py-2 rounded-full text-[11px]" data-tab="Withdraw">💳 Withdraw</button>
-<button onclick="switchTab('Profile')" class="navBtn flex-1 py-2 rounded-full text-[11px]" data-tab="Profile">👤 Profile</button>
 <button onclick="switchTab('Admin')" class="navBtn flex-1 py-2 rounded-full text-[11px]" data-tab="Admin">🔐 Admin</button>
 </div>
 
 <script>
 let balance=parseFloat(localStorage.getItem('bal')||'0.10');
 let broadcasts=JSON.parse(localStorage.getItem('bcs')||'[]');
-let withdrawals=JSON.parse(localStorage.getItem('wds')||'[]');
-let currentMethod='Nagad';
-function switchTab(t){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('page-'+t).classList.remove('hidden');document.querySelectorAll('.navBtn').forEach(b=>{b.classList.remove('nav-active'); if(b.dataset.tab===t) b.classList.add('nav-active')}); if(t==='Admin') loadBroadcasts(); if(t==='Profile') updateProfile();}
-function updateUI(){document.getElementById('mainBalance').innerText=balance.toFixed(2);document.querySelectorAll('.mainBalanceDup').forEach(e=>e.innerText=balance.toFixed(2));document.getElementById('balanceTop').innerText=balance.toFixed(2);document.getElementById('totalEarned').innerText=balance.toFixed(2);localStorage.setItem('bal',balance.toString());}
-function watchAd(){balance+=0.10;updateUI();alert("✅ ৳0.10 যোগ হয়েছে");}
-function claimBonus(){balance+=0.10;updateUI();alert("🎁 Bonus ৳0.10");}
-function completeTask(btn,val){btn.innerText='Done';btn.disabled=true;balance+=val;updateUI();}
-function copyRef(){navigator.clipboard.writeText(document.getElementById('refLink').innerText);alert("কপি হয়েছে");}
-function shareRef(){copyRef();}
-function setMethod(m){currentMethod=m;document.getElementById('btnNagad').className=m==='Nagad'?'border-2 border-green-600 bg-green-50 rounded-full py-3 font-bold':'bg-gray-100 rounded-full py-3 font-bold';document.getElementById('btnBkash').className=m==='Bkash'?'border-2 border-green-600 bg-green-50 rounded-full py-3 font-bold':'bg-gray-100 rounded-full py-3 font-bold';}
-function requestWithdraw(){let w=document.getElementById('walletInput').value;let a=parseFloat(document.getElementById('amountInput').value);if(!w||!a)return alert("সব দিন");if(a<100)return alert("মিনিমাম ৳100");if(a>balance)return alert("ব্যালেন্স কম");withdrawals.push({wallet:w,amount:a,method:currentMethod,time:new Date().toLocaleString(),status:'pending'});localStorage.setItem('wds',JSON.stringify(withdrawals));balance-=a;updateUI();alert("✅ Withdraw Request গেছে");document.getElementById('walletInput').value='';document.getElementById('amountInput').value='';}
-function sendBroadcast(){let msg=document.getElementById('broadcastMsg').value.trim();if(!msg)return alert("মেসেজ লিখুন");broadcasts.unshift({id:Date.now(),message:msg,time:new Date().toLocaleString()});localStorage.setItem('bcs',JSON.stringify(broadcasts));document.getElementById('broadcastMsg').value='';loadBroadcasts();showBroadcasts();alert("✅ সবার কাছে পাঠানো হয়েছে");}
-function loadBroadcasts(){let list=document.getElementById('adminList');list.innerHTML='';broadcasts.forEach(b=>{list.innerHTML+=`<div class="bg-white border rounded-xl p-3 flex justify-between"><div><div class="font-semibold text-sm">${b.message}</div><div class="text-[10px] text-gray-400">${b.time}</div></div><button onclick="deleteBroadcast(${b.id})" class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-bold">Delete</button></div>`});document.getElementById('adminPending').innerText=withdrawals.length;document.getElementById('adminTotal').innerText=balance.toFixed(0);}
-function deleteBroadcast(id){if(!confirm("ডিলিট করবেন? সবার কাছ থেকে মুছে যাবে"))return;broadcasts=broadcasts.filter(b=>b.id!==id);localStorage.setItem('bcs',JSON.stringify(broadcasts));loadBroadcasts();showBroadcasts();}
-function loadWithdraws(){let list=document.getElementById('adminList');list.innerHTML='';withdrawals.forEach((w,i)=>{list.innerHTML+=`<div class="bg-white border rounded-xl p-3 flex justify-between"><div><b>${w.method} - ৳${w.amount}</b><div class="text-xs">${w.wallet}</div><div class="text-[10px] text-gray-400">${w.time}</div></div><span class="text-xs bg-yellow-100 px-2 py-1 rounded-full h-fit">${w.status}</span></div>`});}
-function showBroadcasts(){let box=document.getElementById('broadcastBox');let items=document.getElementById('broadcastItems');if(broadcasts.length===0){box.classList.add('hidden');return;}box.classList.remove('hidden');items.innerHTML='';broadcasts.slice(0,5).forEach(b=>{items.innerHTML+=`<div class="py-2 border-b text-sm">📢 ${b.message}</div>`});}
-function updateProfile(){document.getElementById('profileWithdraw').innerText=withdrawals.reduce((s,w)=>s+w.amount,0);}
-updateUI();showBroadcasts();switchTab('Home');
-document.getElementById('refLink').innerText="https://t.me/FreeIncomeBD_bot?start=ref_5468979650";
+let joined=localStorage.getItem('joined_channel');
+
+function checkJoin(){if(joined==='yes'){document.getElementById('joinGate').classList.add('hidden');} else {document.getElementById('joinGate').classList.remove('hidden');}}
+function confirmJoin(){localStorage.setItem('joined_channel','yes');joined='yes';document.getElementById('joinGate').classList.add('hidden');alert("✅ ধন্যবাদ! এখন ইনকাম শুরু করুন");}
+
+function switchTab(t){document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById('page-'+t).classList.remove('hidden');document.querySelectorAll('.navBtn').forEach(b=>{b.classList.remove('nav-active'); if(b.dataset.tab===t) b.classList.add('nav-active')});}
+function updateUI(){document.getElementById('mainBalance').innerText=balance.toFixed(2);document.querySelectorAll('.mainBalanceDup').forEach(e=>e.innerText=balance.toFixed(2));document.getElementById('balanceTop').innerText=balance.toFixed(2);document.getElementById('totalEarned').innerText=balance.toFixed(2);localStorage.setItem('bal',balance);}
+function watchAd(){if(joined!=='yes'){alert("আগে চ্যানেলে জয়েন করুন"); checkJoin(); return;} balance+=0.10;updateUI();}
+function claimBonus(){balance+=0.10;updateUI();}
+function copyRef(){navigator.clipboard.writeText("https://t.me/FreeIncomeBD_bot?start=ref_5468979650");alert("কপি হয়েছে");}
+function requestWithdraw(){let w=document.getElementById('walletInput').value;let a=parseFloat(document.getElementById('amountInput').value);if(a<100)return alert("মিনিমাম ৳100");if(a>balance)return alert("ব্যালেন্স কম");balance-=a;updateUI();alert("Withdraw Request গেছে");}
+function sendBroadcast(){let m=document.getElementById('broadcastMsg').value;if(!m)return;broadcasts.unshift({id:Date.now(),message:m,time:new Date().toLocaleString()});localStorage.setItem('bcs',JSON.stringify(broadcasts));document.getElementById('broadcastMsg').value='';loadBroadcasts();showBroadcasts();}
+function loadBroadcasts(){let l=document.getElementById('adminList');l.innerHTML='';broadcasts.forEach(b=>{l.innerHTML+=`<div class="bg-white border rounded-xl p-3 flex justify-between"><div><div class="font-semibold text-sm">${b.message}</div><div class="text-[10px] text-gray-400">${b.time}</div></div><button onclick="deleteBroadcast(${b.id})" class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs">Delete</button></div>`});}
+function deleteBroadcast(id){broadcasts=broadcasts.filter(b=>b.id!==id);localStorage.setItem('bcs',JSON.stringify(broadcasts));loadBroadcasts();showBroadcasts();}
+function showBroadcasts(){let box=document.getElementById('broadcastBox');let items=document.getElementById('broadcastItems');if(broadcasts.length===0){box.classList.add('hidden');return;}box.classList.remove('hidden');items.innerHTML='';broadcasts.slice(0,3).forEach(b=>{items.innerHTML+=`<div class="py-1 text-sm">📢 ${b.message}</div>`});}
+
+checkJoin();updateUI();showBroadcasts();switchTab('Home');
 </script>
 </body>
 </html>
